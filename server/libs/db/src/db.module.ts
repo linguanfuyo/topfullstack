@@ -8,7 +8,9 @@ import { Course } from './models/course.model'
 import { Episode } from './models/episode.model'
 import { Action } from './models/action.model'
 import { Comment } from './models/Comment.model'
-const modles = TypegooseModule.forFeature([User, Course, Episode, Action, Comment])
+import { Article } from './models/article.model'
+import { Music } from './models/music.model'
+const modles = TypegooseModule.forFeature([User, Course, Episode, Action, Comment, Article, Music])
 //把db.module 变为全局模块
 @Global()
 @Module({

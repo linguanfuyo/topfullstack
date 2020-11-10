@@ -1,9 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
 import { Course } from '@libs/db/models/course.model';
 import { Crud } from 'nestjs-mongoose-crud'
 import { ApiTags, ApiOperation, ApiPropertyOptional } from '@nestjs/swagger';
 import { ReturnModelType } from '@typegoose/typegoose'
+import { AuthGuard } from '@nestjs/passport';
 @Crud({
 	model: Course,
 	routes: {

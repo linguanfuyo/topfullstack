@@ -28,11 +28,15 @@ export default {
   ** Global CSS
   */
   css: [
+    'ant-design-vue/dist/antd.css'
+    /* 定义滑块 内阴影+圆角 */
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/antd-ui',
+    '@/plugins/axios'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -57,22 +61,68 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    
   },
-  //配置auth
+  proxy: {
+    '/api/': {
+      target: 'https://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/', // 目标服务器ip
+      pathRewrite: {
+        '^/api/': '/',
+        changeOrigin: true
+      }
+    }
+  },
+  // 全局路由
+  router: {
+    // middleware: ['auth']
+  },
+  // 配置auth  路由卫士 + cookie / vuex 持久化操作 + 登入登出重定向 + 自带 auth 请求头
+  // 更多登录策略
   auth: {
       strategies: {
           local: {
             endpoints: {
-              login: { url: '/auth/login'},
+              login: { url: '/auth/login',propertyName: 'token'},
               logout: { url: '/auth/logout'},
               user: { url: '/auth/user',propertyName: false}
             },
             // tokenRequired: true,
             // tokenType: 'bearer',
             // globalToken: true,
-            // autoFetchUser: true
+            autoFetchUser: true // 是否自动获取用户信息
+          },
+          github: {
+            client_id: '229aace769ca428f3844',
+            client_secret: 'e4db5b78482267290cceed2d6aa524fae21a24cb'
+          },
+          social: {
+            _scheme: 'oauth2',
+            authorization_endpoint: 'https://passport.yhd.com/wechat/login.do',
+            userinfo_endpoint: 'https://passport.yhd.com/wechat/login.do',
+            scope: ['openid', 'profile', 'email'],
+            access_type: 'code',
+            access_token_endpoint: 'https://passport.yhd.com/wechat/login.do',
+            response_type: 'token',
+            token_type: 'Bearer',
+            redirect_uri: '/login',
+            client_id: 'SET_ME',
+            token_key: 'access_token',
+            state: 'UNIQUE_AND_NON_GUESSABLE'
           }
-        }
+          
+        },
+        // cookie: {
+        //   options: {
+        //     maxAge: 60 * 60 * 24 * 7
+        //   }
+        // },
+        redirect: {
+          login: '/login',
+          logout: '/',
+          callback: '/login',
+          home: '/'
+        },
+        // localStorage: false
   },
   /*
   ** vuetify module configuration
@@ -81,7 +131,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,

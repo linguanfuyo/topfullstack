@@ -6,15 +6,32 @@ import { CoursesModule } from './courses/courses.module';
 import { AuthModule } from './auth/auth.module';
 import { ActionsModule } from './actions/actions.module';
 import { CommentsModule } from './comments/comments.module';
+import { MulterModule } from '@nestjs/platform-express';
+const MAO = require('multer-aliyun-oss'); //引入oss 包
 @Module({
-  imports: [
-	  CommonModule,
-	  CoursesModule,
-	  AuthModule,
-	  ActionsModule,
-	  CommentsModule,
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+	imports: [
+		MulterModule.registerAsync({
+			useFactory() {
+				return {
+					storage: MAO({
+						config: {
+							region: process.env.OSS_REGION,
+							accessKeyId: process.env.OSS_ACCESS_KEY_ID,
+							accessKeySecret: process.env.OSS_ACCESS_KEY_SECRET,
+							bucket: process.env.OSS_BUCKET,
+						}
+					})
+					// dest: 'uploads' // 存储位置 目录名称
+				}
+			}
+		}),
+		CommonModule,
+		CoursesModule,
+		AuthModule,
+		ActionsModule,
+		CommentsModule,
+	],
+	controllers: [AppController],
+	providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

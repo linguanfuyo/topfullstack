@@ -27,7 +27,6 @@ export class ActionsController {
         //先判断是否已经收藏 已收藏则删除 未收藏则插入
 
         const res = await this.getStatus(dto, user)
-        console.log(res.status)
         if (res.status) {
             await this.actionModel.deleteMany(dto)
         } else {

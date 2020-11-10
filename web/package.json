@@ -15,9 +15,13 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "ant-design-vue": "^1.7.1",
+    "downloadjs": "^1.4.7",
+    "js-base64": "^3.5.2",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
+    "@nuxtjs/proxy": "^2.0.1",
     "@nuxtjs/vuetify": "^1.0.0"
   }
 }

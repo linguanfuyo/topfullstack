@@ -13,9 +13,9 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title v-html="item.content"></v-list-item-title>
-            <v-list-item-subtitle>
+            <v-list-item-subtitle class="comment-desc">
               <span>{{item.user.username}}</span>
-              <span>{{item.createdAt}}</span>
+              <span>{{formatDate(item.createdAt)}}</span>
             </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+import 'moment/locale/zh-cn'
 export default {
   props: {
     type: {
@@ -44,6 +46,7 @@ export default {
     }
   },
   methods: {
+    // 发送评论
     async send () {
       if (this.content) {
         const res = await this.$axios.$post('comments', {
@@ -55,6 +58,7 @@ export default {
       this.content = ''
       this.fetch()
     },
+    // 获取评论
     async fetch () {
       const res = await this.$axios.$get('comments', {
         params: {
@@ -69,6 +73,11 @@ export default {
         }
       })
       this.commentList = res
+    },
+    // 评论日期处理
+    formatDate (date) {
+      let newTiem = moment(date).fromNow();;
+      return newTiem
     }
   },
   //immediate: true 进来就执行 而不是改变才执行
@@ -84,4 +93,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="sass" scoped>
+.comment-desc
+  display: flex
+  justify-content: space-between
+</style>

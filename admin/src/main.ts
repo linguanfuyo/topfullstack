@@ -7,8 +7,13 @@ import './sass/style.scss'
 Vue.config.productionTip = false
 //导入axios 并配置
 import axios from 'axios'
+declare global {
+  interface Window {
+    axios: any;
+  }
+}
 const http = axios.create({
-	baseURL: process.env.VUE_APP_API_URL
+  baseURL: process.env.VUE_APP_API_URL
 })
 window.axios = http
 // Vue.prototype.$httpajax = http
