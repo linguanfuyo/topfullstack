@@ -113,7 +113,7 @@
               </v-list-item-action>
             </v-list-item>
             <v-divider></v-divider>
-            <v-list-item @click="$router.push('/user')" link>
+            <v-list-item @click="$router.push('/user/userCreate')" link>
               <v-list-item-action>
                 <a-icon style="fontSize: 20px;color:#717171" type="bulb" />
               </v-list-item-action>

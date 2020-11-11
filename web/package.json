@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@nuxtjs/proxy": "^2.0.1",
+    "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/vuetify": "^1.0.0"
   }
 }

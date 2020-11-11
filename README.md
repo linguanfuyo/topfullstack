@@ -1,32 +1,39 @@
 # topfullstack
 
 #### 介绍
-NodeJs+Vue 全栈开发 全栈之巅 视频网站
+Nestjs+Nuxt 全栈开发 用户视频网站
+
+ui:Vuetify和ant-design-vue(Vuetify组件太少了.....)
 
 #### 软件架构
 开发流程服务端 > web端  先后台 再前台
 
-mongod --storageEngine mmapv1 -dbpath d:\E\mongoData  开启数据库
+开启数据库 `mongod --storageEngine mmapv1 -dbpath d:\E\mongoData`
 
-进入server文件夹 启动子项目 nest start -w admin/web
+进入server文件夹 启动子项目 `nest start -w admin/web`
 
-启动redis
+启动redis(本项目redis部署在服务器上)
 
-#### 使用nestjs 创建服务端项目
+启动Nuxt: `npm run dev`
 
-1.安装脚手架 cnpm i --g @nestjs/cli 
+### 开发细节
 
-2.使用nest new xxx 创建服务端项目nest new server    cd server
+##### 使用nestjs 创建服务端项目
+
+1.安装脚手架 `cnpm i --g @nestjs/cli `
+
+2.使用nest new xxx 创建服务端项目`nest new server    cd server`
 
 3.nest g app admin 创建子项目
 
-4.启动子项目 nest start -w admin
+4.启动子项目 `nest start -w admin`
 
-5.创建公共包文件夹 nest g lib db   @libs
+5.创建公共包文件夹 `nest g lib db   @libs`
 
-6.安装数据库连接数据库所需要的包 npm i --s nestjs-typegoose @typegoose/typegoose
+6.安装数据库连接数据库所需要的包 `npm i --s nestjs-typegoose @typegoose/typegoose`
 
-7.cnpm i -S  @types/mongoose mongoose
+7.`cnpm i -S  @types/mongoose mongoose`
+(```)
 <pre>
     <code>
 	imports: [
@@ -40,17 +47,18 @@ mongod --storageEngine mmapv1 -dbpath d:\E\mongoData  开启数据库
   ],
     </code>
 </pre>
-8.nest g mo -p admin users/nest g co -p admin users 在admin子项目里新建一个user模块 -p指定目录
+(```)
+8.`nest g mo -p admin users/nest g co -p admin users` 在admin子项目里新建一个user模块 -p指定目录
 
-9.安装 cnpm i -S nestjs-mongoose-crud 用户快速完成对数据库的增删改查
+9.安装 `cnpm i -S nestjs-mongoose-crud` 用户快速完成对数据库的增删改查
 
-10.安装 cnpm i -S @nestjs/swagger swagger-ui-express 用于写接口文档
+10.安装 `cnpm i -S @nestjs/swagger swagger-ui-express` 用于写接口文档
 
-11.安装验证管道 npm i -S class-validator class-transformer
+11.安装验证管道 `npm i -S class-validator class-transformer`
 
 12.配置swagger 文档
 
-
+(```)
 <pre>
     <code>
         import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
@@ -65,45 +73,49 @@ mongod --storageEngine mmapv1 -dbpath d:\E\mongoData  开启数据库
 		  SwaggerModule.setup('api', app, document);
     </code>
 </pre>
+(```)
 
 13.创建并定义course 的模型
 
-14.创建course 的子模块 nest g mo -p admin users/nest g co -p admin users
+14.创建course 的子模块 `nest g mo -p admin users/nest g co -p admin users`
 
 15.服务端里设置跨域 app.enableCors()
 
 16.根据前端的需要 写一个option接口 把avue所需要的option 在后台传过去
 
-17.npm i --save @nestjs/config 安装配置忘记包 使用环境变量的包
-nest g lib common 创建common 公共文件夹 默认存放在libs下  用于写一些环境变量 导入并
+17.`npm i --save @nestjs/config` 安装配置忘记包 使用环境变量的包
 
+`nest g lib common` 创建common 公共文件夹 默认存放在libs下  用于写一些环境变量 导入并
+
+(```)
 import { ConfigModule } form '@nestjs/config'
 ConfigModule.forRoot({
 		  isGlobal: true
 	  })
+(```)
 	  
-18.nest g mo courses/nest g co courses  创建server子项目所需的文件夹
+18.`nest g mo courses/nest g co courses`  创建server子项目所需的文件夹
 
-19.启动server子项目 nest start -w server
+19.启动server子项目 `nest start -w server`
 
 20.创建auth模块 用于写用户登录注册的接口
 
-21.cnpm i -S bcryptjs 使用bcryptjs 对密码进行加密
+21.`cnpm i -S bcryptjs` 使用bcryptjs 对密码进行加密
 
 22.使用passport 来实现登录验证 在auth文件夹下 先创建一个local.strategy.ts 文件 用于存放登录策略
 
-23.cnpm i -S passport @nestjs/passport passport-local passport-jwt 
+23.`cnpm i -S passport @nestjs/passport passport-local passport-jwt `
 
 24.开始使用 引用
 
 25.cnpm i -S @nestjs/jwt 使用 生成token  在common.module 里面注册
 
-26.nest g mo/co -p server actions 生成action模块 用于存放用户的操作
+26.`nest g mo/co -p server actions` 生成action模块 用于存放用户的操作
 
-27.建立评论模型 创建评论模块 nest g mo/co -p server comment
+27.建立评论模型 创建评论模块 `nest g mo/co -p server comment`
 
 
-#### admin端  vscode编译器代码排斥
+##### admin端  vscode编译器代码排斥
 
 1. 用vue create admin  创建项目与server同级
 
@@ -129,9 +141,9 @@ ConfigModule.forRoot({
 
 12. MulterModule.register({
 		  dest: 'uploads' //目录名称
-	  }),//本地上传模块   会在项目的跟地址自动的创建uploads
+	}),//本地上传模块   会在项目的跟地址自动的创建uploads
 
-13. 使用阿里云oss存储  cnpm i -S multer-aliyun-oss  下载oss包  server 文件夹
+13. 使用阿里云oss存储  `cnpm i -S multer-aliyun-oss` 下载oss包  server 文件夹
 
 14. 引入 并配置
 
@@ -139,7 +151,7 @@ ConfigModule.forRoot({
 
 1. 使用nuxtjs 来搭建项目
 
-2. npx create-nuxt-app <项目名>
+2. `npx create-nuxt-app <项目名>`
 
 3. 使用vuetify ui 来美化页面 
 
@@ -149,4 +161,6 @@ ConfigModule.forRoot({
 
 6. 没有main.js  nuxt.config.js 是主要文件 里面有外部文件的依赖等等  .env为配置环境变量文件
 
-7. 在web 安装 cnpm i -S @nuxtjs/auth
+7. 在web 安装 `cnpm i -S @nuxtjs/auth`
+
+``

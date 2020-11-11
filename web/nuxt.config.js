@@ -28,9 +28,16 @@ export default {
   ** Global CSS
   */
   css: [
-    'ant-design-vue/dist/antd.css'
+    'ant-design-vue/dist/antd.css',
+    // 'assets/style/main.scss',
+    
     /* 定义滑块 内阴影+圆角 */
   ],
+  styleResources:{
+    scss:[
+      './assets/styles/main.scss'
+    ]
+  },
   /*
   ** Plugins to load before mounting the App
   */
@@ -53,7 +60,8 @@ export default {
     '@nuxtjs/auth',
     // '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/style-resources' // 全局样式
 
   ],
   /*

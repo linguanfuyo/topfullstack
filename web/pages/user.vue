@@ -90,7 +90,7 @@
         </template>
         <v-card>
           <v-list>
-            <v-list-item @click="$router.push('/user/userHome')" link>
+            <v-list-item @click="$router.push('/userHome')" link>
               <v-list-item-avatar color="teal">
                 <v-img v-if="userinfo.avatar" :src="userinfo.avatar"></v-img>
                 <span v-if="!userinfo.avatar" class="white--text">{{userinfo.username[0].toUpperCase()}}</span>
