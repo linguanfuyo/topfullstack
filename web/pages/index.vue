@@ -57,7 +57,7 @@
       </v-list>
     </v-navigation-drawer>
     <!-- 头部app-bar -->
-    <v-app-bar class="app-bar" app clipped-left dense>
+    <v-app-bar color="#ffffff" class="app-bar" app clipped-left dense>
       <v-app-bar-nav-icon @click.stop="mini = !mini"></v-app-bar-nav-icon>
       <div class=" logo" @click="$router.push('/')">
         <v-icon class="mx-4 blue--text" large>
@@ -161,7 +161,6 @@ import { mapState } from 'vuex'
 export default {
   auth: false,
   props: {
-    source: String,
   },
   data: () => ({
     mini: true,
@@ -195,7 +194,8 @@ export default {
     ...mapState({
       userinfo: state => state.auth.user,
       strategy: state => state.auth.strategy,
-      isLogin: state => state.auth.loggedIn
+      isLogin: state => state.auth.loggedIn,
+      isSyncCount: state => state.isSyncCount
     })
   },
   methods: {
@@ -210,7 +210,7 @@ export default {
     async syncUser () {
       try {
         let userAuth = this.$store.state.auth
-        if (userAuth.strategy === 'github') {
+        if (userAuth.strategy === 'github' && !this.isSyncCount) {
           const user = userAuth.user
           const githubModel = {}
           githubModel.username = user.login
@@ -227,6 +227,10 @@ export default {
               // Bearer
               const storage = window.localStorage
               storage.setItem("auth._token.local", 'Bearer ' + res1.token);
+              this.$store.commit('setVal', {
+                valName: 'isSyncCount',
+                val: true
+              })
             }
           }
         }

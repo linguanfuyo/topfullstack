@@ -11,7 +11,7 @@
         <div>
           <v-avatar class="user-avatar" v-if="isLogin" color="teal" size="100">
             <v-img style="width: 102px;height:102px" v-if="userinfo.avatar" :src="userinfo.avatar"></v-img>
-            <span v-if="!userinfo.avatar" style="font-size: 20px"
+            <span v-if="userinfo.avatar===''" style="font-size: 20px"
               class="white--text">{{userinfo.username[0].toUpperCase()}}</span>
           </v-avatar>
           <div class="user">
@@ -117,7 +117,7 @@ export default {
   },
   computed: {
     ...mapState({
-      userinfo: state => state.auth.user,
+      userinfo: state => state.auth.user || {},
       strategy: state => state.auth.strategy,
       isLogin: state => state.auth.loggedIn
     })

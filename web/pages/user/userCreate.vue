@@ -118,10 +118,10 @@
         <div class="input-item">
           <div style="width:50px; margin-right: 40px" for="title"><span style="color:red">* </span>
             类别</div>
-          <a-select mode="multiple" :default-value="videoModel.category" style="width: 100%" placeholder="请选择视频类别"
-            @change="optionChange">
-            <a-select-option v-for="(item) in catogery" :key="item">
-              {{ item }}
+          <a-select size="large" mode="multiple" :default-value="videoModel.category" style="width: 100%"
+            placeholder="请选择视频类别" @change="optionChange">
+            <a-select-option v-for="(item) in category" :key="item._id">
+              {{ item.name }}
             </a-select-option>
           </a-select>
         </div>
@@ -146,7 +146,9 @@ export default {
     return {
       visible: true, // 是否显示alert
       isUploaded: true, // 是否已导入视频或图片
-      videoInfo: {},  // 视频信息
+      videoInfo: {
+        name: '',
+      },  // 视频信息
       videoModel: {
         title: '',
         desc: '',
@@ -158,10 +160,12 @@ export default {
       isComplete: false, // 是否完成加载
       isSuccess: false, // 加载是否成功
       isHaveTemplate: false, // 是否有模板
-      catogery: ['游戏', '音乐', '美食', '搞笑', '农人', '体育', '宠物', '科技', 'Vlog'],
+      category: [],
     }
   },
-  beforeDestroy () { },
+  beforeDestroy () {
+    this.saveTemplate()
+  },
   methods: {
     handleClose () {
       this.visible = false;
@@ -196,9 +200,9 @@ export default {
         if (status === 'uploading') {
           this.percen = info.file.percent
           this.videoInfo.name = info.file.name
-          this.videoInfo.size = info.event.total
           if (info.event.loaded) {
             this.videoInfo.loaded = info.event.loaded
+            this.videoInfo.size = info.event.total
           }
         }
         if (status === 'done') {
@@ -282,7 +286,7 @@ export default {
     },
     // 选择框改变
     optionChange (value) {
-      this.videoModel.catogery = value
+      this.videoModel.category = value
     },
     // 保存模板信息
     saveTemplate () {
@@ -320,20 +324,34 @@ export default {
       this.saveTemplate()
       this.isUploaded = true
       this.isHaveTemplate = true
+    },
+    // 获取分类
+    async getCategory () {
+      try {
+        const res = await this.$axios.$get('getCategory');
+        this.category = res.category
+      } catch (error) {
+
+      }
     }
   },
   mounted () {
     // 加载模板信息
-    const template = this.getTemplate()
-    if (template) {
-      this.isHaveTemplate = true
-      if (template.videoModel.file) {
-        this.videoInfo = template.videoInfo
-        this.videoModel = template.videoModel
-        this.percen = template.percen
-        this.isComplete = template.isComplete
-        this.isSuccess = template.isSuccess
+    try {
+      this.getCategory()
+      const template = this.getTemplate()
+      if (template) {
+        if (template.videoModel.file) {
+          this.isHaveTemplate = true
+          this.videoInfo = template.videoInfo
+          this.videoModel = template.videoModel
+          this.percen = template.percen
+          this.isComplete = template.isComplete
+          this.isSuccess = template.isSuccess
+        }
       }
+    } catch (error) {
+      console.log(error)
     }
 
   }
@@ -406,7 +424,7 @@ export default {
       align-item: center
       line-height: 40px
       left: 12px
-      z-index: 999
+      z-index: 5
       border-radius: 2px
   .upload-dragg:hover
     border: 2.5px dashed #b4bac2

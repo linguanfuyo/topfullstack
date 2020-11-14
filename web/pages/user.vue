@@ -9,8 +9,8 @@
           <div @click="$router.push('/userHome')" class="user-img-box" @mouseenter="imgHover" @mouseleave="imgLeave">
             <v-avatar class="user-img-bg" v-if="isLogin" color="teal" size="100">
               <v-img v-if="userinfo.avatar" :src="userinfo.avatar"></v-img>
-              <span style="font-size: 20px" v-if="!userinfo.avatar"
-                class="white--text">{{userinfo.name[0].toUpperCase()}}</span>
+              <!-- <span style="font-size: 20px" v-if="!userinfo.avatar"
+                class="white--text">{{userinfo.name[0].toUpperCase()}}</span> -->
             </v-avatar>
             <div v-if="isUserImgHover" class="avatar-marsk">
               <div class="marsk-icon">
@@ -39,7 +39,7 @@
       </v-list>
     </v-navigation-drawer>
     <!-- 头部app-bar -->
-    <v-app-bar class="app-bar" app clipped-left dense>
+    <v-app-bar color="#ffffff" class="app-bar" app clipped-left dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <div class="logo" @click="$router.push('/')">
         <v-icon class="mx-4 blue--text" large>
@@ -52,10 +52,10 @@
       </div>
       <v-spacer></v-spacer>
       <!-- 搜索 -->
-      <v-row align="center" style="max-width: 35vw">
+      <!-- <v-row align="center" style="max-width: 35vw">
         <v-text-field :append-icon-cb="() => {}" placeholder="search..." rounded filled dense single-line
           append-icon="mdi-magnify" color="white" hide-details></v-text-field>
-      </v-row>
+      </v-row> -->
       <v-spacer></v-spacer>
       <!-- 发布视频 -->
       <v-icon class="mx-6" @click="$router.push('/')" link>
@@ -85,7 +85,7 @@
         <template v-slot:activator="{ on, attrs }">
           <v-avatar v-bind="attrs" v-on="on" class="user" v-if="isLogin" color="teal" size="35">
             <v-img v-if="userinfo.avatar" :src="userinfo.avatar"></v-img>
-            <span v-if="!userinfo.avatar" class="white--text">{{userinfo.username[0].toUpperCase()}}</span>
+            <span v-if="userinfo.avatar===''" class="white--text">{{userinfo.username[0].toUpperCase()}}</span>
           </v-avatar>
         </template>
         <v-card>
@@ -93,11 +93,11 @@
             <v-list-item @click="$router.push('/userHome')" link>
               <v-list-item-avatar color="teal">
                 <v-img v-if="userinfo.avatar" :src="userinfo.avatar"></v-img>
-                <span v-if="!userinfo.avatar" class="white--text">{{userinfo.username[0].toUpperCase()}}</span>
+                <span v-if="userinfo.avatar===''" class="white--text">{{userinfo.username[0].toUpperCase()}}</span>
               </v-list-item-avatar>
               <v-list-item-content>
                 <v-list-item-title>{{userinfo.username}}</v-list-item-title>
-                <!-- <v-list-item-subtitle>{{$store.state.auth.user.desc}}</v-list-item-subtitle> -->
+                <v-list-item-subtitle>{{$store.state.auth.user.desc}}</v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action>
                 <v-btn :class="fav ? 'red--text' : ''" icon @click="fav = !fav">
@@ -142,16 +142,15 @@
 import { mapState } from 'vuex'
 import Upload from '@/components/Upload.vue'
 export default {
-  auth: false,
+  auth: true,
   props: {
-    source: String,
   },
   data: () => ({
     isUserImgHover: false,
     fav: true,
     drawer: null,
     items: [
-      { icon: 'home', text: '首页', link: '/user/userHome' },
+      { icon: 'home', text: '首页', link: '/user/userCreate' },
       { icon: 'mdi-youtube-subscription', text: '内容管理', link: '/courses' },
       { icon: 'insert_chart_outlined', text: '数据分析', link: '/history' },
       { icon: 'message', text: '评论管理', link: '/comments' },
@@ -161,9 +160,10 @@ export default {
   }),
   computed: {
     ...mapState({
-      userinfo: state => state.auth.user,
+      userinfo: state => state.auth.user || {},
       strategy: state => state.auth.strategy,
-      isLogin: state => state.auth.loggedIn
+      isLogin: state => state.auth.loggedIn,
+      isSyncCount: state => state.isSyncCount
     })
   },
   components: {
@@ -186,7 +186,7 @@ export default {
     async syncUser () {
       try {
         let userAuth = this.$store.state.auth
-        if (userAuth.strategy === 'github') {
+        if (userAuth.strategy === 'github' && !this.isSyncCount) {
           const user = userAuth.user
           const githubModel = {}
           githubModel.username = user.login
@@ -197,11 +197,16 @@ export default {
             // 同步注册本地用户
             const res = await this.$axios.$post('auth/register', githubModel)
             if (res) {
+              this.$store.commit('setUser', res.user)
               // 获取用户token
               const res1 = await this.$axios.$post('auth/githubLogin', githubModel)
               // Bearer
               const storage = window.localStorage
               storage.setItem("auth._token.local", 'Bearer ' + res1.token);
+              this.$store.commit('setVal', {
+                valName: 'isSyncCount',
+                val: true
+              })
             }
           }
         }

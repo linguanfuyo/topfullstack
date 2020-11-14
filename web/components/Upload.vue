@@ -4,7 +4,7 @@
       <div class="hover" v-if="isUserImgHover">
         <v-avatar class="user-img-bg" v-if="auth.loggedIn" color="teal" size="80">
           <v-img v-if="userObj.avatar||imgTemp" :src="imgTemp !== '' ? imgTemp :userObj.avatar"></v-img>
-          <span style="font-size: 20px" v-if="!userObj.avatar&&!imgTemp"
+          <span style="font-size: 20px" v-if="userObj.avatar===''&&!imgTemp"
             class="white--text">{{userObj.name[0].toUpperCase()}}</span>
         </v-avatar>
         <!-- <img class="user-img-bg" :src="this.imgTemp === '' ? this.userImg : this.imgTemp"> -->
@@ -15,7 +15,7 @@
       </div>
       <v-avatar class="user-img" v-if="auth.loggedIn" color="teal" size="80">
         <v-img v-if="userObj.avatar||imgTemp" :src="imgTemp !== '' ? imgTemp :userObj.avatar"></v-img>
-        <span style="font-size: 20px" v-if="!userObj.avatar&&!imgTemp"
+        <span style="font-size: 20px" v-if="userObj.avatar===''&&!imgTemp"
           class="white--text">{{userObj.name[0].toUpperCase()}}</span>
       </v-avatar>
       <!-- <img class="user-img" :src="this.imgTemp === '' ? this.userImg : this.imgTemp"> -->
@@ -50,12 +50,6 @@ export default {
       auth: state => state.auth,
       userObj () {
         const { user } = this.$store.state.auth
-        if (this.auth.strategy === 'github') {
-          return {
-            name: user.login,
-            avatar: user.avatar_url
-          }
-        }
         return {
           name: user.username,
           avatar: user.avatar

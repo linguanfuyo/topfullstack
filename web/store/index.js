@@ -1,6 +1,7 @@
 
 export const state = () => ({
     auth:{},
+    isSyncCount: false
   })
 export const mutations = {
     setUser(state,user){

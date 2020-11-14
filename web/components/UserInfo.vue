@@ -71,7 +71,6 @@ export default {
     // confirm 确定安排
     async confrim () {
       try {
-        console.log(this.userinfo)
         const res = await this.$axios.$post('/auth/userEdit', this.userinfo)
         if (res.code === 200) {
           this.$message.open({
@@ -107,67 +106,67 @@ export default {
 
 <style scoped lang="sass">
 .hearder-right
-    width: 11px
-    height: 11px
-    cursor: pointer
+  width: 11px
+  height: 11px
+  cursor: pointer
 .hearder-right:hover
-    color: #ff3b2f
+  color: #ff3b2f
 .arrageTask
-    width: 100%
-    height: 100%
-    position: absolute
-    z-index: 9
+  width: 100%
+  height: 100%
+  position: absolute
+  z-index: 9
 .mask
-    width: 100%
-    height: 100%
-    background: rgba(0, 0, 0, 0.3)
-    display: flex
-    justify-content: center
+  width: 100%
+  height: 100%
+  background: rgba(0, 0, 0, 0.3)
+  display: flex
+  justify-content: center
 .arrageTask-wrap
-    animation: zoom 0.8s ease
-    padding: 30px
-    width: 450px
-    height: 400px
-    user-select: none
-    overflow-y: auto
-    overflow-x: hidden
-    background: rgba(249, 249, 249, 1)
-    border-radius: 6px
-    margin: 200px 0
-    .content
-        font-size: 16px
-        color: #707070
+  animation: zoom 0.8s ease
+  padding: 30px
+  width: 450px
+  height: 400px
+  user-select: none
+  overflow-y: auto
+  overflow-x: hidden
+  background: rgba(249, 249, 249, 1)
+  border-radius: 6px
+  margin: 200px 0
+  .content
+    font-size: 16px
+    color: #707070
     .from-item
-        display: flex
-        align-item: center
-        justify-content: around
-        padding: 10px 0
-        .item-avatar
-            margin: auto 0
-            width: 120px
-            text-align: start
+      display: flex
+      align-item: center
+      justify-content: around
+      padding: 10px 0
+      .item-avatar
+        margin: auto 0
+        width: 120px
+        text-align: start
 .hearder
-    display: flex
-    justify-content: space-between
-    padding-bottom: 14px
+  display: flex
+  justify-content: space-between
+  padding-bottom: 14px
 .arrange-bottom
-    padding-top: 10px
-    display: flex
-    justify-content: space-between
-    .cansel-btn
-        width: 100px
-        background: rgba(255, 255, 255, 1)
-        border: 1px solid rgba(229, 229, 229, 1)
-        border-radius: 6px
-        margin-right: 20px
-        margin-left: 80px
+  padding-top: 10px
+  display: flex
+  justify-content: space-between
+  .cansel-btn
+    width: 100px
+    background: rgba(255, 255, 255, 1)
+    border: 1px solid rgba(229, 229, 229, 1)
+    border-radius: 6px
+    margin-right: 20px
+    margin-left: 80px
     .confirm-btn
-        width: 100px
-        background: rgba(0, 152, 250, 1)
-        border-radius: 6px
+      width: 100px
+      background: rgba(0, 152, 250, 1)
+      border-radius: 6px
 @keyframes zoom
-    0%
-        transform: scale(0)
-    100%
-        transform: scale(100%)
+  0%
+    transform: scale(0)
+  100%
+    transform: scale(100%)
 </style>
