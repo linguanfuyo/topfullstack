@@ -130,7 +130,7 @@
           <a-textarea v-model="videoModel.desc" :maxLength="120" placeholder="简单的介绍一下你的视频吧~" :rows="4" />
         </div>
         <div class="input-item">
-          <v-btn style="margin-left:85px" color="error" elevation="2">发布</v-btn>
+          <v-btn @click="display" style="margin-left:85px" color="error" elevation="2">发布</v-btn>
           <v-btn @click="cancel" style="margin-left:30px" color="#f8f8f8" elevation="2">取消</v-btn>
         </div>
       </div>
@@ -167,6 +167,50 @@ export default {
     this.saveTemplate()
   },
   methods: {
+    async display () {
+      try {
+        if (this.checkDisplay()) {
+          const res = await this.$axios.$post();
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    // 获取分类
+    async getCategory () {
+      try {
+        const res = await this.$axios.$get('getCategory');
+        this.category = res.category
+      } catch (error) {
+
+      }
+    },
+    checkDisplay () {
+      if (this.videoModel.title === '') {
+        this.$message.error({
+          content: '标题不能为空哦'
+        })
+        return false
+      }
+      if (this.videoModel.cover === '') {
+        this.$message.error({
+          content: '封面不能为空哦'
+        })
+        return false
+      }
+      if (this.videoModel.file === '') {
+        this.$message.error({
+          content: '视频文件不能为空'
+        })
+        return false
+      }
+      if (this.videoModel.category === []) {
+        this.$message.error({
+          content: '请选择视频分类'
+        })
+        return false
+      }
+    },
     handleClose () {
       this.visible = false;
     },
@@ -325,15 +369,7 @@ export default {
       this.isUploaded = true
       this.isHaveTemplate = true
     },
-    // 获取分类
-    async getCategory () {
-      try {
-        const res = await this.$axios.$get('getCategory');
-        this.category = res.category
-      } catch (error) {
 
-      }
-    }
   },
   mounted () {
     // 加载模板信息

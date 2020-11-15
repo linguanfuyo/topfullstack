@@ -28,7 +28,7 @@ ui:Vuetify和ant-design-vue(Vuetify组件太少了.....)
 
 4.启动子项目 `nest start -w admin`
 
-5.创建公共包文件夹 `nest g lib db   @libs`
+5.创建公共包文件夹 `nest g lib db  @libs`
 
 6.安装数据库连接数据库所需要的包 `npm i --s nestjs-typegoose @typegoose/typegoose`
 
@@ -112,7 +112,7 @@ ConfigModule.forRoot({
 
 26.`nest g mo/co -p server actions` 生成action模块 用于存放用户的操作
 
-27.建立评论模型 创建评论模块 `nest g mo/co -p server comment`
+27.建立评论模型 创建评论模块 `nest g mo/co comments`
 
 
 ##### admin端  vscode编译器代码排斥
