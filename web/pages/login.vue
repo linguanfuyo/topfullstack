@@ -55,7 +55,8 @@
             </div>
             <div class="login-icon">
               <img draggable="false" @click="github" class="img-github link" src="@/assets/img/GitHub.png" alt="aa">
-              <img draggable="false" @click="oAuth" class="img-github" src="@/assets/img/gitee.svg" alt="aa">
+              <img style="width:33px;height:33px;cursor: pointer" draggable="false" @click="oAuth"
+                src="@/assets/img/weixin.svg" alt="aa">
             </div>
           </div>
 
@@ -225,7 +226,7 @@ export default {
 .login-icon
   position: absolute
   z-index: 999
-  left: 39%
+  right: 0%
   width: 70px
   display: flex
   justify-content: space-between
@@ -262,6 +263,7 @@ export default {
       .login-button
         display: flex
         justify-content: space-between
+        position: relative
       .right-wrap
         width: 35%
         text-align: center
