@@ -114,6 +114,18 @@ ConfigModule.forRoot({
 
 27.建立评论模型 创建评论模块 `nest g mo/co comments`
 
+28.模型类型的字段需要关联表名称
+
+```
+    @prop({ ref: 'Category', default: '5faf48f70897c0212826274f' })  //指明这是一个数据库里面的字段@prop() 
+	@ApiPropertyOptional({ description: '标签', example: '生活' })
+	category: Ref<Category>[]
+
+	@prop({ ref: 'User' })  //指明这是一个数据库里面的字段@prop()  否则查不出来 
+	@ApiPropertyOptional({ description: '作者id', example: '林阿富' })
+	uid: Ref<User>
+```
+
 
 ##### admin端  vscode编译器代码排斥
 

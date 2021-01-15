@@ -168,6 +168,8 @@ export default {
             //记住密码
             this.$router.push('/')
             if (this.checkbox && this.tab === 0) {
+              this.loginModel.phone = ''
+              this.loginModel.code = ''
               const storage = window.localStorage
               storage.setItem("count", Base64.encode(JSON.stringify(this.loginModel)));
             }

@@ -10,6 +10,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class ActionsController {
     //构造器函数 中用依赖注入的方法 注入schema模型
     constructor(@InjectModel(Action) private readonly actionModel: ReturnModelType<typeof Action>) { }
+
     @Get('status')
     @UseGuards(AuthGuard('jwt'))
     @ApiOperation({ summary: '获取课程收藏状态' })
@@ -19,6 +20,7 @@ export class ActionsController {
         const count = await this.actionModel.countDocuments(dto)
         return { status: count > 0 }
     }
+
     @Post('toggle')
     @UseGuards(AuthGuard('jwt'))
     @ApiOperation({ summary: '切换课程收藏状态' })

@@ -16,7 +16,7 @@
           </v-avatar>
           <div class="user">
             <div class="user-name">{{userinfo.username}}</div>
-            <div class="user-desc">这人很烂什么视频都没有留下<span @click="()=>{visible = true}" class="edit">编辑...</span></div>
+            <div class="user-desc">{{userinfo.desc}}<span @click="()=>{visible = true}" class="edit">编辑...</span></div>
           </div>
 
         </div>
@@ -53,7 +53,23 @@
       <v-tab-item class="tab-item">
         <!-- 视频 -->
         <div class="video">
-          <div class="video-bg">
+          <!-- 视频列表展示 -->
+          <div class="video-wrap">
+            <div class="video-list">
+              <div v-for="item in videoList" :key="item.id" class="video-item">
+                <div class="img-wrap">
+                  <img :src="item.cover" alt="">
+                </div>
+                <div class="video-title">{{item.title}}</div>
+                <div class="video-bottom">
+                  <span class="num">{{item.lookNum}}次观看</span>
+                  <span class="display-time">{{formatDate(item.createdAt)}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 数据为空 -->
+          <div v-if="this.videoList.length === 0" class="video-bg">
             <img draggable="false" class="bg-img"
               src="https://sf3-scmcdn-tos.pstatp.com/obj/goofy/xigua_fe/xigua_video_web_pc/static/media/userdetail_noresult.66fb0f1a.png"
               alt="">
@@ -92,8 +108,11 @@
 import Upload from '@/components/Upload.vue'
 import LikeView from '@/components/LikeView.vue';
 import UserInfo from '@/components/UserInfo.vue';
+import moment from 'moment';
+import 'moment/locale/zh-cn'
 import { mapState } from 'vuex'
 export default {
+  auth: true,
   data () {
     return {
       visible: false, // 是否显示编辑框
@@ -112,7 +131,8 @@ export default {
           name: '获赞',
           num: 0
         },
-      ]
+      ],
+      videoList: [] // 用户视频列表
     }
   },
   computed: {
@@ -130,13 +150,36 @@ export default {
     closeEdit () {
       this.visible = false
     },
-  },
-  mounted () {
-    try {
-      this.$vuetify.theme.dark = false //vuetify主题是否为黑色
-    } catch (error) {
-      console.log(error)
+    async getVideoList () {
+      const res = await this.$axios.get('videos', {
+        params: {
+          query: {
+            where: {
+              uid: this.userinfo._id,
+            },
+            limit: 10,
+            skip: 0
+          }
+        }
+      })
+      if (res.statusText === 'OK') {
+        this.videoList = res.data.data
+      } else {
+        this.$message.error({
+          content: '请求错误'
+        })
+      }
+
+    },
+    // 评论日期处理
+    formatDate (date) {
+      let newTiem = moment(date).fromNow();;
+      return newTiem
     }
+  },
+
+  mounted () {
+    this.getVideoList()
   }
 
 }
@@ -215,6 +258,47 @@ export default {
   background-color: #f7f7f7
   display: flex
   justify-content: center
+  .video-wrap
+    width: 100%
+    height: 100%
+    padding: 24px 32px
+    .video-list
+      display: flex
+      .video-item
+        width: 210px
+        height: 355px
+        margin-right: 15px
+        margin-bottom: 40px
+        background-color: #fff
+        border-radius: 5px
+        .img-wrap
+          overflow: hidden
+          height: 289px
+          width: 210px
+          img
+            cursor: pointer
+            border-radius: 5px
+            height: 289px
+            width: 100%
+            transition: all 0.6s
+            overflow: hidden
+          img:hover
+            transform: scale(1.2)
+        .video-title
+          cursor: pointer
+          font-size: 15px
+          color: #000
+          margin: 8px 10px
+          width: 189px
+          overflow: hidden
+          text-overflow: ellipsis
+          white-space: nowraps
+        .video-bottom
+          margin: 0 10px
+          span
+            color: #666
+            font-size: 12px
+            margin: 4px 14px 0 0
   .video-bg
     width: 240px
     height: 135px

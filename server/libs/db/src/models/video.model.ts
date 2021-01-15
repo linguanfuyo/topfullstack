@@ -15,13 +15,13 @@ export class Video {
 	@ApiPropertyOptional({ description: '视频标题', example: '打工人' })
 	title: string
 
-	@prop({ default: '生活' })  //指明这是一个数据库里面的字段@prop() 
+	@prop({ ref: 'Category', default: '5faf48f70897c0212826274f' })  //指明这是一个数据库里面的字段@prop() 
 	@ApiPropertyOptional({ description: '标签', example: '生活' })
 	category: Ref<Category>[]
 
-	@prop()  //指明这是一个数据库里面的字段@prop() 
-	@ApiPropertyOptional({ description: '作者', example: '林阿富' })
-	authod: Ref<User>
+	@prop({ ref: 'User' })  //指明这是一个数据库里面的字段@prop()  否则查不出来 
+	@ApiPropertyOptional({ description: '作者id', example: '林阿富' })
+	uid: Ref<User>
 
 	@prop()
 	@ApiPropertyOptional({ description: '封面图url', example: '' })
@@ -53,7 +53,7 @@ export class Video {
 
 	@prop({ default: 0 })
 	@ApiPropertyOptional({ description: '评论数', example: '0' })
-	coomentNum: number
+	commentNum: number
 
 	@prop({ default: "1" })
 	@ApiPropertyOptional({ description: '状态', example: '1：审核通过，2：待审核，3：不通过' })

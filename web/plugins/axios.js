@@ -17,9 +17,7 @@ export default function ({ $axios, redirect }) {
                 const storage = window.localStorage
                 const token = storage.getItem('auth._token.local')
                 if(token){
-                    // config.headers.Authorization = token
                     $axios.setHeader('Authorization', token)
-                  
                  }
         }
         } catch (error) {
@@ -28,12 +26,9 @@ export default function ({ $axios, redirect }) {
         
     })
 
-    // 响应拦截器
+    // 响应拦截器  可拦截登录过期信息 跳转到登录也
     $axios.onResponse(response => {
+
+
     })
   }
-//   if (localStorage.token) {
-//     // 加一个请请求头
-//    config.headers.Authorization = localStorage.token
-//  }
-// this.$axios.setToken(localStorage.auth._token.local, 'Bearer')

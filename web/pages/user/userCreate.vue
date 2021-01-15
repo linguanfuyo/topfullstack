@@ -142,6 +142,7 @@
 import moment from 'moment';
 import { Base64 } from 'js-base64';
 export default {
+  auth: true,
   data () {
     return {
       visible: true, // 是否显示alert
@@ -169,8 +170,19 @@ export default {
   methods: {
     async display () {
       try {
+        console.log(1)
         if (this.checkDisplay()) {
-          const res = await this.$axios.$post();
+          const res = await this.$axios.$post('videos', this.videoModel);
+          if (res.code === 1) {
+            this.$message.success({
+              content: res.message
+            })
+            this.$router.push('/user')
+          } else {
+            this.$message.error({
+              content: '上传失败'
+            })
+          }
         }
       } catch (error) {
         console.log(error)
@@ -210,6 +222,7 @@ export default {
         })
         return false
       }
+      return true
     },
     handleClose () {
       this.visible = false;

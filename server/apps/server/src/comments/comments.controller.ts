@@ -14,7 +14,6 @@ export class CommentsController {
     @Get()
     async index(@Query('query') query: string) {
         const params = JSON.parse(query)
-
         return await this.commentModel.find().populate('user').where(params.where).setOptions(params);
     }
     @Post()

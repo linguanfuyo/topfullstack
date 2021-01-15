@@ -1,18 +1,31 @@
+import { Category } from '@libs/db/models/Category.model';
 import { ApiTags, ApiOperation, ApiPropertyOptional } from '@nestjs/swagger';
 // 注册对象的dto
-export class RegisterDto {
+export class videoDto {
 	@ApiPropertyOptional()
-	username: string
+	title: string
 	@ApiPropertyOptional()
-	password: string
+	category: Array<Category>
 	@ApiPropertyOptional()
-	avatar: string
+	authod: string
 	@ApiPropertyOptional()
-	phone: string
+	cover: string
+	@ApiPropertyOptional()
+	file: string
 	@ApiPropertyOptional()
 	desc: string
 	@ApiPropertyOptional()
-	type: string
+	uid: string
 	@ApiPropertyOptional()
-	user_id: string
+	lookNum: number
+	@ApiPropertyOptional()
+	likeNum: number
+	@ApiPropertyOptional()
+	unlikeNum: number
+	@ApiPropertyOptional()
+	collectNum: number
+	@ApiPropertyOptional()
+	commentNum: number
+	@ApiPropertyOptional()
+	status: string
 }

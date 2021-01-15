@@ -157,10 +157,10 @@ export class AuthController {
 	async getCode(@Body() body) {
 		// ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
 		//初始化sms_client
-		let smsClient = new SMSClient({ accessKeyId, secretAccessKey })
+		const smsClient = new SMSClient({ accessKeyId, secretAccessKey })
 		// 生成随机验证码
 		let num = "";
-		for (var i = 0; i < 4; i++) {
+		for (let i = 0; i < 4; i++) {
 			num += Math.floor(Math.random() * 10);
 		}
 		//发送短信
@@ -170,11 +170,11 @@ export class AuthController {
 			TemplateCode: 'SMS_205392983',
 			TemplateParam: `{"code": "${num}"}`
 		}).then(function (res) {
-			let { Code } = res
+			const { Code } = res
 			// 发送成功
 			if (Code === 'OK') {
 				//保存验证码到本地缓存 并定时删除
-				var ttl = 60;
+				const ttl = 60;
 				redisCache.set('code', num, { ttl: ttl }, (err) => {
 					if (err) {
 						throw err;
