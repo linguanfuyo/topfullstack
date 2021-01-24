@@ -28,4 +28,6 @@ export class videoDto {
 	commentNum: number
 	@ApiPropertyOptional()
 	status: string
+	@ApiPropertyOptional()
+	duration: string
 }

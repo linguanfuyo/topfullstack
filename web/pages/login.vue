@@ -2,7 +2,7 @@
   <v-app class="login">
     <img draggable="false" class="bg-img" src="https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg"
       alt="">
-    <v-row align="center" class="wrap">
+    <div align="center" class="wrap">
       <div class="form">
         <div class="wrap-left">
           <v-tabs class="tabs" background-color="transparent" align-with-title v-model="tab">
@@ -68,11 +68,14 @@
           <div>登录便可分享自己的视频和关注网站内的其他创作者。</div>
         </div>
       </div>
-    </v-row>
+    </div>
   </v-app>
 </template>
 <script>
 import { Base64 } from 'js-base64';
+if (process.client) {
+  var storage = window.localStorage
+}
 export default {
   auth: false,
   data: () => ({
@@ -130,7 +133,7 @@ export default {
     },
     async github () {
       try {
-        await this.$auth.loginWith('github')
+        const res = await this.$auth.loginWith('github')
       } catch (error) {
         console.log(error)
       }
@@ -153,24 +156,22 @@ export default {
       }
     },
     async login () {
-
       this.$refs.form.validate()
       try {
         if (this.tab === 0) {
           let res = await this.$auth.loginWith('local', { data: this.loginModel }).catch(err => {
-
           })
           if (res.data.token) {
             this.$store.commit('setVal', {
               valName: 'isLogin',
               val: true
             })
+            storage.setItem("user", Base64.encode(JSON.stringify(res.data.user)));
             //记住密码
             this.$router.push('/')
             if (this.checkbox && this.tab === 0) {
               this.loginModel.phone = ''
               this.loginModel.code = ''
-              const storage = window.localStorage
               storage.setItem("count", Base64.encode(JSON.stringify(this.loginModel)));
             }
             return
@@ -189,8 +190,8 @@ export default {
               }
             })
             // Bearer
-            const storage = window.localStorage
             storage.setItem("auth._token.local", 'Bearer ' + res.token);
+            storage.setItem("user", Base64.encode(JSON.stringify(res.user)));
             this.$router.push('/')
             return
           } else {
@@ -207,15 +208,12 @@ export default {
         console.log(err)
       }
 
-
-
     },
   },
   async mounted () {
     if (this.$store.state.auth.loggedIn) {
       this.$router.push('/')
     }
-    const storage = window.localStorage
     if (storage.getItem('count')) {
       this.loginModel = JSON.parse(Base64.decode(storage.getItem('count')))
     }
@@ -247,11 +245,14 @@ export default {
   .wrap
     background-color: #fff
     box-shadow: 1px 3px 10px 0px rgba(0, 0, 0, 0.2)
-    margin: 100px auto
     border: 1px solid #dadce0
     width: 750px
-    height: 400px
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%,-50%)
     border-radius: 10px
+    padding: 100px 0
     .form
       margin: 0 30px
       display: flex

@@ -3,6 +3,9 @@ export default function ({ $axios, redirect }) {
         console.log(error)
         // 没有权限这跳转到登录页面
         if(error.response.status === 401) {
+            this.$message.error({
+                content: '登录过期'
+              })
             redirect('/login')
         }
         // if(error.response.status === 500) {

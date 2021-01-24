@@ -1,7 +1,7 @@
 <template>
   <v-app class="login">
     <img class="bg-img" src="https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg" alt="">
-    <v-row align="center" class="wrap">
+    <div align="center" class="wrap">
       <div class="form">
         <v-form class="wrap-left" ref="form" v-model="valid">
           <v-text-field clearable v-model="model.username" :counter="10" :rules="nameRules" label="用户名" required>
@@ -32,7 +32,7 @@
             download>下载</a> -->
         </div>
       </div>
-    </v-row>
+    </div>
   </v-app>
 </template>
 <script>
@@ -104,11 +104,14 @@ export default {
   .wrap
     background-color: #fff
     box-shadow: 1px 3px 10px 0px rgba(0, 0, 0, 0.2)
-    margin: 100px auto
     border: 1px solid #dadce0
     width: 750px
-    height: 400px
+    padding: 80px 0
     border-radius: 10px
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%,-50%)
     .form
       margin: 30px
       display: flex

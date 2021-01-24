@@ -152,12 +152,14 @@
     <v-content @click.stop="drawer = !drawer">
       <nuxt-child />
     </v-content>
+
   </v-app>
 </template>
 
 <script>
 
 import { mapState } from 'vuex'
+import { Base64 } from 'js-base64';
 export default {
   auth: false,
   props: {
@@ -203,6 +205,11 @@ export default {
     // 退出登录
     async layout () {
       await this.$auth.logout()
+      if (process.client) {
+        const storage = window.localStorage
+        storage.removeItem('user')
+        storage.removeItem('token')
+      }
       this.$router.push('/login')
 
     },
@@ -221,11 +228,13 @@ export default {
             // 同步注册本地用户
             const res = await this.$axios.$post('auth/register', githubModel)
             if (res) {
+
               this.$store.commit('setUser', res.user)
               // 获取用户token
               const res1 = await this.$axios.$post('auth/githubLogin', githubModel)
               // Bearer
               const storage = window.localStorage
+              storage.setItem("user", Base64.encode(JSON.stringify(res.user)));
               storage.setItem("auth._token.local", 'Bearer ' + res1.token);
               this.$store.commit('setVal', {
                 valName: 'isSyncCount',

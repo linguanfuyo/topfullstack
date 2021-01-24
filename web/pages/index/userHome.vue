@@ -16,7 +16,9 @@
           </v-avatar>
           <div class="user">
             <div class="user-name">{{userinfo.username}}</div>
-            <div class="user-desc">{{userinfo.desc}}<span @click="()=>{visible = true}" class="edit">编辑...</span></div>
+            <!-- 本地用户才能修改信息 -->
+            <div v-if="this.strategy === 'local'" class="user-desc">{{userinfo.desc}}<span @click="()=>{visible = true}"
+                class="edit">编辑...</span></div>
           </div>
 
         </div>
@@ -54,9 +56,10 @@
         <!-- 视频 -->
         <div class="video">
           <!-- 视频列表展示 -->
-          <div class="video-wrap">
+          <div v-if="this.videoList.length !== 0" class="video-wrap">
             <div class="video-list">
-              <div v-for="item in videoList" :key="item.id" class="video-item">
+              <div v-for="item in videoList" :key="item.id" class="video-item"
+                @click="$router.push(`/videos/${item._id}`)">
                 <div class="img-wrap">
                   <img :src="item.cover" alt="">
                 </div>
@@ -111,6 +114,7 @@ import UserInfo from '@/components/UserInfo.vue';
 import moment from 'moment';
 import 'moment/locale/zh-cn'
 import { mapState } from 'vuex'
+import { Base64 } from 'js-base64';
 export default {
   auth: true,
   data () {
@@ -151,23 +155,35 @@ export default {
       this.visible = false
     },
     async getVideoList () {
-      const res = await this.$axios.get('videos', {
-        params: {
-          query: {
-            where: {
-              uid: this.userinfo._id,
-            },
-            limit: 10,
-            skip: 0
+      try {
+        // 获取用户id
+        if (process.client) {
+          const storage = window.localStorage
+          if (storage.getItem('user')) {
+            var temp = JSON.parse(Base64.decode(storage.getItem('user')));
           }
         }
-      })
-      if (res.statusText === 'OK') {
-        this.videoList = res.data.data
-      } else {
-        this.$message.error({
-          content: '请求错误'
+        // 获取本地id
+        const res = await this.$axios.get('videos', {
+          params: {
+            query: {
+              where: {
+                uid: temp._id,
+              },
+              limit: 10,
+              skip: 0
+            }
+          }
         })
+        if (res.statusText === 'OK') {
+          this.videoList = res.data.data
+        } else {
+          this.$message.error({
+            content: '请求错误'
+          })
+        }
+      } catch (error) {
+        console.log(error)
       }
 
     },
@@ -289,10 +305,11 @@ export default {
           font-size: 15px
           color: #000
           margin: 8px 10px
+          display: inline-block
+          white-space: nowrap
           width: 189px
           overflow: hidden
           text-overflow: ellipsis
-          white-space: nowraps
         .video-bottom
           margin: 0 10px
           span

@@ -121,11 +121,23 @@ ConfigModule.forRoot({
 	@ApiPropertyOptional({ description: '标签', example: '生活' })
 	category: Ref<Category>[]
 
-	@prop({ ref: 'User' })  //指明这是一个数据库里面的字段@prop()  否则查不出来 
+	@prop({ ref: 'User' })  //指明这是一个数据库里面的字段@prop()  否则populate查不出来 
 	@ApiPropertyOptional({ description: '作者id', example: '林阿富' })
 	uid: Ref<User>
 ```
+29. 更新时让某字段自增
+```
+Video.update({ _id: req.params.id }, 
+               { $set: req.body, $inc: { count: 1 } }, 
+               { multi: false },  callback);
+```
 
+30. 当查询的字段为数组时，用来$in
+```
+// 例子 category为数组字段  lean()把文档对象转换为js对象 建议使用-不然前端有可能拿不到值
+const res = await this.model.findOne({ _id: '' }).populate('uid').lean()
+const res2 = await this.model.find({category: { $in: res.category }})
+```
 
 ##### admin端  vscode编译器代码排斥
 

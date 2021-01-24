@@ -6,7 +6,7 @@
     <v-row>
       <v-col md="3" v-for="(item,i) in courses.data" :key="i">
         <v-card class="mx-auto" max-width="300">
-          <div class="course-item" @click="$router.push(`/courses/${item._id}`)">
+          <div class="course-item" @click="$router.push(`/videos/${item._id}`)">
             <v-img :src="item.cover" height="200px"></v-img>
             <v-card-text height="20px">
               {{item.name}}

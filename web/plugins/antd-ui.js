@@ -7,12 +7,26 @@ import modal from 'ant-design-vue/lib/modal';
 import input from 'ant-design-vue/lib/input';
 import alert from 'ant-design-vue/lib/alert';
 import select from 'ant-design-vue/lib/select';
+import button from 'ant-design-vue/lib/button';
+import radio from 'ant-design-vue/lib/radio';
+import textarea from 'ant-design-vue/lib/radio';
+import empty from 'ant-design-vue/lib/empty';
+import spin from 'ant-design-vue/lib/spin';
+import popover from 'ant-design-vue/lib/popover';
+import backtop from 'ant-design-vue/lib/back-top';
 Vue.use(upload)
 Vue.use(icon)
 Vue.use(modal)
 Vue.use(input)
 Vue.use(alert)
 Vue.use(select)
+Vue.use(button)
+Vue.use(radio)
+Vue.use(textarea)
+Vue.use(empty)
+Vue.use(spin)
+Vue.use(popover)
+Vue.use(backtop)
 message.config({
     maxCount: 3
   });

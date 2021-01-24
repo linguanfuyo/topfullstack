@@ -14,13 +14,33 @@ export class CommentsController {
     @Get()
     async index(@Query('query') query: string) {
         const params = JSON.parse(query)
-        return await this.commentModel.find().populate('user').where(params.where).setOptions(params);
+        // .where(params.where).setOptions(params);
+        const res = await this.commentModel.find({ object: params.where.object }).populate('uid').setOptions(params)
+        let data = []
+        for (let i = 0; i < res.length; i++) {
+            let res2 = await this.commentModel.find({ parentId: res[i]._id }).populate('uid').populate({ path: 'object', select: 'uid', populate: { path: 'uid', select: 'username' } })
+            let com = {
+                frist: res[i],
+                two: []
+            }
+            com.two = res2
+            console.log(com)
+            data.push(com)
+        }
+        return {
+            code: 1,
+            data: data,
+            msg: '操作成功'
+        }
+
     }
+
+
     @Post()
     @UseGuards(AuthGuard('jwt'))
     @ApiOperation({ summary: '创建评论' })
     async create(@Body() dto, @CurrentUser() user) {
-        dto.user = user._id
+        dto.uid = user._id
         return await this.commentModel.create(dto);
     }
 }

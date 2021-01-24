@@ -55,6 +55,10 @@ export class Video {
 	@ApiPropertyOptional({ description: '评论数', example: '0' })
 	commentNum: number
 
+	@prop({ default: '0' })
+	@ApiPropertyOptional({ description: '视频长度', example: '0' })
+	duration: string
+
 	@prop({ default: "1" })
 	@ApiPropertyOptional({ description: '状态', example: '1：审核通过，2：待审核，3：不通过' })
 	status: string

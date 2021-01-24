@@ -18,7 +18,8 @@
     "ant-design-vue": "^1.7.1",
     "downloadjs": "^1.4.7",
     "js-base64": "^3.5.2",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue-video-player": "^5.0.2"
   },
   "devDependencies": {
     "@nuxtjs/proxy": "^2.0.1",

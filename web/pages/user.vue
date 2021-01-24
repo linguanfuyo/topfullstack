@@ -179,6 +179,11 @@ export default {
     // 退出登录
     async layout () {
       await this.$auth.logout()
+      if (process.client) {
+        const storage = window.localStorage
+        storage.removeItem('user')
+        storage.removeItem('token')
+      }
       this.$router.push('/login')
 
     },
@@ -202,7 +207,7 @@ export default {
               const res1 = await this.$axios.$post('auth/githubLogin', githubModel)
               // Bearer
               const storage = window.localStorage
-              storage.setItem("auth._token.local", 'Bearer ' + res1.token);
+              // storage.setItem("auth._token.local", 'Bearer ' + res1.token);
               this.$store.commit('setVal', {
                 valName: 'isSyncCount',
                 val: true

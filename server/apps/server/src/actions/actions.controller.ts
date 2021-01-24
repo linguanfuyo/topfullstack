@@ -17,24 +17,23 @@ export class ActionsController {
     //通过jwt策略获取当前用户的信息 传递给user 通过获取的user._id 来查取当前用户的操作
     async getStatus(@Query() dto, @CurrentUser() user) {
         dto.user = user._id
+        // 查询文档数量
         const count = await this.actionModel.countDocuments(dto)
         return { status: count > 0 }
     }
 
     @Post('toggle')
     @UseGuards(AuthGuard('jwt'))
-    @ApiOperation({ summary: '切换课程收藏状态' })
+    @ApiOperation({ summary: '切换状态' })
     async toggle(@Body() dto, @CurrentUser() user) {
         dto.user = user._id
         //先判断是否已经收藏 已收藏则删除 未收藏则插入
-
         const res = await this.getStatus(dto, user)
         if (res.status) {
             await this.actionModel.deleteMany(dto)
         } else {
             await this.actionModel.create(dto)
         }
-
         return {
             status: !res.status
         }

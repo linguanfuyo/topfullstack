@@ -153,7 +153,7 @@ export default {
       videoModel: {
         title: '',
         desc: '',
-        category: ['生活'],
+        category: [],
         cover: '', // 封面
         file: '' // url
       }, // 保存到数据库的视频信息
@@ -168,15 +168,16 @@ export default {
     this.saveTemplate()
   },
   methods: {
+    // 发布视频
     async display () {
       try {
-        console.log(1)
         if (this.checkDisplay()) {
           const res = await this.$axios.$post('videos', this.videoModel);
           if (res.code === 1) {
             this.$message.success({
               content: res.message
             })
+            this.deleteTemplate()
             this.$router.push('/user')
           } else {
             this.$message.error({
@@ -193,8 +194,10 @@ export default {
       try {
         const res = await this.$axios.$get('getCategory');
         this.category = res.category
+        // 设置默认分类
+        this.videoModel.category = this.category[0]._id
       } catch (error) {
-
+        console.log(error)
       }
     },
     checkDisplay () {
@@ -242,22 +245,32 @@ export default {
       b += m + ":" + s
       return b;
     },
+    // 更换上传视频
     changeUpload () {
       this.$refs.upload.$children[0].$children[0].$children[0].onClick();
     },
+    // 图片上传前执行
     beforeUpload (file) {
-
+      console.log(file)
     },
     // 上传回调函数
     handleChange (info) {
+      console.log()
       try {
+        // 判断上传文件类型
+        if (info.file.type !== 'video/mp4') {
+          this.$message.error({
+            content: '请选择视频文件'
+          })
+          return
+        }
         this.getTimes(info.file)
         this.isUploaded = false
         const status = info.file.status;
         if (status === 'uploading') {
           this.percen = info.file.percent
           this.videoInfo.name = info.file.name
-          if (info.event.loaded) {
+          if (info.event.loaded !== 'undefined') {
             this.videoInfo.loaded = info.event.loaded
             this.videoInfo.size = info.event.total
           }
@@ -304,6 +317,7 @@ export default {
         duration = audioElement.duration;
         if (duration) {
           this.videoInfo.duration = duration
+          this.videoModel.duration = this.durationTrans(this.videoInfo.duration)
           console.log(this.videoInfo.duration)
         }
       });
@@ -486,7 +500,7 @@ export default {
     height: 484px
     border-radius: 7px
     background-color: #ffff
-    margin-top: 46px
+    margin: auto 0
     .center
       margin: auto 0
       padding-top: 110px

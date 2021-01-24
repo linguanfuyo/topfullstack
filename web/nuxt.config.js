@@ -29,6 +29,8 @@ export default {
   */
   css: [
     'ant-design-vue/dist/antd.css',
+    'video.js/dist/video-js.css',
+    'vue-video-player/src/custom-theme.css'
     // 'assets/style/main.scss',
     
     /* 定义滑块 内阴影+圆角 */
@@ -42,8 +44,9 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/antd-ui',
-    '@/plugins/axios'
+    '@/plugins/antd-ui',  // 导入antUI
+    '@/plugins/axios', // 导入axios请求包
+    { src: '~plugins/nuxt-video-player-plugin.js', ssr: false } // 导入视频播放组件
   ],
   /*
   ** Nuxt.js dev-modules

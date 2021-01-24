@@ -103,7 +103,9 @@ export class AuthController {
 	async login(@Body() data: LoginDto, @CurrentUser() user: DocumentType<User>, @Req() req) {
 		if (req.user._id) {
 			return {
-				token: this.jwtService.sign(String(req.user._id))
+				token: this.jwtService.sign(String(req.user._id)),
+				user: req.user,
+				msg: '登陆成功'
 			}
 		} else {
 			return req.user
@@ -115,7 +117,6 @@ export class AuthController {
 	@Get('user')
 	@ApiOperation({ summary: '用户信息' })
 	@UseGuards(AuthGuard('jwt'))
-	@ApiBearerAuth()  //需要token验证 才可以获取
 	async user(@CurrentUser() user: DocumentType<User>, @Req() req) {
 		try {
 			return req.user;
@@ -200,7 +201,8 @@ export class AuthController {
 				return {
 					token: this.jwtService.sign(String(res._id)),
 					message: '同步token',
-					code: 200
+					code: 200,
+					user: res
 				}
 			} else {
 				return {
