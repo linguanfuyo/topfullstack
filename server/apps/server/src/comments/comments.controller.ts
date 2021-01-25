@@ -43,4 +43,12 @@ export class CommentsController {
         dto.uid = user._id
         return await this.commentModel.create(dto);
     }
+
+    @Post('/delete')
+    @UseGuards(AuthGuard('jwt'))
+    @ApiOperation({ summary: '删除' })
+    async delete(@Body() dto, @CurrentUser() user) {
+        // $or与查询  $and并且
+        return await this.commentModel.deleteMany({ $or: [{ _id: dto.id }, { parentId: dto.id }] })
+    }
 }

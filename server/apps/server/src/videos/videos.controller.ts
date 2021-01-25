@@ -55,14 +55,19 @@ export class VideosController {
     @Post('/info')
     @ApiOperation({ summary: '获取视频详情' })
     async index(@Body() body) {
-        console.log(body)
         const res = await this.model.findOne({ _id: body._id }).populate('uid').lean()
         const res2 = await this.model.find({
-            category: { $in: res.category }
+            category: { $in: res.category },
+            _id: { $ne: res._id }
         }).populate('uid').lean()
+
         return {
             one: res,
-            two: res2
+            two: res2,
+            static: {
+                followNum: await this.actionModel.countDocuments({ object: { $eq: res.uid } }).lean(),
+                videoNum: await this.model.countDocuments({ uid: res.uid })
+            }
         }
     }
 

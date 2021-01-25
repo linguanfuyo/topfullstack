@@ -83,18 +83,19 @@
           </div>
         </div>
         <div class="autho">
-          <v-avatar class="user" color="teal" size="54">
+          <v-avatar style="cursor: pointer;" class="user" color="teal" size="54">
             <v-img v-if="authod.avatar!==''" :src="authod.avatar"></v-img>
             <span v-if="authod.avatar===''" class="white--text">{{authod.username[0].toUpperCase()}}</span>
           </v-avatar>
           <div class="autho-info">
             <div class="autho-name">{{authod.username}}</div>
-            <div class="autho-num">
-              <span class="fans">粉丝</span>
-              <span class="video-num">· 视频</span>
+            <div style="cursor: pointer;" class="autho-num">
+              <span class="fans">{{authod.followNum}}粉丝 </span>
+              <span class="video-num"> {{authod.videoNum}}视频</span>
             </div>
           </div>
-          <v-btn color="primary" elevation="2">关注</v-btn>
+          <like-btn @change="getVideoInfo" type="User" :object="authod._id" action="follow">
+          </like-btn>
         </div>
         <div class="comment-wrap">
           <CommentList v-if="video._id" :from="video._id"></CommentList>
@@ -192,6 +193,13 @@ export default {
       }
     }
   },
+  watch: {
+    '$route' (to, from) {
+      // 监听路由的变化，做你想做的一些事情...
+      // this.init()
+      this.updateVideo()
+    }
+  },
   computed: {
     ...mapState({
       type: state => state.reportType
@@ -249,6 +257,8 @@ export default {
         this.video = res.one
         this.recommentList = res.two
         this.authod = this.video.uid
+        this.authod.followNum = res.static.followNum
+        this.authod.videoNum = res.static.videoNum
         if (value) {
           this.playerOptions.sources[0].src = this.video.file
           this.playerOptions.poster = this.video.cover
@@ -420,6 +430,14 @@ export default {
     margin-left: 12px;
     .autho-info {
       margin: 0 60px 0 10px;
+      .autho-name {
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .autho-name:hover {
+        color: #2196f3;
+      }
     }
   }
   .comment-wrap {

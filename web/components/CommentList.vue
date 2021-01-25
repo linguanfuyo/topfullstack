@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="comment-num">{{commentList.length}}条评论</div>
-    <CommentInput @fetch="fetch" :object="from"></CommentInput>
+    <CommentInput @focus="hideOtherInput(1)" @fetch="fetch" :object="from"></CommentInput>
     <a-empty style="margin: 30px 0" description="还没有评论哦" v-if="commentList.length===0" />
     <div v-if="commentList.length!==0" class="comment-list">
       <div v-for="(item,i) in commentList" :key="i" class="comment-item">
@@ -27,14 +27,17 @@
                 </div>
               </div>
               <a-popover trigger="click">
-                <template slot="content">
-                  <div style="font-size:14px;cursor: pointer;" @click="report(item._id)">举报</div>
+                <template v-if="item.frist.uid" slot="content">
+                  <div v-if="item.frist.uid._id === $store.state.auth.user._id" style="font-size:14px;cursor: pointer;"
+                    @click="remove(item.frist._id)">删除</div>
+                  <div v-if="item.frist.uid._id !== $store.state.auth.user._id" style="font-size:14px;cursor: pointer;"
+                    @click="report(item.frist._id)">举报</div>
                 </template>
                 <a-icon style="cursor: pointer;" type="more" />
               </a-popover>
             </div>
-            <CommentInput @fetch="fetch" v-if="item.frist" v-show="i===fristIndex" :object="item.frist._id"
-              :parentId="item.frist._id">
+            <CommentInput @focus="hideOtherInput(2)" @fetch="fetch" v-if="item.frist" v-show="i===fristIndex"
+              :object="item.frist._id" :parentId="item.frist._id">
             </CommentInput>
           </div>
         </div>
@@ -55,13 +58,16 @@
               </div>
               <a-popover trigger="click">
                 <template slot="content">
-                  <div style="font-size:14px;cursor: pointer;" @click="report(item2._id)">举报</div>
+                  <div v-if="item2.uid._id === $store.state.auth.user._id" style="font-size:14px;cursor: pointer;"
+                    @click="remove(item2._id)">删除</div>
+                  <div v-if="item2.uid._id !== $store.state.auth.user._id" style="font-size:14px;cursor: pointer;"
+                    @click="report(item2._id)">举报</div>
                 </template>
                 <a-icon style="cursor: pointer;" type="more" />
               </a-popover>
             </div>
-            <CommentInput @fetch="fetch" v-if="item.frist" v-show="i2===towIndex&& twoCommentId===item2._id"
-              :object="item2._id" :parentId="item.frist._id">
+            <CommentInput @focus="hideOtherInput(3)" @fetch="fetch" v-if="item.frist"
+              v-show="i2===towIndex&& twoCommentId===item2._id" :object="item2._id" :parentId="item.frist._id">
             </CommentInput>
           </div>
         </div>
@@ -101,6 +107,17 @@ export default {
     CommentInput,
   },
   methods: {
+    // 隐藏子输入款
+    hideOtherInput (rank) {
+      if (rank === 1) {
+        this.fristIndex = -1
+        this.towIndex = -1
+      } else if (rank === 2) {
+        this.towIndex = -1
+      } else {
+        this.fristIndex = -1
+      }
+    },
     // 显示二级评论
     showTowComment (index) {
       console.log(this.commentList, typeof (this.commentList))
@@ -163,6 +180,26 @@ export default {
           this.fristIndex = -1
           this.towIndex = -1
           this.commentList = res.data.reverse()
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    // 删除评论
+    async remove (id) {
+      try {
+        const res = await this.$axios.$post('comments/delete', {
+          id: id
+        })
+        if (res) {
+          this.$message.success({
+            content: '删除成功'
+          })
+          this.fetch()
+        } else {
+          this.$message.success({
+            content: '删除失败'
+          })
         }
       } catch (error) {
         console.log(error)

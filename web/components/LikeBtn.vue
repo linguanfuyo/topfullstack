@@ -1,9 +1,13 @@
 <template>
   <div>
-    <v-btn falt icon :color="status ? colors[action] : '#9a999b'" @click="toggle">
+    <v-btn class="white--text" v-if="action==='follow'" :color="status ? '#6c8794':'primary'" elevation="2"
+      @click="toggle">
+      {{status?"已关注":"关注"}}
+    </v-btn>
+    <v-btn v-if="action!=='follow'" falt icon :color="status ? colors[action] : '#9a999b'" @click="toggle">
       <v-icon :style="{'font-size': type==='Comment'?'15px':''}">{{icons[action]}}</v-icon>
     </v-btn>
-    <span :style="{'font-size': type==='Comment'?'13px':''}">
+    <span v-if="action!=='follow'" :style="{'font-size': type==='Comment'?'13px':''}">
       {{num}}
     </span>
   </div>
@@ -14,7 +18,6 @@ export default {
   props: {
     type: {
       type: String,
-      requierd: true
     },
     object: {
       type: String,

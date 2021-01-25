@@ -5,7 +5,8 @@
       <span v-if="user.avatar===''" class="white--text">{{user.username[0].toUpperCase()}}</span>
     </v-avatar>
     <div class="write-wrap">
-      <a-textarea v-model="content" class="text-area" placeholder="说说你的看法" :rows="4" />
+      <a-textarea @keyup.enter="send" @focus="focus" v-model="content" class="text-area" placeholder="说说你的看法"
+        :rows="4" />
       <div class="write-bottom">
         <div class="left">
           <a-icon style="color:#999;font-size: 25px;margin-right:6px" type="smile" />
@@ -41,6 +42,9 @@ export default {
     })
   },
   methods: {
+    focus () {
+      this.$emit('focus')
+    },
     // 发送评论
     async send () {
       try {

@@ -16,13 +16,13 @@ export class Action {
 	@ApiPropertyOptional({ description: '用户', example: 'course1' })
 	user: Ref<User>
 
-	@prop({ enum: ['Course', 'Acticle', 'Music', 'Video'] })
+	@prop({ enum: ['Course', 'Acticle', 'Music', 'Video', 'User'] })
 	@ApiPropertyOptional({ description: '类型', example: '' })
 	type: string
 
 	@prop({ refPath: 'type' })
-	object: Ref<Course | Article | Music | Video>
+	object: Ref<Course | Article | Music | Video | User>
 
-	@prop({ enum: ['like', 'unLike', 'upvote', 'collection'] })
+	@prop({ enum: ['like', 'unLike', 'upvote', 'collection', 'follow'] })
 	action: string
 }
