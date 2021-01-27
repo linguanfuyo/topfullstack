@@ -50,8 +50,6 @@ export default {
   methods: {
     //获取课程状态
     async getStatus () {
-      //获取当前课程收藏状态
-      const storage = window.localStorage
       // 判断是否有token
       if (this.$store.state.auth.loggedIn) {
         try {

@@ -368,15 +368,20 @@ export default {
         isComplete: this.isComplete,
         isSuccess: this.isSuccess
       } // 保存到版本地的模板
-      const storage = window.localStorage
-      storage.setItem("video_template", Base64.encode(JSON.stringify(videoTemplate)));
+      if (process.client) {
+        const storage = window.localStorage
+        storage.setItem("video_template", Base64.encode(JSON.stringify(videoTemplate)));
+      }
+
     },
     //删除模板
     deleteTemplate () {
       const videoTemplate = {}
-      const storage = window.localStorage
-      // 删除本地存储 初始化数据
-      storage.removeItem("video_template");
+      if (process.client) {
+        const storage = window.localStorage
+        // 删除本地存储 初始化数据
+        storage.removeItem("video_template");
+      }
       this.videoInfo = {}
       this.videoModel = {}
       this.percen = ''
@@ -386,8 +391,11 @@ export default {
     },
     // 获取模板信息
     getTemplate () {
-      const storage = window.localStorage
-      return JSON.parse(Base64.decode(storage.getItem("video_template")));
+      if (process.client) {
+        const storage = window.localStorage
+        const res = JSON.parse(Base64.decode(storage.getItem("video_template")));
+        return res
+      }
     },
     // 取消上传
     cancel () {

@@ -23,20 +23,15 @@
           </v-btn>
 
         </v-form>
-        <div
-          @click="downLoad('https://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/153df586ce5decb4f2882f95d7dfdc11.mp4')"
-          class="right-wrap">
+        <div class="right-wrap">
           <img draggable="false" src="https://ssl.gstatic.com/accounts/signup/glif/account.svg" alt="">
           <div>只需一个帐号，您便可以使用该网站的所有产品和服务。</div>
-          <!-- <a href="https://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/153df586ce5decb4f2882f95d7dfdc11.mp4"
-            download>下载</a> -->
         </div>
       </div>
     </div>
   </v-app>
 </template>
 <script>
-import download from '@/util/download.js'
 import { URL } from 'url'
 export default {
   auth: false,
@@ -72,9 +67,6 @@ export default {
   },
 
   methods: {
-    async downLoad (url) {
-      window.open(url);
-    },
     async regitser () {
       this.$refs.form.validate()
       const res = await this.$axios.$post('auth/register', this.model)

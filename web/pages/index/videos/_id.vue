@@ -4,7 +4,7 @@
       <v-col :md="9">
         <!-- 视频播放区域 -->
         <div class="container">
-          <keep-alive>
+          <no-ssr>
             <video-player class="video-player-box" ref="videoPlayer" :options="playerOptions" :playsinline="true"
               customEventName="customstatechangedeventname" @play="onPlayerPlay($event)" @pause="onPlayerPause($event)"
               @ended="onPlayerEnded($event)" @waiting="onPlayerWaiting($event)" @playing="onPlayerPlaying($event)"
@@ -12,7 +12,7 @@
               @canplay="onPlayerCanplay($event)" @canplaythrough="onPlayerCanplaythrough($event)"
               @statechanged="playerStateChanged($event)" @ready="playerReadied">
             </video-player>
-          </keep-alive>
+          </no-ssr>
           <div v-if="video._id" class="title">
             <div class="left-btn">
               <!-- 点赞 -->
@@ -223,7 +223,9 @@ export default {
     },
     // 视频下载
     async downLoad (url) {
-      window.open(url);
+      if (process.client) {
+        window.open(url);
+      }
     },
     // 复制
     copy () {
@@ -314,7 +316,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .content {
   display: flex;
   background-color: #f6f6f6;

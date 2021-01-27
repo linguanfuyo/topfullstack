@@ -1,4 +1,7 @@
 export default function ({ $axios, redirect }) {
+
+    // $axios.defaults.baseURL = "http://lgf.com/" // baseURL来代理
+
     $axios.onError(error => {
         console.log(error)
         // 没有权限这跳转到登录页面

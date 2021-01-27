@@ -233,9 +233,12 @@ export default {
               // 获取用户token
               const res1 = await this.$axios.$post('auth/githubLogin', githubModel)
               // Bearer
-              const storage = window.localStorage
-              storage.setItem("user", Base64.encode(JSON.stringify(res.user)));
-              storage.setItem("auth._token.local", 'Bearer ' + res1.token);
+              if (process.client) {
+                const storage = window.localStorage
+                storage.setItem("user", Base64.encode(JSON.stringify(res.user)));
+                storage.setItem("auth._token.local", 'Bearer ' + res1.token);
+              }
+
               this.$store.commit('setVal', {
                 valName: 'isSyncCount',
                 val: true
