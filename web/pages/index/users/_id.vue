@@ -7,7 +7,7 @@
       <img draggable="false" class="header-img"
         src="https://sf3-scmcdn-tos.pstatp.com/obj/goofy/xigua_fe/xigua_video_web_pc/static/media/bg.52432ed6.png"
         alt="">
-      <div class="user-info">
+      <div style="background:#fff" class="user-info">
         <div>
           <v-avatar class="user-avatar" v-if="isLogin" color="teal" size="100">
             <v-img style="width: 102px;height:102px" v-if="userinfo.avatar" :src="userinfo.avatar"></v-img>
@@ -39,12 +39,13 @@
               <LikeView v-show="isShowLikeView" :name="userinfo.username" class="like-view"></LikeView>
             </div>
           </div>
-          <v-btn @click="$router.push('/user')" class="create-btn" small color="error" elevation="2">前往创作平台</v-btn>
+          <v-btn @click="$router.push('/create/center')" class="create-btn" small color="error" elevation="2">前往创作平台
+          </v-btn>
         </div>
       </div>
     </div>
     <!-- 内容 -->
-    <div style="padding-top: 150px">
+    <div style="padding-top: 150px ;background:#fff">
       <v-tabs class="tabs" background-color="transparent" align-with-title v-model="tab">
         <v-tab>视频{{0}}</v-tab>
         <v-tab>文章{{0}}</v-tab>
@@ -72,34 +73,19 @@
             </div>
           </div>
           <!-- 数据为空 -->
-          <div v-if="this.videoList.length === 0" class="video-bg">
-            <img draggable="false" class="bg-img"
-              src="https://sf3-scmcdn-tos.pstatp.com/obj/goofy/xigua_fe/xigua_video_web_pc/static/media/userdetail_noresult.66fb0f1a.png"
-              alt="">
-            <p class="video-de">你还没有发布过任何视频</p>
-          </div>
+          <Empy v-if="this.videoList.length === 0" title="你还没有发布过任何视频" to="/create/display"></Empy>
         </div>
       </v-tab-item>
       <v-tab-item class="tab-item">
         <!-- 视频 -->
         <div class="video">
-          <div class="video-bg">
-            <img draggable="false" class="bg-img"
-              src="https://sf3-scmcdn-tos.pstatp.com/obj/goofy/xigua_fe/xigua_video_web_pc/static/media/userdetail_noresult.66fb0f1a.png"
-              alt="">
-            <p class="video-de">你还没有发布过任何文章</p>
-          </div>
+          <Empy title="你还没有发布过任何文章" to="/create/display"></Empy>
         </div>
       </v-tab-item>
       <v-tab-item class="tab-item">
         <!-- 视频 -->
         <div class="video">
-          <div class="video-bg">
-            <img draggable="false" class="bg-img"
-              src="https://sf3-scmcdn-tos.pstatp.com/obj/goofy/xigua_fe/xigua_video_web_pc/static/media/userdetail_noresult.66fb0f1a.png"
-              alt="">
-            <p class="video-de">你还没有发布过任何音频</p>
-          </div>
+          <Empy title="你还没有发布过任何音频" to="/create/display"></Empy>
         </div>
       </v-tab-item>
     </v-tabs-items>
@@ -111,6 +97,7 @@
 import Upload from '@/components/Upload.vue'
 import LikeView from '@/components/LikeView.vue';
 import UserInfo from '@/components/UserInfo.vue';
+import Empy from '@/components/Empy'
 import moment from 'moment';
 import 'moment/locale/zh-cn'
 import { mapState } from 'vuex'
@@ -148,7 +135,8 @@ export default {
   },
   components: {
     LikeView,
-    UserInfo
+    UserInfo,
+    Empy
   },
   methods: {
     closeEdit () {
@@ -223,7 +211,7 @@ export default {
   height: 150px
   width: 100%
 .user-info
-  backgrouund-color: #fff
+  backgrouund: #fff
   height: 100px
   width: 100%
   display: flex
@@ -316,14 +304,4 @@ export default {
             color: #666
             font-size: 12px
             margin: 4px 14px 0 0
-  .video-bg
-    width: 240px
-    height: 135px
-    margin: auto 0
-    .video-de
-      color: grey
-      text-align: center
-    .bg-img
-      width: 240px
-      height: 135px
 </style>

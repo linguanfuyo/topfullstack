@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="content">
     <Report :title="title" :type="type" :object="id" v-if="isShowReport"></Report>
     <BottomMeun></BottomMeun>
     <nuxt />
@@ -13,7 +13,7 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-
+      target: null,
     }
   },
   computed: {
@@ -30,6 +30,9 @@ export default {
   },
   methods: {
 
+  },
+  mounted () {
+    this.target = this.$refs.content
   }
 }
 </script>

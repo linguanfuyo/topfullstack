@@ -223,9 +223,15 @@ export default {
     },
     // 视频下载
     async downLoad (url) {
-      if (process.client) {
-        window.open(url);
-      }
+      const newUrl = await (await fetch(url)).arrayBuffer() // 将视频连接转成buff对象
+      const fileName = this.video._id;
+      const myBlob = new Blob([newUrl], { type: "video/mp4" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(myBlob);
+      link.download = fileName;
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(link.href);
     },
     // 复制
     copy () {
@@ -489,6 +495,13 @@ export default {
           font-size: 15px;
           color: #1d1d1d;
           cursor: pointer;
+          text-overflow: -o-ellipsis-lastline;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
           &:hover {
             color: #2b81d6;
           }
@@ -506,25 +519,6 @@ export default {
     }
   }
 
-  // 播放按钮样式
-  .video-js .vjs-big-play-button {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 75px;
-  }
-  .video-js .vjs-control-bar {
-    background-color: rgba($color: #000000, $alpha: 0.3);
-  }
-  .video-js .vjs-slider {
-    background-color: skyblue;
-  }
-  .video-js .vjs-play-progress {
-    background-color: #2279c3;
-  }
   .container {
     .video-player-box {
       .video-js {

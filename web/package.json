@@ -17,9 +17,12 @@
     "@nuxtjs/pwa": "^3.0.0-0",
     "ant-design-vue": "^1.7.1",
     "downloadjs": "^1.4.7",
+    "file-saver": "^2.0.5",
     "js-base64": "^3.5.2",
     "nuxt": "^2.0.0",
-    "vue-video-player": "^5.0.2"
+    "vue-infinite-scroll": "^2.0.2",
+    "vue-video-player": "^5.0.2",
+    "vue-virtual-scroller": "^1.0.10"
   },
   "devDependencies": {
     "@nuxtjs/proxy": "^2.0.1",

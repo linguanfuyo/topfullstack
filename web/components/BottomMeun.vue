@@ -20,11 +20,13 @@
       <template slot="content">
         <div>回到顶部</div>
       </template>
-      <a-back-top :visibilityHeight="300">
-        <div class="item">
-          <a-icon class="item" style="font-size: 16px;color:#1d1d1d;" type="vertical-align-top" />
-        </div>
-      </a-back-top>
+      <no-ssr>
+        <a-back-top :visibilityHeight="300">
+          <div class="item">
+            <a-icon class="item" style="font-size: 16px;color:#1d1d1d;" type="vertical-align-top" />
+          </div>
+        </a-back-top>
+      </no-ssr>
     </a-popover>
   </div>
 </template>

@@ -32,7 +32,6 @@ export default {
     'video.js/dist/video-js.css',
     'vue-video-player/src/custom-theme.css',
     'assets/style/main.scss',
-    
     /* 定义滑块 内阴影+圆角 */
   ],
   styleResources:{
@@ -44,6 +43,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    {src:"~plugins/vue-infinite-scroll.js",ssr:false},
     '@/plugins/route.js', // 配置路由守卫
     '@/plugins/antd-ui',  // 导入antUI
     '@/plugins/axios', // 导入axios请求包

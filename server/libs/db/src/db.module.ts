@@ -13,7 +13,8 @@ import { Music } from './models/music.model'
 import { Category } from './models/Category.model'
 import { Video } from './models/Video.model'
 import { Report } from './models/report.model';
-const modles = TypegooseModule.forFeature([User, Course, Episode, Action, Comment, Article, Music, Category, Video, Report])
+import { History } from './models/history.model';
+const modles = TypegooseModule.forFeature([User, Course, Episode, Action, Comment, Article, Music, Category, Video, Report, History])
 //把db.module 变为全局模块
 @Global()
 @Module({

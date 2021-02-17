@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <Empy title="你还没有发布过任何作品" to="/create/display"></Empy>
+    <Empy title="还没有收到小伙伴的回复哦" to="/create/display" btnValue="去发布作品"></Empy>
   </div>
 </template>
 
@@ -19,4 +19,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.content {
+}
 </style>

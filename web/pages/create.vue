@@ -6,11 +6,11 @@
         <div class="user-upload">
           <!-- <Upload></Upload> -->
           <!-- 头像 -->
-          <div @click="$router.push('/userHome')" class="user-img-box" @mouseenter="imgHover" @mouseleave="imgLeave">
+          <div @click="$router.push('/users')" class="user-img-box" @mouseenter="imgHover" @mouseleave="imgLeave">
             <v-avatar class="user-img-bg" v-if="isLogin" color="teal" size="100">
               <v-img v-if="userinfo.avatar" :src="userinfo.avatar"></v-img>
-              <!-- <span style="font-size: 20px" v-if="!userinfo.avatar"
-                class="white--text">{{userinfo.name[0].toUpperCase()}}</span> -->
+              <span style="font-size: 20px" v-if="!userinfo.avatar"
+                class="white--text">{{userinfo.username[0].toUpperCase()}}</span>
             </v-avatar>
             <div v-if="isUserImgHover" class="avatar-marsk">
               <div class="marsk-icon">
@@ -22,7 +22,9 @@
 
           <div class="user-channel">您的频道</div>
           <div class="user-name">{{userinfo.name}}</div>
-          <v-btn style="margin: 10px 0" color="error" elevation="2" rounded>发布视频</v-btn>
+          <a-button style="margin-top: 20px" @click="$router.push('/create/display')" shape="round" type="primary">
+            发布视频
+          </a-button>
         </div>
       </div>
       <v-list dense>
@@ -58,7 +60,7 @@
       </v-row> -->
       <v-spacer></v-spacer>
       <!-- 发布视频 -->
-      <v-icon class="mx-6" @click="$router.push('/')" link>
+      <v-icon class="mx-6" @click="$router.push('/create/display')" link>
         video_call
       </v-icon>
       <v-btn v-show="!isLogin" @click="$router.push('/login')" class="login" color="primary" depressed elevation="2"
@@ -90,7 +92,7 @@
         </template>
         <v-card>
           <v-list>
-            <v-list-item @click="$router.push('/userHome')" link>
+            <v-list-item @click="$router.push(`/users/${userinfo._id}`)" link>
               <v-list-item-avatar color="teal">
                 <v-img v-if="userinfo.avatar" :src="userinfo.avatar"></v-img>
                 <span v-if="userinfo.avatar===''" class="white--text">{{userinfo.username[0].toUpperCase()}}</span>
@@ -150,10 +152,10 @@ export default {
     fav: true,
     drawer: null,
     items: [
-      { icon: 'home', text: '首页', link: '/user/userCreate' },
-      { icon: 'mdi-youtube-subscription', text: '内容管理', link: '/courses' },
-      { icon: 'insert_chart_outlined', text: '数据分析', link: '/history' },
-      { icon: 'message', text: '评论管理', link: '/comments' },
+      { icon: 'home', text: '首页', link: '/create/center' },
+      { icon: 'mdi-youtube-subscription', text: '内容管理', link: '/create/manerge' },
+      { icon: 'insert_chart_outlined', text: '数据分析', link: '/create/statistics' },
+      { icon: 'message', text: '评论管理', link: '/create/comment' },
       { icon: 'settings', text: '设置' },
     ],
 
@@ -262,9 +264,11 @@ export default {
     height: 110px
     margin-top: 20px
     text-align: center
+    cursor: pointer
   .user-channel
     font-size: 16px
     margin-top: 10px
+    font-weight: 500
   .user-name
     color: grey
 .logo

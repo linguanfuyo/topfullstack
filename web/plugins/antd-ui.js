@@ -12,8 +12,10 @@ import radio from 'ant-design-vue/lib/radio';
 import textarea from 'ant-design-vue/lib/radio';
 import empty from 'ant-design-vue/lib/empty';
 import spin from 'ant-design-vue/lib/spin';
-import popover from 'ant-design-vue/lib/popover';
+import popover from 'ant-design-vue/lib/popover'; 
 import backtop from 'ant-design-vue/lib/back-top';
+import carousel from 'ant-design-vue/lib/carousel';
+import progress from 'ant-design-vue/lib/progress';
 Vue.use(upload)
 Vue.use(icon)
 Vue.use(modal)
@@ -27,6 +29,8 @@ Vue.use(empty)
 Vue.use(spin)
 Vue.use(popover)
 Vue.use(backtop)
+Vue.use(carousel)
+Vue.use(progress)
 message.config({
     maxCount: 3
   });

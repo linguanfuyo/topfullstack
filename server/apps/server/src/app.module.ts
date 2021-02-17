@@ -9,6 +9,7 @@ import { CommentsModule } from './comments/comments.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { VideosModule } from './videos/videos.module';
 import { ReportsModule } from './reports/reports.module';
+import { HistoryModule } from './history/history.module';
 const MAO = require('multer-aliyun-oss'); //引入oss 包
 @Module({
 	imports: [
@@ -34,6 +35,7 @@ const MAO = require('multer-aliyun-oss'); //引入oss 包
 		CommentsModule,
 		VideosModule,
 		ReportsModule,
+		HistoryModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],

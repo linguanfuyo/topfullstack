@@ -97,7 +97,7 @@
         </template>
         <v-card>
           <v-list>
-            <v-list-item @click="$router.push('/userHome')" link>
+            <v-list-item @click="$router.push(`/users/${userinfo._id}`)" link>
               <v-list-item-avatar color="teal">
                 <v-img v-if="userinfo.avatar!==''" :src="userinfo.avatar"></v-img>
                 <span v-if="userinfo.avatar===''" class="white--text">{{userinfo.username[0].toUpperCase()}}</span>
@@ -113,7 +113,7 @@
               </v-list-item-action>
             </v-list-item>
             <v-divider></v-divider>
-            <v-list-item @click="$router.push('/user/userCreate')" link>
+            <v-list-item @click="$router.push('/create/display')" link>
               <v-list-item-action>
                 <a-icon style="fontSize: 20px;color:#717171" type="bulb" />
               </v-list-item-action>
@@ -149,7 +149,7 @@
       </v-menu>
     </v-app-bar>
 
-    <v-content @click.stop="drawer = !drawer">
+    <v-content style="background: #f8f8f8" @click.stop="drawer = !drawer">
       <nuxt-child />
     </v-content>
 
