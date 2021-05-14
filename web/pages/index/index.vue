@@ -1,7 +1,15 @@
 <template>
   <div class="conten">
-    <div class="Collection-list">
-      <div @mouseenter="()=>{index=o}" @mouseleave="()=>{index=-1}" v-for="o in 6" :key="o" class="Collection-item">
+    <!-- 文章列表 -->
+    <div class="article-list">
+      <div class="article-item" v-for="item in articleList" :key="item._id" @click="$router.push(`/articles/${item._id}`)">
+        <div class="article-title">{{item.title}}</div>
+        <div class="article-titme">{{formatDate(item.createdAt)}}</div>
+      </div>
+    </div>
+    <!-- 番剧列表 -->
+    <div class="Collection-list" v-if="false">
+      <div @mouseenter="()=>{index=o}" @mouseleave="()=>{index=-1}" v-for="o in 8" :key="o" class="Collection-item">
         <div v-show="o!==index">
           <div class="img-wrap">
             <img
@@ -24,24 +32,25 @@
         </div>
       </div>
     </div>
+    <!-- 短视频列表 -->
     <div v-infinite-scroll="handleInfiniteOnLoad" class="demo-infinite-container" :infinite-scroll-disabled="busy"
       :infinite-scroll-distance="10">
       <div class="video-list">
-        <div v-for="o in num" :key="o" class="video-item">
+        <div v-for="item in videoList" :key="item._id" class="video-item"  @click="$router.push(`/videos/${item._id}`)">
           <div class="img-wrap">
             <img
-              src="https://p9-xg.byteimg.com/img/tos-cn-i-0004/a19770be97cc46e0a54d9994b7e83bc8~tplv-xg-center-qs:840:470:q75.webp"
+              :src="item.cover"
               alt="">
-            <span class="drution">08:10</span>
+            <span class="drution">{{item.duration}}</span>
           </div>
-          <div class="avatar-wrap">
+          <div v-if="item.uid" class="avatar-wrap">
             <img
-              src="https://p3-xg.byteimg.com/img/pgc-image/fca0126d0dc44d0da3f222419c55968a~tplv-xg-center-qs:88:88:q75.webp"
+              :src="item.uid.avatar || 'http://p4.music.126.net/rTEHhwE2t2EJUWFcYYU9HA==/19243652509565097.jpg'"
               alt="">
           </div>
-          <div class="authod">地理游天下</div>
-          <div class="video-title">一线城市广州，是否已超越世界最繁华的香港？卫星地图带你了解一下</div>
-          <div class="video-info">598次观看 · 2个月前</div>
+          <div v-if="item.uid" class="authod">{{item.uid.username}}</div>
+          <div class="video-title">{{item.title}}</div>
+          <div class="video-info">{{item.lookNum}}次观看 · {{formatDate(item.createdAt)}}</div>
         </div>
       </div>
     </div>
@@ -50,6 +59,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+import 'moment/locale/zh-cn'
 export default {
   loading: {
     continuous: true
@@ -58,11 +69,29 @@ export default {
     return {
       index: -1,
       loading: false,
-      num: 20,
-      busy: false
+      busy: false,
+      videoList: [],
+      articleList: []
     }
   },
+  mounted(){
+    this.getData()
+  },
   methods: {
+    async getData(){
+      try {
+        const res = await this.$axios.$post('auth/home', {})
+        this.articleList = res.data.articleList
+        this.videoList = res.data.videoList
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    // 评论日期处理
+    formatDate (date) {
+      let newTiem = moment(date).fromNow();;
+      return newTiem
+    },
     handleInfiniteOnLoad () {
       this.loading = true;
       setTimeout(() => {
@@ -79,7 +108,32 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 55px 40px;
+  .article-list {
+    .article-item {
+      display: flex;
+      justify-content: space-between;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      .article-title {
+        font-weight: 500;
+        color: #1e1e1e;
+        font-size: 16px;
+      }
+      .article-title:hover {
+        color: #2196f3;
+      }
+      .article-titme {
+        color: #666666;
+      }
+    }
+    .article-item:hover {
+      box-shadow: 0 5px 5px #e5e5e5;
+    }
 
+  }
   .Collection-list {
     display: flex;
     justify-content: space-between;
@@ -138,7 +192,7 @@ export default {
     }
     .Collection-item {
       width: 16%;
-      margin-right: 0 30px;
+      margin-right: 20px;
       height: 360px;
       display: flex;
       flex-direction: column;
@@ -179,19 +233,19 @@ export default {
     margin-top: 50px;
     flex-wrap: wrap;
     .video-item {
-      flex: 1;
-      width: 345px;
+      width: 16%;
       height: 300px;
       position: relative;
       cursor: pointer;
+      margin-right: 13px;
       .img-wrap {
-        width: 345px;
+        width: 100%;
         height: 190px;
         border-radius: 6px;
         position: relative;
         overflow: hidden;
         img {
-          width: 345px;
+          width: 100%;
           height: 190px;
           border-radius: 6px;
           transition: all 0.3s;

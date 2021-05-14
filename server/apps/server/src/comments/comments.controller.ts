@@ -1,5 +1,5 @@
 import { Comment } from '@libs/db/models/Comment.model';
-import { Controller, Get, Post, Query, UseGuards, Body } from '@nestjs/common';
+import { Controller, Get, Post, Query, UseGuards, Body,Res } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose'
 import { ApiTags, ApiOperation, ApiPropertyOptional } from '@nestjs/swagger';
@@ -24,7 +24,6 @@ export class CommentsController {
                 two: []
             }
             com.two = res2
-            console.log(com)
             data.push(com)
         }
         return {
@@ -46,9 +45,53 @@ export class CommentsController {
 
     @Post('/delete')
     @UseGuards(AuthGuard('jwt'))
-    @ApiOperation({ summary: '删除' })
+    @ApiOperation({ summary: '用户删除评论' })
     async delete(@Body() dto, @CurrentUser() user) {
         // $or与查询  $and并且
         return await this.commentModel.deleteMany({ $or: [{ _id: dto.id }, { parentId: dto.id }] })
+    }
+
+    @Post('/delById')
+    @ApiOperation({ summary: '管理员删除评论' })
+    async delById(@Body() body,@Res() res) {
+        try {
+            const result = await this.commentModel.findByIdAndDelete(body._id)
+            if(result){
+                res.send({
+                    msg: '完成',
+                    code: 200,
+                    data: result
+                })
+            }else {
+                res.send({
+                    msg: '失败',
+                    code: 0,
+                })
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // 获取评论列表
+    @Post('/list')
+    @ApiOperation({ summary: '获取评论列表' })
+    async list(@Body() dto, @CurrentUser() user,@Res() res) {
+        try {
+            const result = await this.commentModel.find()
+            .populate('uid').populate('object').populate('parentId')
+            .limit(dto.limit).skip(dto.limit*(dto.page-1)).lean();
+            res.send({
+                msg:'成功',
+                code: 200,
+                data: {
+                    list:result,
+                    count: result.length
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 }

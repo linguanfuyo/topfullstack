@@ -18,7 +18,10 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { href:"https://fonts.googleapis.com/css?family=Material+Icons", rel:"stylesheet"}
-    ]
+    ],
+    script: [
+      { src: 'https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js' }
+    ],
   },
   /*
   ** Customize the progress-bar color

@@ -8,7 +8,7 @@
         {{ otherError }}
       </h1>
       <NuxtLink to="/">
-        Home page
+        回到首页
       </NuxtLink>
     </v-app>
   </div>
@@ -25,8 +25,8 @@ export default {
   },
   data () {
     return {
-      pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
+      pageNotFound: '404 页面未创建哦',
+      otherError: '发生了意想不到的错误哦'
     }
   },
   head () {

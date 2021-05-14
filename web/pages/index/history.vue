@@ -179,7 +179,7 @@ export default {
         width: 335px;
         height: 300px;
         position: relative;
-        // margin-right: 13px;
+        margin-right: 13px;
         cursor: pointer;
         .img-wrap {
           width: 335px;

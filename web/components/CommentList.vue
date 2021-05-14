@@ -5,14 +5,14 @@
     <a-empty style="margin: 30px 0" description="还没有评论哦" v-if="commentList.length===0" />
     <div v-if="commentList.length!==0" class="comment-list">
       <div v-for="(item,i) in commentList" :key="i" class="comment-item">
-        <div class="com-frist">
-          <v-avatar v-if="item.frist" class="com-avatat" color="teal" size="35">
-            <v-img v-if="item.frist.uid.avatar!==''" :src="item.frist.uid.avatar"></v-img>
-            <span v-if="item.frist.uid.avatar===''"
+        <div v-if="item.frist" class="com-frist">
+          <v-avatar @click="$router.push(`/users/${item.frist.uid._id}`)"  v-if="item.frist && item.frist.uid" class="com-avatat" color="teal" size="35">
+            <v-img v-if="item.frist.uid.avatar" :src="item.frist.uid.avatar || ''"></v-img>
+            <span v-if="!item.frist.uid.avatar"
               class="white--text">{{item.frist.uid.username[0].toUpperCase()}}</span>
           </v-avatar>
           <div v-if="item.frist" class="com-right">
-            <div v-if="item.frist" class="right-top">
+            <div v-if="item.frist && item.frist.uid" class="right-top">
               <span class="com-name">{{item.frist.uid.username}}</span>
               <span class="com-time">{{formatDate(item.frist.createdAt)}}</span>
             </div>
@@ -27,7 +27,7 @@
                 </div>
               </div>
               <a-popover trigger="click">
-                <template v-if="item.frist.uid" slot="content">
+                <template v-if="item.frist&&item.frist.uid " slot="content">
                   <div v-if="item.frist.uid._id === $store.state.auth.user._id" style="font-size:14px;cursor: pointer;"
                     @click="remove(item.frist._id)">删除</div>
                   <div v-if="item.frist.uid._id !== $store.state.auth.user._id" style="font-size:14px;cursor: pointer;"
@@ -41,17 +41,17 @@
             </CommentInput>
           </div>
         </div>
-        <div v-show="item.isOpenReplay" v-for="(item2,i2) in item.two" :key="i2" class="com-tow">
-          <v-avatar v-if="item2.uid" class="com-avatat" color="teal" size="35">
-            <v-img v-if="item2.uid.avatar!==''" :src="item2.uid.avatar"></v-img>
-            <span v-if="item2.uid.avatar===''" class="white--text">{{item2.uid.username[0].toUpperCase()}}</span>
+        <div  v-show="item.isOpenReplay " v-for="(item2,i2) in item.two" :key="i2" class="com-tow">
+          <v-avatar @click="$router.push(`/users/${item2.uid._id}`)" v-if="item2.uid" class="com-avatat" color="teal" size="35">
+            <v-img v-if="item2.uid.avatar" :src="item2.uid.avatar || ''"></v-img>
+            <span v-if="!item2.uid.avatar" class="white--text">{{item2.uid.username[0].toUpperCase()}}</span>
           </v-avatar>
           <div v-if="item2.uid" class="com-right">
             <div class="right-top">
               <span class="com-name">{{item2.uid.username}}</span>
               <span class="com-time">{{formatDate(item2.createdAt)}}</span>
             </div>
-            <div class="com-content">{{'@'+item2.object.uid.username+'    '+item2.content}}</div>
+            <div v-if="item2.object&&item2.object.uid" class="com-content">{{'@'+item2.object.uid.username+'    '+item2.content}}</div>
             <div v-if="item2.uid" class="right-bottom">
               <div @click="showTowInput(i2,item2._id)" class="replay">
                 {{i2===towIndex&& twoCommentId===item2._id?'收起回复':'回复'}}
@@ -269,7 +269,7 @@ export default {
           }
           .com-content {
             font-size: 15px;
-            height: 56px;
+            min-height: 56px;
             line-height: 56px;
           }
           .right-bottom {

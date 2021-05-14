@@ -20,23 +20,23 @@
             <div v-if="this.strategy === 'local'" class="user-desc">{{userinfo.desc}}<span @click="()=>{visible = true}"
                 class="edit">编辑...</span></div>
           </div>
-
         </div>
         <div class="user-info-right">
           <div class="num-list">
             <div class="num-item">
-              <div class="num">{{0}}</div>
+              <div class="num">{{statistics.followNum}}</div>
               <div class="num-name">关注</div>
             </div>
             <div class="num-item">
-              <div class="num">{{0}}</div>
+              <div class="num">{{statistics.fansNum}}</div>
               <div class="num-name">粉丝</div>
             </div>
             <div @mouseenter="()=>{isShowLikeView = true}" @mouseleave="()=>{isShowLikeView = false}" class="num-item">
-              <div class="num">{{0}}</div>
+              <div class="num">{{statistics.likeNum}}</div>
               <div class="num-name">获赞
               </div>
-              <LikeView v-show="isShowLikeView" :name="userinfo.username" class="like-view"></LikeView>
+              <!-- v-show="isShowLikeView" -->
+              <LikeView :likeNum="statistics.likeNum" v-show="isShowLikeView"  :name="userinfo.username" class="like-view"></LikeView>
             </div>
           </div>
           <v-btn @click="$router.push('/create/center')" class="create-btn" small color="error" elevation="2">前往创作平台
@@ -47,7 +47,7 @@
     <!-- 内容 -->
     <div style="padding-top: 150px ;background:#fff">
       <v-tabs class="tabs" background-color="transparent" align-with-title v-model="tab">
-        <v-tab>视频{{0}}</v-tab>
+        <v-tab>视频{{videoList.length || 0}}</v-tab>
         <v-tab>文章{{0}}</v-tab>
         <v-tab>音乐{{0}}</v-tab>
       </v-tabs>
@@ -109,20 +109,7 @@ export default {
       visible: false, // 是否显示编辑框
       isShowLikeView: false, // 是否显示点赞面板
       tab: 0,
-      numList: [
-        {
-          name: '关注',
-          num: 0
-        },
-        {
-          name: '粉丝',
-          num: 0
-        },
-        {
-          name: '获赞',
-          num: 0
-        },
-      ],
+      statistics:{}, // 统计数据
       videoList: [] // 用户视频列表
     }
   },
@@ -157,6 +144,7 @@ export default {
             query: {
               where: {
                 uid: temp._id,
+                status: '1'
               },
               limit: 10,
               skip: 0
@@ -179,11 +167,30 @@ export default {
     formatDate (date) {
       let newTiem = moment(date).fromNow();;
       return newTiem
-    }
+    },
+    async getData () {
+      try {
+        // 获取本地id
+        const res = await this.$axios.post('/auth/statistics/home', {})
+        console.log(res)
+        if(res.data.code === 200){
+          this.statistics = res.data.data
+
+        }else {
+          this.$message.error({
+            content: res.data.msg
+          })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    
   },
 
   mounted () {
     this.getVideoList()
+    this.getData()
   }
 
 }
@@ -224,8 +231,8 @@ export default {
     align-item: center
     .like-view
       position: absolute
-      left: 70%
-      top: 80%
+      right: 0
+      top: 50px
       z-index: 9
     .create-btn
       margin-top: 10px
@@ -240,6 +247,7 @@ export default {
       .num-item
         margin: 0 12px
         text-align: center
+        position: relative
   .user-avatar
     position: absolute
     top: -30%

@@ -21,13 +21,13 @@
         <a-carousel dots autoplay>
           <div>
             <img src="https://sf1-dycdn-tos.pstatp.com/obj/eden-cn/nuvovhonuhog/xigua_web_creator/new_banner-2.jpg"
-              alt="">
+              alt="轮播图">
           </div>
           <div>
-            <img src="https://p99.pstatp.com/origin/web-union/8fe9b5d5-4bdb-4a38-bd7e-183daad27451" alt="">
+            <img src="https://p99.pstatp.com/origin/web-union/8fe9b5d5-4bdb-4a38-bd7e-183daad27451" alt="轮播图">
           </div>
           <div>
-            <img src="https://p99.pstatp.com/origin/web-union/72dc1c77-2b15-4219-ac2f-e0a5d0946e88" alt="">
+            <img src="https://sf3-scmcdn-tos.pstatp.com/obj/goofy/xigua_fe/xigua_video_web_pc/static/media/bg.52432ed6.png" alt="轮播图">
           </div>
         </a-carousel>
       </div>
@@ -40,11 +40,11 @@
           <div class="data-list row">
             <div class="item column">
               <div class="name">总播放量</div>
-              <div class="num">123</div>
+              <div class="num">{{statistics.displayCount}}</div>
             </div>
             <div class="item column">
               <div class="name">粉丝数</div>
-              <div class="num">0</div>
+              <div class="num">{{statistics.followNum}}</div>
             </div>
             <div class="item column">
               <div class="name">总收益</div>
@@ -79,37 +79,37 @@
           <div class="title-right">详情</div>
         </div>
         <div class="bottom-wrap">
-          <div class="wrap-left">
+          <div @click="$router.push(`/videos/${newVideo._id}`)" class="wrap-left">
             <img class="big-img"
-              src="http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/2b0d24e286c97ec167ff3ddb11a24f3b.jpg" alt="">
+              :src="newVideo.cover" alt="">
             <img class="bg-img"
-              src="http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/2b0d24e286c97ec167ff3ddb11a24f3b.jpg" alt="">
+              :src="newVideo.cover" alt="">
             <div class="label">
-              <span class="lable-left">刺客五六柒</span>
-              <span class="status">已发布</span>
+              <span class="lable-left">{{newVideo.title || ''}}</span>
+              <span class="status">{{newVideo.status === '1' ? '已发布': '未通过'}}</span>
             </div>
-            <span class="drution">00:15</span>
+            <span class="drution">{{newVideo.duration || '00:00'}}</span>
           </div>
           <div class="wrap-right">
             <div class="right-item">
               <div class="name">播放量</div>
-              <div class="num">99</div>
+              <div class="num">{{newVideo.lookNum || 0}}</div>
             </div>
             <div class="right-item">
               <div>评论量</div>
-              <div class="num">450</div>
+              <div class="num">{{newVideo.commentNum || 0}}</div>
             </div>
             <div class="right-item">
               <div>点赞数</div>
-              <div class="num">11</div>
+              <div class="num">{{newVideo.likeNum || 0}}</div>
             </div>
             <div class="right-item">
               <div>收藏数</div>
-              <div class="num">0</div>
+              <div class="num">{{newVideo.collectNum || 0}}</div>
             </div>
             <div class="right-item">
               <div>不喜欢数</div>
-              <div class="num">0</div>
+              <div class="num">{{newVideo.unlikeNum || 0}}</div>
             </div>
             <div class="right-item">
               <div>弹幕量</div>
@@ -128,11 +128,16 @@ moment.locale('zh-cn');
 export default {
   data () {
     return {
-      isHaveData: true
+      isHaveData: true,
+      statistics: {},
+      newVideo: {},
     }
   },
   components: {
 
+  },
+  mounted(){
+    this.getData()
   },
   methods: {
     dateFormat (date) {
@@ -140,7 +145,24 @@ export default {
     },
     weekFormat (date) {
       return moment(date).format('dddd');
-    }
+    },
+    async getData () {
+      try {
+        // 获取本地id
+        const res = await this.$axios.post('/auth/statistics', {})
+        console.log(res)
+        if(res.data.code === 200){
+          this.statistics = res.data.data
+          this.newVideo = this.statistics.newVideo
+        }else {
+          this.$message.error({
+            content: res.data.msg
+          })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
   }
 }
 </script>

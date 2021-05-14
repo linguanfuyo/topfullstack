@@ -1,24 +1,21 @@
 import { Strategy, ISstrategyOptions } from 'passport-local';
 import { PassportStrategy } from '@nestjs/passport'
 import { InjectModel } from 'nestjs-typegoose';
-import { User } from '@libs/db/models/user.model';
 import { ReturnModelType } from '@typegoose/typegoose';
-import { BadRequestException } from '@nestjs/common';
 import { compareSync } from 'bcryptjs'
+import { Admin } from '@libs/db/models/admin.model';
 
-
-export class LocalStrategy extends PassportStrategy(Strategy, 'local') {
-	constructor(
-		@InjectModel(User) private readonly userModel: ReturnModelType<typeof User>
-	) {
+export class AdminLocalStrategy extends PassportStrategy(Strategy,'adminLocal') {
+	constructor(@InjectModel(Admin) private readonly adminModel: ReturnModelType<typeof Admin>) {
 		super({
-			usernameFiled: 'username',
+			nameFiled: 'name',
 			passwordFiled: 'password'
 		} as ISstrategyOptions)
 	}
 	//在这里写登录验证  本地策略
-	async validate(username: string, password: string) {
-		const user = await this.userModel.findOne({ username: username }).select('+password')
+	async validate(name: string, password: string) {
+		console.log(1)
+		const user = await this.adminModel.findOne({ name: name }).select('+password')
 		if (!user) {
 			return {
 				message: '用户名错误',

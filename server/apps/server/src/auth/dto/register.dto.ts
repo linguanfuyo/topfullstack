@@ -16,3 +16,10 @@ export class RegisterDto {
 	@ApiPropertyOptional()
 	user_id: string
 }
+
+export class addAdminParam {
+	@ApiPropertyOptional()
+	name: string;
+	@ApiPropertyOptional()
+	password: string;
+}

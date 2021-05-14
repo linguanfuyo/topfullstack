@@ -21,7 +21,7 @@
         <div>回到顶部</div>
       </template>
       <no-ssr>
-        <a-back-top :visibilityHeight="300">
+        <a-back-top v-if="isShowTop" :visibilityHeight="300">
           <div class="item">
             <a-icon class="item" style="font-size: 16px;color:#1d1d1d;" type="vertical-align-top" />
           </div>
@@ -33,6 +33,11 @@
 
 <script>
 export default {
+  computed:{
+    isShowTop(){
+      return process.client ? true :false
+    }
+  },
   methods: {
     report () {
       this.$store.commit('setVal', {

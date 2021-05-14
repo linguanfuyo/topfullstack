@@ -36,4 +36,8 @@ export class Report {
 	@ApiPropertyOptional({ description: '联系电话', example: '' })
 	phone: string
 
+	@prop({ default: 1 })
+	@ApiPropertyOptional({ description: '状态', example: '' })
+	status: number
+
 }

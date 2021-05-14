@@ -41,7 +41,7 @@
                 <div v-show="isShowShareView" class="share-wrap">
                   <div class="platform">
                     <div v-for="item in shareList" :key="item.name" class="share-item">
-                      <div :style="{'background-color': item.color}" class="bg">
+                      <div :style="{'background-color':item.color}" class="bg">
                         <a-icon :style="{ fontSize: '22px', color: '#fff' }" :type="item.icon" />
                       </div>
                       <div class="share-name">{{item.name}}</div>
@@ -49,9 +49,9 @@
                   </div>
                   <div class="address">
                     <span>视频地址</span>
-                    <input @click="copy" disabled ref="link" class="src"
-                      value="https://www.ixigua.com/6912966026560799236?logTag=IIet6Ui2zf_0x2rLBG2BX" />
-                    <div @click="copy" class="copy">复制</div>
+                    <input id="bar" @click="copy" disabled ref="link" class="src"
+                      :value="video.file" />
+                    <div @click="copy" class="copy" :data-clipboard-text="video.file">复制</div>
                   </div>
                 </div>
               </div>
@@ -83,11 +83,11 @@
           </div>
         </div>
         <div class="autho">
-          <v-avatar style="cursor: pointer;" class="user" color="teal" size="54">
+          <v-avatar @click="$router.push(`/users/${authod._id}`)" style="cursor: pointer;" class="user" color="teal" size="54">
             <v-img v-if="authod.avatar!==''" :src="authod.avatar"></v-img>
             <span v-if="authod.avatar===''" class="white--text">{{authod.username[0].toUpperCase()}}</span>
           </v-avatar>
-          <div class="autho-info">
+          <div class="autho-info" @click="$router.push(`/users/${authod._id}`)">
             <div class="autho-name">{{authod.username}}</div>
             <div style="cursor: pointer;" class="autho-num">
               <span class="fans">{{authod.followNum}}粉丝 </span>
@@ -117,6 +117,9 @@
               <span class="video-looknum">{{item.lookNum}}次观看</span>
             </div>
           </div>
+        </div>
+        <div style="color: #666;font-size: 16px;text-align:center" v-if="recommentList.length===0" class="">
+             暂无相关推荐视频~
         </div>
       </v-col>
     </v-row>
@@ -177,13 +180,14 @@ export default {
         autoplay: true,
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         fluid: true,
-        preload: 'auto',
+        preload: 'true',
         aspectRatio: '16:9',
         sources: [{
           type: "video/mp4",
           src: 'http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/ec039ead3ff0c9f14bc0012188b544f3.mp4', // 替代无视频资源
         }],
         poster: '',
+        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {
           timeDivider: true,
           durationDisplay: true,
@@ -224,24 +228,36 @@ export default {
     // 视频下载
     async downLoad (url) {
       const newUrl = await (await fetch(url)).arrayBuffer() // 将视频连接转成buff对象
-      const fileName = this.video._id;
-      const myBlob = new Blob([newUrl], { type: "video/mp4" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(myBlob);
-      link.download = fileName;
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(link.href);
+      if(newUrl){
+        const fileName = this.video._id;
+        const myBlob = new Blob([newUrl], { type: "video/mp4" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(myBlob);
+        link.download = fileName;
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(link.href);
+        this.$message.success({
+          content: '下载成功'
+        })
+      }
     },
     // 复制
     copy () {
-      this.$refs.link.select()
-      document.execCommand("Copy")
-      this.$message.open({
-        content: '复制成功'
-      })
+      var clipboard = new ClipboardJS('.copy');
 
+      clipboard.on('success', function(e) {
+          console.info('Action:', e.action);
+          console.info('Text:', e.text);
+          console.info('Trigger:', e.trigger);
 
+          e.clearSelection();
+      });
+
+      clipboard.on('error', function(e) {
+          console.error('Action:', e.action);
+          console.error('Trigger:', e.trigger);
+      });
     },
     // 更改视频播放量
     async updateVideo () {

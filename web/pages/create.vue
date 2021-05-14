@@ -6,7 +6,7 @@
         <div class="user-upload">
           <!-- <Upload></Upload> -->
           <!-- 头像 -->
-          <div @click="$router.push('/users')" class="user-img-box" @mouseenter="imgHover" @mouseleave="imgLeave">
+          <div @click="$router.push(`/users/${userinfo._id}`)" class="user-img-box" @mouseenter="imgHover" @mouseleave="imgLeave">
             <v-avatar class="user-img-bg" v-if="isLogin" color="teal" size="100">
               <v-img v-if="userinfo.avatar" :src="userinfo.avatar"></v-img>
               <span style="font-size: 20px" v-if="!userinfo.avatar"
@@ -60,8 +60,11 @@
       </v-row> -->
       <v-spacer></v-spacer>
       <!-- 发布视频 -->
-      <v-icon class="mx-6" @click="$router.push('/create/display')" link>
+      <v-icon @click="$router.push('/create/display')" link>
         video_call
+      </v-icon>
+      <v-icon class="mx-6" @click="$router.push(`/create/message`)" link>
+        mdi-chat-processing-outline
       </v-icon>
       <v-btn v-show="!isLogin" @click="$router.push('/login')" class="login" color="primary" depressed elevation="2"
         outlined>
@@ -70,7 +73,7 @@
         </v-icon>
         登录
       </v-btn>
-
+     
       <!-- <template v-slot:activator="{ on, attrs }">
         <v-btn color="primary" dark v-bind="attrs" v-on="on">
           Dropdown
@@ -155,7 +158,7 @@ export default {
       { icon: 'home', text: '首页', link: '/create/center' },
       { icon: 'mdi-youtube-subscription', text: '内容管理', link: '/create/manerge' },
       { icon: 'insert_chart_outlined', text: '数据分析', link: '/create/statistics' },
-      { icon: 'message', text: '评论管理', link: '/create/comment' },
+      { icon: 'message', text: '通知', link: '/create/message' },
       { icon: 'settings', text: '设置' },
     ],
 
@@ -229,7 +232,7 @@ export default {
     try {
       let userAuth = this.$store.state.auth
       if (userAuth.loggedIn) {
-        this.syncUser()
+        // this.syncUser()
       }
       this.$vuetify.theme.dark = false //vuetify主题是否为黑色
     } catch (error) {

@@ -7,9 +7,17 @@
     </div>
     <div class="name">{{name}}的获赞</div>
     <div class="list">
-      <div v-for="(item,i) in likeList" :key="i" class="list-item">
-        <div class="item-num">{{item.num}}</div>
-        <div>{{item.name}}</div>
+      <div  class="list-item">
+        <div class="item-num">{{likeNum}}</div>
+        <div>视频获赞</div>
+      </div>
+      <div  class="list-item">
+        <div class="item-num">{{0}}</div>
+        <div>文章获赞</div>
+      </div>
+      <div  class="list-item">
+        <div class="item-num">{{0}}</div>
+        <div>音频获赞</div>
       </div>
     </div>
   </div>
@@ -18,24 +26,14 @@
 <script>
 export default {
   props: {
-    name: String
+    name: String,
+    likeNum: {
+      type:Number,
+      default:0
+    }
   },
   data () {
     return {
-      likeList: [
-        {
-          name: '视频获赞',
-          num: 0
-        },
-        {
-          name: '文章获赞',
-          num: 0
-        },
-        {
-          name: '音频获赞',
-          num: 0
-        }
-      ]
     }
   },
   methods: {

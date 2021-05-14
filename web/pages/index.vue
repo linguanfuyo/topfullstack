@@ -76,8 +76,11 @@
       </v-row>
       <v-spacer></v-spacer>
       <!-- 发布视频 -->
-      <v-icon class="mx-6" @click="dispayVideo" link>
+      <v-icon v-if="isLogin" @click="dispayVideo" link>
         video_call
+      </v-icon>
+      <v-icon v-if="isLogin" class="mx-6" @click="$router.push(`/create/message`)" link>
+        mdi-chat-processing-outline
       </v-icon>
       <v-btn v-show="!isLogin" @click="$router.push('/login')" class="login" color="primary" depressed elevation="2"
         outlined>
@@ -113,7 +116,7 @@
               </v-list-item-action>
             </v-list-item>
             <v-divider></v-divider>
-            <v-list-item @click="$router.push('/create/display')" link>
+            <v-list-item @click="$router.push('/create/center')" link>
               <v-list-item-action>
                 <a-icon style="fontSize: 20px;color:#717171" type="bulb" />
               </v-list-item-action>
@@ -170,22 +173,22 @@ export default {
     drawer: null,
     items: [
       { icon: 'home', text: '首页', link: '/' },
-      { icon: 'mdi-trending-up', text: '时下流行', link: '/hot' },
-      { icon: 'ondemand_video', text: '番剧', link: '/courses' },
+      { icon: 'mdi-trending-up', text: '时下流行' },
+      { icon: 'ondemand_video', text: '番剧' },
     ],
     items2: [
-      { icon: 'videogame_asset', text: '游戏', link: '/game' },
-      { icon: 'music_video', text: '音乐', link: '/music' },
-      { icon: 'fastfood', text: '美食', link: '/food' },
-      { icon: 'videogame_asset', text: '搞笑', link: 'funny' },
-      { icon: 'outdoor_grill', text: '农人', link: 'farmer' },
-      { icon: 'sports_soccer', text: '体育', link: 'sports' },
-      { icon: 'emoji_nature', text: '宠物', link: 'pets' },
-      { icon: 'flight', text: '科技', link: 'technology' },
-      { icon: 'missed_video_call', text: 'Vlog', link: 'vlog' },
+      { icon: 'videogame_asset', text: '游戏'},
+      { icon: 'music_video', text: '音乐' },
+      { icon: 'fastfood', text: '美食'},
+      { icon: 'videogame_asset', text: '搞笑' },
+      { icon: 'outdoor_grill', text: '农人' },
+      { icon: 'sports_soccer', text: '体育' },
+      { icon: 'emoji_nature', text: '宠物' },
+      { icon: 'flight', text: '科技' },
+      { icon: 'missed_video_call', text: 'Vlog' },
     ],
     items3: [
-      { icon: 'favorite', text: '关注动态', link: '/dynamic' },
+      { icon: 'favorite', text: '关注动态' },
       { icon: 'history', text: '观看历史', link: '/history' },
       { icon: 'star', text: '我的收藏', link: '/collection' },
     ],
@@ -201,7 +204,18 @@ export default {
     })
   },
   methods: {
-    dispayVideo () { },
+    dispayVideo () { 
+      this.$router.push('/create/display')
+    },
+    async getData(){
+      try {
+        const res = await this.$axios.$post('auth/home', {})
+        this.homeData = res.data.data
+        console.log(res)
+      } catch (error) {
+        console.log(error)
+      }
+    },
     // 退出登录
     async layout () {
       await this.$auth.logout()
@@ -253,10 +267,11 @@ export default {
 
   },
   mounted () {
+    
     // console.log(userAuth.user.avatar_url)
     let userAuth = this.$store.state.auth
     if (userAuth.loggedIn) {
-      this.syncUser()
+      // this.syncUser()
     }
     this.$vuetify.theme.dark = false //vuetify主题是否为黑色
   },

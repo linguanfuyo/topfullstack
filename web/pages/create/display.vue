@@ -71,10 +71,10 @@
             <span class="dispay-lenght" style="padding-right: 40px">视频时长 <span
                 style="font-weight:bold;color:black">{{durationTrans(videoInfo.duration)}}</span></span>
             <span
-              class="dispay-lenght">上传详情：{{formatFileSize(videoInfo.loaded)}}/{{formatFileSize(videoInfo.size)}}</span>
+              class="dispay-lenght">上传详情：{{formatFileSize(videoInfo.loaded || 0)}}/{{formatFileSize(videoInfo.size)}}</span>
           </div>
           <div v-if="!isComplete" class="percent">
-            {{percen}}%
+            {{percen.toFixed(2)}}%
           </div>
           <div class="dispay-status" v-if="isComplete">
             <span class="status-success" v-if="isSuccess">
@@ -178,7 +178,7 @@ export default {
               content: res.message
             })
             this.deleteTemplate()
-            this.$router.push('/user')
+            this.$router.push('/create/center')
           } else {
             this.$message.error({
               content: '上传失败'

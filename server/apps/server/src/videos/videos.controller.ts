@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
 import { Crud } from 'nestjs-mongoose-crud';
 import { Video } from '@libs/db/models/video.model';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -19,6 +19,27 @@ export class VideosController {
         @InjectModel(Video) private readonly model: ReturnModelType<typeof Video>,
         @InjectModel(Action) private readonly actionModel: ReturnModelType<typeof Action>,
     ) { }
+
+    // 视频列表
+    @Post('/list')
+    @ApiOperation({ summary: '获取视频列表' })
+    async list(@Body() dto, @CurrentUser() user,@Res() res) {
+        try {
+            const result = await this.model.find({title: {$regex: dto.title}}).populate('uid','username').populate('category','name').limit(dto.limit).skip(dto.limit*(dto.page-1)).lean();
+            console.log(result)
+            res.send({
+                msg:'成功',
+                code: 200,
+                data: {
+                    list:result,
+                    count: result.length
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
 
     // 上传视频
     @Post()
@@ -68,6 +89,51 @@ export class VideosController {
                 followNum: await this.actionModel.countDocuments({ object: { $eq: res.uid } }).lean(),
                 videoNum: await this.model.countDocuments({ uid: res.uid })
             }
+        }
+    }
+
+    @Post('/check')
+    @ApiOperation({ summary: '审核视频' })
+    async check(@Body() body,@Res() res) {
+        try {
+            const result = await this.model.findByIdAndUpdate(body._id,{status: body.status})
+            if(result){
+                res.send({
+                    msg: '完成',
+                    code: 200,
+                    data: result
+                })
+            }else {
+                res.send({
+                    msg: '失败',
+                    code: 0,
+                })
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+    @Post('/delete')
+    @ApiOperation({ summary: '删除视频' })
+    async delete(@Body() body,@Res() res) {
+        try {
+            const result = await this.model.findByIdAndDelete(body._id)
+            if(result){
+                res.send({
+                    msg: '完成',
+                    code: 200,
+                    data: result
+                })
+            }else {
+                res.send({
+                    msg: '失败',
+                    code: 0,
+                })
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 

@@ -13,13 +13,13 @@ export class Comment {
 	@ApiPropertyOptional({ description: '评论人', example: 'course1' })
 	uid: Ref<User>
 
-	@prop({ ref: 'Comment' })
+	@prop({ ref: 'Video' })
 	@ApiPropertyOptional({ description: '评论对象', example: 'course1' })
-	object: Ref<Comment | Video>
+	object: Ref<Video>
 
-	@prop({ ref: 'Video', default: null })
+	@prop({ ref: 'Comment', default: null })
 	@ApiPropertyOptional({ description: '二级评论是在那一条视频的，空为一级评论', example: 'course1' })
-	parentId: Ref<Video>
+	parentId: Ref<Comment>
 
 	@prop()
 	@ApiPropertyOptional({ description: '评论内容', example: '' })
