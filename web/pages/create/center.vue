@@ -181,7 +181,6 @@ export default {
   background-color: #f8f8f8;
   height: 90vh;
   padding: 30px 48px;
-  overflow: hidden;
   .top {
     width: 100%;
     height: 150px;
@@ -274,7 +273,7 @@ export default {
         overflow: hidden;
         cursor: pointer;
         .big-img {
-          width: 400px;
+          width: 100%;
           height: 400px;
           transform: scale(3);
           filter: blur(3px);

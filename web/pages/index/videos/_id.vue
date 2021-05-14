@@ -103,7 +103,7 @@
       </v-col>
 
       <!-- 右侧推荐 -->
-      <v-col :md="3.5">
+      <v-col :md="3">
         <div class="video-list">
           <div @click="$router.push(`/videos/${item._id}`)" v-for="item in recommentList" :key="item._id"
             class="video-item">

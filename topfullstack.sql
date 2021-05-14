@@ -1,0 +1,1815 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : lgf
+ Source Server Type    : MongoDB
+ Source Server Version : 30015
+ Source Host           : localhost:27017
+ Source Schema         : topfullstack
+
+ Target Server Type    : MongoDB
+ Target Server Version : 30015
+ File Encoding         : 65001
+
+ Date: 14/05/2021 23:05:34
+*/
+
+
+// ----------------------------
+// Collection structure for actions
+// ----------------------------
+db.getCollection("actions").drop();
+db.createCollection("actions");
+
+// ----------------------------
+// Documents of actions
+// ----------------------------
+db.getCollection("actions").insert([ {
+    _id: ObjectId("600c1ac90ac1763310f5a29f"),
+    type: "Video",
+    object: ObjectId("6002cbed384bce2ac453290b"),
+    action: "like",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-23T12:47:05.61Z"),
+    updatedAt: ISODate("2021-01-23T12:47:05.61Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("600c1aca0ac1763310f5a2a0"),
+    type: "Video",
+    object: ObjectId("6002cbed384bce2ac453290b"),
+    action: "unLike",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-23T12:47:06.448Z"),
+    updatedAt: ISODate("2021-01-23T12:47:06.448Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("600c1acb0ac1763310f5a2a1"),
+    type: "Video",
+    object: ObjectId("6002cbed384bce2ac453290b"),
+    action: "collection",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-23T12:47:07.187Z"),
+    updatedAt: ISODate("2021-01-23T12:47:07.187Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("600c1db50ac1763310f5a2a4"),
+    type: "Video",
+    object: ObjectId("6003bf6dda61552f8ca7edeb"),
+    action: "unLike",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-23T12:59:33.754Z"),
+    updatedAt: ISODate("2021-01-23T12:59:33.754Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("600ede0e9fffe822c8c64078"),
+    type: "Video",
+    object: ObjectId("6003bf6dda61552f8ca7edeb"),
+    action: "like",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-25T15:04:46.033Z"),
+    updatedAt: ISODate("2021-01-25T15:04:46.033Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("601550a1de2ee013884761f3"),
+    type: "User",
+    object: ObjectId("5fa4a5b182dc0a2ab8f3377e"),
+    action: "follow",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-30T12:27:13.558Z"),
+    updatedAt: ISODate("2021-01-30T12:27:13.558Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60164ed9de2ee013884761f6"),
+    type: "Video",
+    object: ObjectId("600d6d273ed003281cedf650"),
+    action: "like",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-31T06:31:53.549Z"),
+    updatedAt: ISODate("2021-01-31T06:31:53.549Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60164ed9de2ee013884761f7"),
+    type: "Video",
+    object: ObjectId("600d6d273ed003281cedf650"),
+    action: "unLike",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-31T06:31:53.919Z"),
+    updatedAt: ISODate("2021-01-31T06:31:53.919Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60164edbde2ee013884761f8"),
+    type: "Video",
+    object: ObjectId("600d6d273ed003281cedf650"),
+    action: "collection",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-31T06:31:55.131Z"),
+    updatedAt: ISODate("2021-01-31T06:31:55.131Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60955547b2bbe41ca44c376d"),
+    type: "Video",
+    object: ObjectId("60955430b2bbe41ca44c376c"),
+    action: "like",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-05-07T14:57:11.779Z"),
+    updatedAt: ISODate("2021-05-07T14:57:11.779Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60955548b2bbe41ca44c376e"),
+    type: "Video",
+    object: ObjectId("60955430b2bbe41ca44c376c"),
+    action: "unLike",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-05-07T14:57:12.799Z"),
+    updatedAt: ISODate("2021-05-07T14:57:12.799Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60955549b2bbe41ca44c376f"),
+    type: "Video",
+    object: ObjectId("60955430b2bbe41ca44c376c"),
+    action: "collection",
+    user: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-05-07T14:57:13.762Z"),
+    updatedAt: ISODate("2021-05-07T14:57:13.762Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609697d3a281c725844e0b84"),
+    type: "User",
+    object: ObjectId("60955c8ccae2ca24fc65540f"),
+    action: "follow",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-08T13:53:23.236Z"),
+    updatedAt: ISODate("2021-05-08T13:53:23.236Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("6097579d27ddd620d46fb6a6"),
+    type: "Video",
+    object: ObjectId("60974286d8b77b2bd0e7721d"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T03:31:41.851Z"),
+    updatedAt: ISODate("2021-05-09T03:31:41.851Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60975a251b7fab26e0d6d2a2"),
+    type: "Video",
+    object: ObjectId("6003bf6dda61552f8ca7edeb"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T03:42:29.827Z"),
+    updatedAt: ISODate("2021-05-09T03:42:29.827Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60975a261b7fab26e0d6d2a3"),
+    type: "Video",
+    object: ObjectId("6003bf6dda61552f8ca7edeb"),
+    action: "unLike",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T03:42:30.263Z"),
+    updatedAt: ISODate("2021-05-09T03:42:30.263Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60975a271b7fab26e0d6d2a4"),
+    type: "Video",
+    object: ObjectId("6003bf6dda61552f8ca7edeb"),
+    action: "collection",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T03:42:31.072Z"),
+    updatedAt: ISODate("2021-05-09T03:42:31.072Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60976a8e1b7fab26e0d6d2a8"),
+    type: "Video",
+    object: ObjectId("60955efda281c725844e0b81"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T04:52:30.804Z"),
+    updatedAt: ISODate("2021-05-09T04:52:30.804Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60976a8f1b7fab26e0d6d2a9"),
+    type: "Video",
+    object: ObjectId("60955efda281c725844e0b81"),
+    action: "unLike",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T04:52:31.528Z"),
+    updatedAt: ISODate("2021-05-09T04:52:31.528Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60976a8f1b7fab26e0d6d2aa"),
+    type: "Video",
+    object: ObjectId("60955efda281c725844e0b81"),
+    action: "collection",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T04:52:31.948Z"),
+    updatedAt: ISODate("2021-05-09T04:52:31.948Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("60977ea37e95ad178ca28010"),
+    type: "Video",
+    object: ObjectId("60974286d8b77b2bd0e7721d"),
+    action: "collection",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T06:18:11.443Z"),
+    updatedAt: ISODate("2021-05-09T06:18:11.443Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("6097fc002332fb10248c26d1"),
+    type: "Video",
+    object: ObjectId("60155078de2ee013884761f1"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T15:13:04.638Z"),
+    updatedAt: ISODate("2021-05-09T15:13:04.638Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("6097fc012332fb10248c26d2"),
+    type: "Video",
+    object: ObjectId("60155078de2ee013884761f1"),
+    action: "unLike",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T15:13:05.034Z"),
+    updatedAt: ISODate("2021-05-09T15:13:05.034Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("6097fc012332fb10248c26d3"),
+    type: "Video",
+    object: ObjectId("60155078de2ee013884761f1"),
+    action: "collection",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T15:13:05.527Z"),
+    updatedAt: ISODate("2021-05-09T15:13:05.527Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("6097fc122332fb10248c26d4"),
+    type: "Video",
+    object: ObjectId("600d6cab3ed003281cedf64f"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T15:13:22.188Z"),
+    updatedAt: ISODate("2021-05-09T15:13:22.188Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609d58c72303052f88a7141e"),
+    type: "Video",
+    object: ObjectId("60955df1a281c725844e0b80"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T16:50:15.747Z"),
+    updatedAt: ISODate("2021-05-13T16:50:15.747Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609d58c82303052f88a7141f"),
+    type: "Video",
+    object: ObjectId("60955df1a281c725844e0b80"),
+    action: "unLike",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T16:50:16.156Z"),
+    updatedAt: ISODate("2021-05-13T16:50:16.156Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609d58c82303052f88a71420"),
+    type: "Video",
+    object: ObjectId("60955df1a281c725844e0b80"),
+    action: "collection",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T16:50:16.679Z"),
+    updatedAt: ISODate("2021-05-13T16:50:16.679Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609e67466b65c520d0404dfb"),
+    type: "Video",
+    object: ObjectId("6002cbed384bce2ac453290b"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T12:04:22.422Z"),
+    updatedAt: ISODate("2021-05-14T12:04:22.422Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609e67476b65c520d0404dfc"),
+    type: "Video",
+    object: ObjectId("6002cbed384bce2ac453290b"),
+    action: "collection",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T12:04:23.058Z"),
+    updatedAt: ISODate("2021-05-14T12:04:23.058Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609e67476b65c520d0404dfd"),
+    type: "Video",
+    object: ObjectId("6002cbed384bce2ac453290b"),
+    action: "unLike",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T12:04:23.613Z"),
+    updatedAt: ISODate("2021-05-14T12:04:23.613Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("6097fc122332fb10248c26d5"),
+    type: "Video",
+    object: ObjectId("600d6cab3ed003281cedf64f"),
+    action: "unLike",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T15:13:22.637Z"),
+    updatedAt: ISODate("2021-05-09T15:13:22.637Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("6097fc132332fb10248c26d6"),
+    type: "Video",
+    object: ObjectId("600d6cab3ed003281cedf64f"),
+    action: "collection",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T15:13:23.286Z"),
+    updatedAt: ISODate("2021-05-09T15:13:23.286Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("6097fc612332fb10248c26d7"),
+    type: "Video",
+    object: ObjectId("6097fbb62332fb10248c26cd"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T15:14:41.724Z"),
+    updatedAt: ISODate("2021-05-09T15:14:41.724Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("6097fc622332fb10248c26d8"),
+    type: "Video",
+    object: ObjectId("6097fbb62332fb10248c26cd"),
+    action: "unLike",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T15:14:42.13Z"),
+    updatedAt: ISODate("2021-05-09T15:14:42.13Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("6097fc622332fb10248c26d9"),
+    type: "Video",
+    object: ObjectId("6097fbb62332fb10248c26cd"),
+    action: "collection",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T15:14:42.969Z"),
+    updatedAt: ISODate("2021-05-09T15:14:42.969Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("6097fd422332fb10248c26db"),
+    type: "User",
+    object: ObjectId("5fa4a5b182dc0a2ab8f3377e"),
+    action: "follow",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T15:18:26.579Z"),
+    updatedAt: ISODate("2021-05-09T15:18:26.579Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609d5a7c2303052f88a7142a"),
+    type: "Video",
+    object: ObjectId("609d5a6b2303052f88a71429"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T16:57:32.464Z"),
+    updatedAt: ISODate("2021-05-13T16:57:32.464Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609d5a7c2303052f88a7142b"),
+    type: "Video",
+    object: ObjectId("609d5a6b2303052f88a71429"),
+    action: "unLike",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T16:57:32.827Z"),
+    updatedAt: ISODate("2021-05-13T16:57:32.827Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609d5a7d2303052f88a7142c"),
+    type: "Video",
+    object: ObjectId("609d5a6b2303052f88a71429"),
+    action: "collection",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T16:57:33.272Z"),
+    updatedAt: ISODate("2021-05-13T16:57:33.272Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609d5d6fc2547c1164b90671"),
+    type: "Video",
+    object: ObjectId("60955430b2bbe41ca44c376c"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:10:07.573Z"),
+    updatedAt: ISODate("2021-05-13T17:10:07.573Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609d5d71c2547c1164b90672"),
+    type: "Video",
+    object: ObjectId("60955430b2bbe41ca44c376c"),
+    action: "collection",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:10:09.165Z"),
+    updatedAt: ISODate("2021-05-13T17:10:09.165Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609d5d71c2547c1164b90673"),
+    type: "Video",
+    object: ObjectId("60955430b2bbe41ca44c376c"),
+    action: "unLike",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:10:09.567Z"),
+    updatedAt: ISODate("2021-05-13T17:10:09.567Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609db994b6df0d1f64cff94b"),
+    type: "Video",
+    object: ObjectId("609db98eb6df0d1f64cff94a"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T23:43:16.974Z"),
+    updatedAt: ISODate("2021-05-13T23:43:16.974Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609db995b6df0d1f64cff94c"),
+    type: "Video",
+    object: ObjectId("609db98eb6df0d1f64cff94a"),
+    action: "unLike",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T23:43:17.251Z"),
+    updatedAt: ISODate("2021-05-13T23:43:17.251Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609e668b6b65c520d0404df9"),
+    type: "User",
+    object: ObjectId("6002c101da79851694c385d4"),
+    action: "follow",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T12:01:15.278Z"),
+    updatedAt: ISODate("2021-05-14T12:01:15.278Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609e7640ad41932814d84de0"),
+    type: "Video",
+    object: ObjectId("609d5ddcc2547c1164b90675"),
+    action: "like",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T13:08:16.614Z"),
+    updatedAt: ISODate("2021-05-14T13:08:16.614Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("actions").insert([ {
+    _id: ObjectId("609e7642ad41932814d84de1"),
+    type: "Video",
+    object: ObjectId("609d5ddcc2547c1164b90675"),
+    action: "collection",
+    user: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T13:08:18.524Z"),
+    updatedAt: ISODate("2021-05-14T13:08:18.524Z"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for admins
+// ----------------------------
+db.getCollection("admins").drop();
+db.createCollection("admins");
+
+// ----------------------------
+// Documents of admins
+// ----------------------------
+db.getCollection("admins").insert([ {
+    _id: ObjectId("60433626b50a541590a77f4a"),
+    name: "admin",
+    password: "$2a$10$IPp5VcmSqEC8p.V/XpmZ4u3J6G5rXGmP3vZsQmbnizBE3lNBoSok2",
+    createdAt: ISODate("2021-03-06T00:00:00.000Z"),
+    updatedAt: ISODate("2021-03-06T07:58:31.145Z"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for articles
+// ----------------------------
+db.getCollection("articles").drop();
+db.createCollection("articles");
+
+// ----------------------------
+// Documents of articles
+// ----------------------------
+db.getCollection("articles").insert([ {
+    _id: ObjectId("6097bb682bc9731a58b52b63"),
+    title: "中国驻印大使：中国红十字会向印捐赠制氧机等物资 并提供100万美元援助",
+    category: [ ],
+    authod: "admin",
+    content: "<p style=\"text-align: center;\">原标题：中国驻印大使：中国红十字会向印捐赠制氧机等物资，并提供100万美元援助<img id=\"0\" src=\"https://n.sinaimg.cn/spider202159/176/w554h422/20210509/28bf-kpuunnc7902876.png\" /></p>\n<p style=\"text-align: center;\">　　[环球网报道]中国驻印度大使孙卫东刚刚发推称，中国红十字会捐赠的首批100台制氧机、40台呼吸机以及其他防疫物资，今天已由中国货机从成都运抵印度。</p>\n<p style=\"text-align: center;\">　　孙卫东的这条推文还配上了相关图片。图片显示，装物资的箱子外面写有&ldquo;命运与共，战胜疫情&rdquo;的字样。&darr;</p>\n<p style=\"text-align: center;\">　　在随后的两条推文中，孙卫东还表示，中国红十字会决定给印度红十字会提供100万美元的现金援助，帮助印度抗疫。</p>\n<p style=\"text-align: center;\">　　此外，他还写道：&ldquo;世界上没有什么比人的生命更珍贵的了。生存权和发展权是最重要的基本人权。中国红十字会的行动闪耀着人道主义精神，彰显了奉献和保护人类生命健康的宗旨。&rdquo;&darr;</p>\n<div class=\"img_wrapper\"><img id=\"1\" style=\"display: block; margin-left: auto; margin-right: auto;\" src=\"https://n.sinaimg.cn/spider202159/414/w1269h745/20210509/ba0b-kpuunnc7902877.png\" /></div>",
+    lookNum: NumberInt("0"),
+    likeNum: NumberInt("0"),
+    unlikeNum: NumberInt("0"),
+    collectNum: NumberInt("0"),
+    coomentNum: NumberInt("0"),
+    status: "1",
+    createdAt: ISODate("2021-05-09T10:37:28.266Z"),
+    updatedAt: ISODate("2021-05-09T13:29:19.871Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("articles").insert([ {
+    _id: ObjectId("6097e5ba1efa991e7c32b3a9"),
+    title: "中超官方:因国足集训需要 广州与国安比赛延期进行",
+    category: [ ],
+    authod: "admin",
+    content: "<p style=\"text-align: center;\">网易体育5月9日报道：</p>\n<p style=\"text-align: center;\">北京时间5月9日，<a title=\"中超\" href=\"https://www.163.com/keywords/4/2/4e2d8d85/1.html\" target=\"_blank\" rel=\"noopener\">中超</a>公司发文宣布联赛第5轮<a href=\"https://news.163.com/news/search?keyword=%E5%B9%BF%E5%B7%9E%E9%98%9F\" target=\"_blank\" rel=\"noopener\">广州队</a>和北京<a title=\"国安\" href=\"https://www.163.com/keywords/5/f/56fd5b89/1.html\" target=\"_blank\" rel=\"noopener\">国安</a>队的比赛将延期。</p>\n<p class=\"f_center\" style=\"text-align: center;\"><img src=\"https://nimg.ws.126.net/?url=http%3A%2F%2Fcms-bucket.ws.126.net%2F2021%2F0509%2Fdb4fddf2p00qsucl2004ec000h100czc.png&amp;thumbnail=660x2147483647&amp;quality=80&amp;type=jpg\" alt=\"\" /></p>\n<p style=\"text-align: center;\">&nbsp;</p>\n<p style=\"text-align: center;\">公告如下：</p>\n<p style=\"text-align: center;\">因中国国家男子足球队备战2022年国际足联卡塔尔世界杯亚洲区预选赛预赛阶段（四十强赛）的比赛需要，经中<a title=\"国足\" href=\"https://www.163.com/keywords/5/f/56fd8db3/1.html\" target=\"_blank\" rel=\"noopener\">国足</a>协、职业联盟筹备组研究，并组织俱乐部讨论、表决后，现决定对2021中国平安中超联赛第5轮第36场河南嵩山龙门vs广州队、第38场北京国安vs<a href=\"https://news.163.com/news/search?keyword=%E6%B2%B3%E5%8C%97%E9%98%9F\" target=\"_blank\" rel=\"noopener\">河北队</a>的比赛时间进行调整，具体时间另行通知。</p>",
+    lookNum: NumberInt("0"),
+    likeNum: NumberInt("0"),
+    unlikeNum: NumberInt("0"),
+    collectNum: NumberInt("0"),
+    coomentNum: NumberInt("0"),
+    status: "1",
+    createdAt: ISODate("2021-05-09T13:38:02.07Z"),
+    updatedAt: ISODate("2021-05-09T13:38:02.07Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("articles").insert([ {
+    _id: ObjectId("609d5b442303052f88a7142d"),
+    title: "测试4836文章",
+    category: [ ],
+    authod: "admin",
+    content: "<p style=\"text-align: center;\"><span style=\"font-size: 24px;\">测试4836文章</span></p>\n<p style=\"text-align: center;\"><span style=\"font-size: 24px;\">测试4836文章</span></p>\n<p style=\"text-align: center;\"><span style=\"font-size: 24px;\">测试4836文章</span></p>\n<p style=\"text-align: center;\"><span style=\"font-size: 24px;\">测试4836文章测试4836文章</span></p>\n<p style=\"text-align: center;\"><span style=\"font-size: 24px;\">测试4836文章测试4836文章</span></p>\n<p style=\"text-align: center;\">&nbsp;</p>\n<p style=\"text-align: center;\"><span style=\"font-size: 24px;\">测试4836文章</span></p>",
+    lookNum: NumberInt("0"),
+    likeNum: NumberInt("0"),
+    unlikeNum: NumberInt("0"),
+    collectNum: NumberInt("0"),
+    coomentNum: NumberInt("0"),
+    status: "1",
+    createdAt: ISODate("2021-05-13T17:00:52.234Z"),
+    updatedAt: ISODate("2021-05-13T17:00:52.234Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("articles").insert([ {
+    _id: ObjectId("6097bb202bc9731a58b52b62"),
+    title: "她们是母亲，更是英雄",
+    category: [ ],
+    authod: "admin",
+    content: "<p style=\"text-align: center;\">原标题：她们是母亲，更是英雄</p>\n<p style=\"text-align: center;\">　　什么是母亲？就是那个宁可自己挨饿受冻也要让孩子吃饱穿暖的人。而有的母亲把奶水喂给了别人的孩子、只给自家刚出生的孩子吃糊糊汤，有的母亲来不及和嗷嗷待哺的孩子说一声再见，就献出了自己的生命。。。。。。</p>\n<p style=\"text-align: center;\">　　2015年9月28日，纽约联合国总部，出席联合国维和峰会的习近平向人们讲述了一个中国年轻母亲无私奉献大爱的动人故事&mdash;&mdash;</p>\n<p style=\"text-align: center;\">　　&ldquo;中国维和女警察和志虹在海地执行联合国维和任务时不幸殉职，留下年仅4岁的幼子和年逾花甲的父母。她曾经写道：大千世界，我也许只是一根羽毛，但我也要以羽毛的方式承载和平的心愿。这是她生前的愿望，也是中国对和平的承诺。&rdquo;</p>\n<p style=\"text-align: center;\">　　像和志虹一样，在中国革命、建设、改革的各历史阶段，都有勇敢的女性、英雄的母亲作出卓越贡献，付出巨大牺牲，谱写了一曲曲感天动地的英雄凯歌。</p>\n<p style=\"text-align: center;\">　　习近平多次讲述英雄母亲的感人事迹。</p>\n<div class=\"img_wrapper\" style=\"text-align: center;\"><img id=\"0\" src=\"https://n.sinaimg.cn/spider202158/600/w1080h1920/20210508/5a94-kpuunnc5479639.jpg\" alt=\"\" /></div>\n<p style=\"text-align: center;\">　　&ldquo;在沂蒙这片红色土地上，诞生了无数可歌可泣的英雄儿女，沂蒙六姐妹、沂蒙母亲、沂蒙红嫂的事迹十分感人。&rdquo;习近平总书记深情地说。2013年11月25日，习近平在视察山东沂蒙革命老区临沂期间，专程前往华东革命烈士陵园，向革命烈士纪念塔敬献花篮并参观沂蒙精神展。</p>\n<p style=\"text-align: center;\">　　从1938年到1949年，沂蒙人民为中国革命胜利做出了巨大的牺牲和奉献，涌现出无数可歌可泣的英雄事迹和模范人物。</p>\n<p style=\"text-align: center;\">　　被称为&ldquo;沂蒙母亲&rdquo;的王换于在抗战时期加入中国共产党，并带动全家参加革命。</p>\n<p style=\"text-align: center;\">　　在战争的艰苦环境中，八路军干部的孩子们都很消瘦。在党组织支持下，王换于创建战时托儿所，挑起抚养、照顾抗战将士子女的重担。</p>\n<p style=\"text-align: center;\">　　从1939年秋到1942年年底，战时托儿所的40多名孩子均健康成长。1943年后，王换于又抚养了45名革命将士的孩子。而王换于自己的4个孙子，却因营养不良、照顾不周先后夭亡。</p>\n<p style=\"text-align: center;\">　　她，是大爱无私的母亲，也是精忠报国的英雄。</p>\n<div class=\"img_wrapper\" style=\"text-align: center;\"><img id=\"1\" src=\"https://n.sinaimg.cn/spider202158/600/w1080h1920/20210508/a680-kpuunnc5479640.jpg\" alt=\"\" /></div>\n<p style=\"text-align: center;\">　　&ldquo;北京密云县一位名叫邓玉芬的母亲，把丈夫和5个孩子送上前线，他们全部战死沙场。&rdquo;2014年7月7日，在出席纪念全民族抗战爆发七十七周年仪式并发表重要讲话时，习近平总书记讲述了英雄母亲邓玉芬的故事。</p>\n<p style=\"text-align: center;\">　　1940年4月，邓玉芬将三个儿子送上抗战前线，自己在家里缝军鞋，一并照顾八路军伤员。邓玉芬的四儿子和五儿子也参加了抗日民兵队伍与日寇周旋。</p>\n<p style=\"text-align: center;\">　　然而，一个个噩耗传来，邓玉芬的丈夫、四儿、五儿不幸遇害。。。。。。</p>\n<p style=\"text-align: center;\">　　为了抗击日本侵略者，邓玉芬的六位亲人牺牲了，她却咬牙挺住了。邓玉芬的家成为八路军和伤员的住所，她把战士们当成了自己的亲儿子，为八路军烧水做饭、缝补衣服，为伤员喂汤喂药。战士们都知道在密云的猪头岭有一个家，家里有一位坚毅、善良的邓妈妈。</p>\n<p style=\"text-align: center;\">　　她，舍小家为大家，为更多人带来了团圆。</p>\n<div class=\"img_wrapper\" style=\"text-align: center;\"><img id=\"2\" src=\"https://n.sinaimg.cn/spider202158/600/w1080h1920/20210508/b4eb-kpuunnc5479735.jpg\" alt=\"\" /></div>\n<p style=\"text-align: center;\">　　&ldquo;我再次看了一些抗战家书，的确感人至深。&rdquo;在一次主持中央政治局学习时，习近平总书记分享了一封令人动容的家书&mdash;&mdash;</p>\n<p style=\"text-align: center;\">　　&ldquo;赵一曼在临死前的遗书中写道：&lsquo;母亲因为坚决地做了反满抗日的斗争，今天已经到了牺牲的前夕了。母亲和你在生前是永久没有再见的机会了&hellip;&hellip;我最亲爱的孩子啊！母亲不用千言万语来教育你，就用实行来教育你。在你长大成人之后，希望你不要忘记你的母亲是为国而牺牲的&hellip;&hellip;母亲死后，我的孩子要代替母亲继续斗争，自己壮大成长，来安慰九泉之下的母亲！&rsquo;&rdquo;一字一句，总书记饱含深情。</p>\n<p style=\"text-align: center;\">　　&ldquo;九一八&rdquo;事变后，赵一曼被派往东北地区发动抗日斗争。1935年11月，为掩护部队突围，赵一曼身负重伤，养伤期间被日军发现。</p>\n<p style=\"text-align: center;\">　　面对日军的酷刑，赵一曼宁死不屈，严词痛斥日军侵略罪行。1936年8月2日，赵一曼在黑龙江珠河被敌杀害。临刑前，她高呼&ldquo;打倒日本帝国主义！&rdquo;&ldquo;中国共产党万岁！&rdquo;视死如归，从容就义，年仅31岁。</p>\n<p style=\"text-align: center;\">　　她，在危难时刻挺身而出，为民族解放鞠躬尽瘁。</p>\n<div class=\"img_wrapper\" style=\"text-align: center;\"><img id=\"3\" src=\"https://n.sinaimg.cn/spider202158/600/w1920h1080/20210508/0caf-kpuunnc5479731.jpg\" alt=\"\" /></div>\n<p style=\"text-align: center;\">　　一个有希望的民族不能没有英雄，一个有前途的国家不能没有先锋。</p>\n<p style=\"text-align: center;\">　　英雄母亲，怀揣&ldquo;天下兴亡、匹夫有责&rdquo;的情怀，在危难时刻&ldquo;以身许国，精忠报国&rdquo;。</p>\n<p style=\"text-align: center;\">　　她们的英雄气概代代传承。</p>",
+    lookNum: NumberInt("0"),
+    likeNum: NumberInt("0"),
+    unlikeNum: NumberInt("0"),
+    collectNum: NumberInt("0"),
+    coomentNum: NumberInt("0"),
+    status: "1",
+    createdAt: ISODate("2021-05-09T10:36:16.34Z"),
+    updatedAt: ISODate("2021-05-09T13:29:28.844Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("articles").insert([ {
+    _id: ObjectId("6097e6051efa991e7c32b3aa"),
+    title: "再伤1员!国安国脚确诊肋骨骨裂 此前已忍痛踢3场",
+    category: [ ],
+    authod: "admin",
+    content: "<p style=\"text-align: center;\">新京报讯（记者 周萧）明晚8时，北京<a title=\"国安\" href=\"https://www.163.com/keywords/5/f/56fd5b89/1.html\" target=\"_blank\" rel=\"noopener\">国安</a>将在2021中超第4轮比赛中迎战武汉队。让国安主帅比利奇挠头的是，由于伤病和其他因素，球队再次出现减员，他在今天的赛前发布会上暗示，队员们需要去适应和此前不太一样的打法。</p>\n<p style=\"text-align: center;\">&nbsp;</p>\n<p style=\"text-align: center;\">国安俱乐部今天上午宣布，由于家人重病，韩国外援金玟哉暂时离队，回国探望家人。由于比埃拉受伤，金玟哉暂时离队，国安目前只剩下巴坎布和索萨两名外援，而队内伤病的名单也在增加&mdash;&mdash;踢完上轮与大连队的比赛，<a title=\"于洋\" href=\"https://www.163.com/keywords/4/8/4e8e6d0b/1.html\" target=\"_blank\" rel=\"noopener\">于洋</a>去医院检查后被确诊为肋骨<a title=\"骨裂\" href=\"https://www.163.com/keywords/9/a/9aa888c2/1.html\" target=\"_blank\" rel=\"noopener\">骨裂</a>。在确诊之前，于洋已经忍着疼痛踢了3场比赛。</p>\n<p class=\"f_center\" style=\"text-align: center;\"><img src=\"https://nimg.ws.126.net/?url=http%3A%2F%2Fcms-bucket.ws.126.net%2F2021%2F0509%2F1fabd03cj00qsu0wa0030c000ku00dwc.jpg&amp;thumbnail=660x2147483647&amp;quality=80&amp;type=jpg\" alt=\"\" /></p>\n<p style=\"text-align: center;\">据于洋回忆，他应该是在首轮与上海申花比赛的对抗中受伤，之后肋部一直有痛感，但因还能忍受，就坚持参加了与上海海港和大连人的比赛。上轮比赛结束后，疼痛难忍的于洋去医院接受检查，确诊为肋骨骨裂，将缺席明天与武汉队的比赛。</p>\n<p style=\"text-align: center;\">各种因素造成的减员令比利奇无奈，&ldquo;今年很奇怪，我们的很多伤病都不是能迅速恢复的肌肉伤，比赛中的运气确实很重要。&rdquo;减员已经是事实，国安主帅也有了应对方法，&ldquo;从纸面上看，我们确实少了很多人，但没必要因为这些问题哭泣。我们中场有<a href=\"https://news.163.com/news/search?keyword=%E5%BC%A0%E7%A8%80%E5%93%B2\" target=\"_blank\" rel=\"noopener\">张稀哲</a>，他上一场不仅进了两个球，还展现出解决比赛的能力，还有池忠国、李可和高天意。但因为与以前的人员配置不同，所以比赛内容可能会有改变，用另外一种形式呈现。&rdquo;</p>\n<p style=\"text-align: center;\">国安赛季前在上海集训时，比利奇就曾表示，希望张稀哲、池忠国、李可等人肩负起昔日奥古斯托的责任，他今天再次强调：&ldquo;今年就应该是中方球员挑大梁的联赛，我们的中方球员是很突出的，我希望他们能再进一步。&rdquo;</p>",
+    lookNum: NumberInt("0"),
+    likeNum: NumberInt("0"),
+    unlikeNum: NumberInt("0"),
+    collectNum: NumberInt("0"),
+    coomentNum: NumberInt("0"),
+    status: "1",
+    createdAt: ISODate("2021-05-09T13:39:17.586Z"),
+    updatedAt: ISODate("2021-05-09T13:39:17.586Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("articles").insert([ {
+    _id: ObjectId("6097e63d1efa991e7c32b3ab"),
+    title: "粤媒:国足40强赛4场对外开放 票价最低80最高超1000",
+    category: [ ],
+    authod: "admin",
+    content: "<p style=\"text-align: center;\">网易体育5月7日报道：</p>\n<p style=\"text-align: center;\">北京时间5月7日，根据《广州日报》的报道，<a title=\"国足\" href=\"https://www.163.com/keywords/5/f/56fd8db3/1.html\" target=\"_blank\" rel=\"noopener\">国足</a>40强赛余下4场比赛将对球迷开放，每场可容纳的球迷人数为3万人，票价最低预估80，最高将超过1000。</p>\n<p style=\"text-align: center;\"><a class=\"f_center\" href=\"http://sports.163.com/photoview/0B4C0005/168724.html\"><img src=\"https://nimg.ws.126.net/?url=http%3A%2F%2Fpic-bucket.ws.126.net%2Fphoto%2F0005%2F2021-01-24%2FG14TN9SM0B4C0005NOS.jpg&amp;thumbnail=660x2147483647&amp;quality=80&amp;type=jpg\" /></a></p>\n<p style=\"text-align: center;\">根据亚足协的安排，世界杯亚洲区预选赛40强赛中国队所在A组的余下比赛将于5月30日至6月15日在苏州举行。按照原计划，国足应于5月20日在赛区苏州集中。为了&ldquo;让路&rdquo;国足，<a title=\"中超\" href=\"https://www.163.com/keywords/4/2/4e2d8d85/1.html\" target=\"_blank\" rel=\"noopener\">中超</a>两个赛区的第一阶段前5轮比赛结束后，将于5月17日进入休赛期。</p>\n<p style=\"text-align: center;\">&nbsp;</p>\n<p style=\"text-align: center;\">不过鉴于比赛意义重大，国足教练组经与中国足协、职业联盟筹备组等各方沟通后，初步决定将球队集结日提前一周至5月14日左右。作为国脚主要输送大户，<a href=\"https://news.163.com/news/search?keyword=%E5%B9%BF%E5%B7%9E%E9%98%9F\" target=\"_blank\" rel=\"noopener\">广州队</a>、北京<a title=\"国安\" href=\"https://www.163.com/keywords/5/f/56fd5b89/1.html\" target=\"_blank\" rel=\"noopener\">国安</a>队、上海海港队与上海申花队等队的第5轮比赛分别安排在5月15日、16日、17日进行。这意味着，一旦其国脚们被征调参加40强赛，便将无缘参加第5轮中超。最近几天，中国足协及李铁等国家队教练、管理团队成员也纷纷赶到苏州赛区沟通备战事宜。广州队第5轮的赛事将于5月15日晚上对阵河南嵩山龙门，届时广州队将失去七八名核心主力，这将对球队将造成极大影响。</p>\n<p style=\"text-align: center;\">此外，借鉴中超目前开放观众的经验，国足在苏州进行的40强赛最后4场比赛将全部对外开放，场均观众容量为3万人。至于具体票价，目前赛事组委会还要进一步通过调研确认，有可能最低一档80元，最高一档超过1000元。</p>",
+    lookNum: NumberInt("0"),
+    likeNum: NumberInt("0"),
+    unlikeNum: NumberInt("0"),
+    collectNum: NumberInt("0"),
+    coomentNum: NumberInt("0"),
+    status: "1",
+    createdAt: ISODate("2021-05-09T13:40:13.43Z"),
+    updatedAt: ISODate("2021-05-09T13:40:13.43Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("articles").insert([ {
+    _id: ObjectId("6097e6811efa991e7c32b3ac"),
+    title: "武磊归期确定!最快18日回到上海 可能乘坐包机返回",
+    category: [ ],
+    authod: "admin",
+    content: "<p style=\"text-align: center;\">按照计划，中国男足将于本月中下旬集中，备战卡塔尔世预赛40强赛最后4轮比赛。由于教练组此前已圈定了一份近60人的候选国脚大名单，并通过本年度两期集训及新赛季<a title=\"中超\" href=\"https://www.163.com/keywords/4/2/4e2d8d85/1.html\" target=\"_blank\" rel=\"noopener\">中超</a>首阶段完成了对绝大多数球员的新一轮考察，因此对于40强赛参赛阵容的具体人选，主教练<a title=\"李铁\" href=\"https://www.163.com/keywords/6/4/674e94c1/1.html\" target=\"_blank\" rel=\"noopener\">李铁</a>已有了比较明确的概念。效力于西乙西班牙人俱乐部的<a title=\"武磊\" href=\"https://www.163.com/keywords/6/6/6b6678ca/1.html\" target=\"_blank\" rel=\"noopener\">武磊</a>作为无需接受考察的球员，将确认返回国内，帮助<a title=\"国足\" href=\"https://www.163.com/keywords/5/f/56fd8db3/1.html\" target=\"_blank\" rel=\"noopener\">国足</a>冲击12强赛。据了解，他最快将于本月18日返抵上海。</p>\n<p class=\"f_center\" style=\"text-align: center;\"><img src=\"https://nimg.ws.126.net/?url=http%3A%2F%2Fcms-bucket.ws.126.net%2F2021%2F0506%2F036ea542j00qsockn008sc000m800etc.jpg&amp;thumbnail=660x2147483647&amp;quality=80&amp;type=jpg\" /></p>\n<p style=\"text-align: center;\">受疫情等因素影响，武磊自2019年11月随队在阿联酋迪拜与叙利亚队进行40强赛比赛后至今，一直未能参加国家队集训。而在此期间，国足在新帅李铁率领下已先后进行了6期集训、8场热身。李铁也通过各期集训详细考察了候选国脚的能力、状态，从而为敲定40强赛后半程参赛阵容奠定了基础。</p>\n<p style=\"text-align: center;\">武磊虽然缺席此前6期集训，但其能力和态度早已被李铁率领的国足新教练团队认可。中国队在设立各期集训人员微信交流群过程中，也每每将武磊&ldquo;拽&rdquo;进群内。可以说，武磊自始至终都是国足不可或缺的重要球员。</p>\n<p class=\"f_center\" style=\"text-align: center;\"><img title=\"1620272884140645.jpeg\" src=\"https://nimg.ws.126.net/?url=http%3A%2F%2Fcms-bucket.ws.126.net%2F2021%2F0506%2Feca17d5bj00qsockn001xc000m800etc.jpg&amp;thumbnail=660x2147483647&amp;quality=80&amp;type=jpg\" alt=\"27164A36-E60B-4059-9E97-F6FBE9A9E34D.jpeg\" /></p>\n<p style=\"text-align: center;\">国际足联、亚足联公布的赛历显示，40强赛A组余下比赛将于5月30日至6月15日在苏州举行。国足也计划在赛前至少10天重新集中。确认参赛的武磊需要适当提前回国，以做好备战及比赛的各项准备。</p>\n<p style=\"text-align: center;\">截止到目前，西乙联赛已经战罢37轮。<a href=\"https://news.163.com/news/search?keyword=%E8%A5%BF%E7%8F%AD%E7%89%99%E4%BA%BA%E9%98%9F\" target=\"_blank\" rel=\"noopener\">西班牙人队</a>目前以6分优势领跑积分榜。在联赛仅剩下5轮的情况下，他们直升西甲的希望非常大。<strong>在西班牙人队处境艰难的武磊虽然希望随俱乐部队一同冲入西甲，但出于为国家足球尽忠的考虑，他不得不在西乙联赛落幕前提前返回国内。</strong></p>\n<p style=\"text-align: center;\">赛程显示，西乙联赛第39轮西班牙人主场对阵卡塔赫纳的比赛将于当地时间5月16日下午进行。武磊很有可能会在本轮结束之后暂别俱乐部，随后于当地时间17日由西班牙马德里启程出发，最后于北京时间5月18日飞抵上海浦东国际机场。</p>\n<p style=\"text-align: center;\">值得注意的是，本次40强赛A组余下比赛客队、外籍比赛官员及其他与赛事相关的入境人员防疫及接待工作，将严格执行此前女足奥预赛附加赛中、韩女足第2回合比赛的标准。也就是说这些人员从入境到赛后离境，将始终处于严密的防疫闭环之中。</p>\n<p style=\"text-align: center;\"><strong>出于对健康安全因素的考虑，武磊有可能乘坐包机返回国内。而他入境后，将会前往指定隔离点，待到接受并通过各项身体检查及必要的医学隔离观察后，他将被直接送往赛区，也就是直接进入完全封闭的赛事&ldquo;红区&rdquo;内。</strong></p>\n<p style=\"text-align: center;\">尽管已经超过1年未能与球队会合，但就能力和经验来说，武磊一直都是历任国足主帅完全信赖的&ldquo;即插即用&rdquo;型球员。对武磊而言，重要的是及时缓解长途旅行带来的疲劳。</p>\n<p style=\"text-align: center;\">文/北青-北京头条记者 肖赧</p>\n<p style=\"text-align: center;\">编辑/张颖川</p>",
+    lookNum: NumberInt("0"),
+    likeNum: NumberInt("0"),
+    unlikeNum: NumberInt("0"),
+    collectNum: NumberInt("0"),
+    coomentNum: NumberInt("0"),
+    status: "1",
+    createdAt: ISODate("2021-05-09T13:41:21.121Z"),
+    updatedAt: ISODate("2021-05-09T13:41:21.121Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("articles").insert([ {
+    _id: ObjectId("6097bb902bc9731a58b52b64"),
+    title: "巴基斯坦宣布全国封锁，印度周边邻国人人自危，会波及中国吗",
+    category: [ ],
+    authod: "admin",
+    content: "<p style=\"text-align: center;\"><span style=\"font-size: 36px;\">巴基斯坦宣布全国封锁，印度周边邻国人人自危，会波及中国吗</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">印度疫情的风暴还在继续，据巴基斯坦当地媒体5月7日报道，根据上个月巴基斯坦应对新冠疫情国家指挥与行动中心的决定，在5月8日至15日的开斋节假期期间，巴基斯坦将实施对全国的全面封锁。同时，全国的旅游景点、公园以及包括海滩在内的野餐场所保持关闭，而提供基本生活服务的面包店、食品店、医疗和药品商店等可正常营业。在全国封锁期内，巴基斯坦将禁止不必要的人员流动和任何形式的聚集。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　巴基斯坦负责国家卫生事务的总理特别助理费萨尔&middot;苏丹表示，这是&ldquo;关键时刻&rdquo;不得不采取的预防措施。</span></p>\n<p class=\"f_center\" style=\"text-align: center;\"><span style=\"font-size: 18px;\"><img src=\"https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2021%2F0509%2Fb0b4f82cj00qstjkq0017c000i200c2m.jpg&amp;thumbnail=650x2147483647&amp;quality=80&amp;type=jpg\" /></span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　5月8日，巴基斯坦白沙瓦一个市场关闭的店铺</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　无独有偶的是，此前与印度边境开放的尼泊尔也开始叫苦不迭。在印度疫情爆发后，大批返国公民和印度人前来求医者，并且在全球航空线路被迫&ldquo;熔断&rdquo;的情况下，尼泊尔不得不作为中东和印度等国家重要航班中转国，如此复杂的情况自然让这个还处于现代文明之外的&ldquo;世外桃源&rdquo;难以招架。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　不仅是周边国家，南非卫生部8日确诊该国出现4例印度首次发现的B.1.617.2和11例英国首次发现的B.1.1.7新冠变异病毒患者，这是两种变异病毒首次登陆南非。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　而造成如今这般惨状，自然和莫迪政府盲目自大有着直接的关系。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　印度卫生部7日发布的数据显示，印度单日新增新冠确诊病例数再次打破纪录，达到414188例，这已经是连续三日印度确诊人数超过40万大关，要知道目前印度每天监测最高水平极限值就是100万例，这接近40%的确诊率简直是触目惊心的。现在的印度平均不足2分钟就有一个人死于新冠病毒，就连动物园的狮子都中招了。</span></p>\n<p class=\"f_center\" style=\"text-align: center;\"><span style=\"font-size: 18px;\"><img src=\"https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2021%2F0509%2F9dd4a102j00qstjkq007yc000hs00c8m.jpg&amp;thumbnail=650x2147483647&amp;quality=80&amp;type=jpg\" /></span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　一名新冠患者在加德满都一家医院的急诊室外等着接受氧气</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　此前有很多西方专家预测过，在如今印度如此&ldquo;拉跨&rdquo;的控制手段下，印度实际确诊人数和死亡人数可能是官方公布的数字的5到10倍，3个印度人中可能有1个感染病毒。美国专家表示，疫情高峰可能要到5月中旬，每天感染人数可能会达到80万到100万，死亡人数达到4500人到5600人。只有印度疫情人数达到峰值高点后，随后才有拐头的可能。当然，前提是印度政府必须拿出及时有效且强有力的疫情控制手段。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　但关键的是印度有这种手段吗？</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　没有，目前看来依旧是毫无希望。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　印度的医疗设施极其落后，历届政府在卫生健康方面的开支均是极尽压缩，目前印度平均每千人只有一个医生。与印度地理位置、国内复杂情况极度相似的巴西为例，巴西在医疗开支占GDP的9.8%，而印度只占3.6%。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　这一极端的情况导致的便是国家控制的公立医院基本上处于超负荷运转的前提下，依旧难以满足呈现几何增长的硬需求。加之印度贫富差距大，医疗资源、氧气瓶等资源被有钱人占据，穷人根本无法获得有效的治疗与隔离。偏远农村、贫民区呈现大量聚集性交叉感染，这恰好是新冠病毒实现不断变异的温床。</span></p>\n<p class=\"f_center\" style=\"text-align: center;\"><span style=\"font-size: 18px;\"><img src=\"https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2021%2F0509%2F8be2ac3aj00qstjkq003sc000go00b4m.jpg&amp;thumbnail=650x2147483647&amp;quality=80&amp;type=jpg\" /></span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　混乱的行政体系也是加剧印度往不可控方向的另一大助力，国际援助资源被媒体曝出长时间滞留在机场根本没有送到急需资源的抗疫第一线。每天类似于将灭火器喷成绿漆冒充成氧气罐贩卖，不少援助物资出现在黑市以数十倍的高价被随意叫卖的新闻倒是层出不穷。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　8日，印度国民大会党主席、印度主要反对党领袖拉胡尔&middot;甘地强烈批评印度总理莫迪，他在一封信中警告称，印度疫情威胁全世界安全。呼吁印度实施全国封锁，加快接种新冠疫苗战略，并要求对新冠病毒进行更好的科学追踪等解决方案也在其中。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　不过莫迪政府未必会听，或者说听了也未必有用。目前莫迪忙着接手从法国订购的&ldquo;阵风&rdquo;战机，在中印边境进行基础设施建设，完全是一副不问苍生问鬼神&ldquo;得道高人&rdquo;的淡然心态。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　目前印度周边的邻国，尼泊尔疫情亮起红灯，北边的巴基斯坦也决定实现全国的全面封锁，东边的孟加拉国确诊人数也超过70万，老挝近一个月以来新增确诊人数暴增200倍，泰国、缅甸等也是风云飘摇中。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　会波及到中国吗？</span></p>\n<p class=\"f_center\" style=\"text-align: center;\"><span style=\"font-size: 18px;\"><img src=\"https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2021%2F0509%2F6569c960j00qstjkq003rc000zk00nmm.jpg&amp;thumbnail=650x2147483647&amp;quality=80&amp;type=jpg\" /></span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　8日，李兰娟院士接受人民网专访时表示，印度流行的变异病毒已经发生双重甚至三重突变，新冠病毒本身就是个RNA病毒，基因突变是RNA病毒最常见的生物特征，在侵犯人类、感染人类的同时，自身也在不断地适应外界的变化。3例从重庆入境的新冠病毒确诊病例在印度的核酸检测多次出现阴性，回国后经胸部CT结果提示感染性病变便是最好的说明。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　有人表示中国应该继续紧闭国门，严防输入。其实在病毒面前，无人可以独善其身的，全球面对疫情的这场考试，最终决定能否摆脱现状的，不是考试考得最好的第一名，反而是最后都能及格的那几个学渣。对于印度这个奇葩但又搬不走的邻居，不能指望他有&ldquo;打扫干净屋子再请客&rdquo;的高觉悟。一旦印度疫情完全失控，必将是对全球疫情防控最大的&ldquo;利空&rdquo;。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　这波疫情不会对中国产生太大的影响，因为中国一直以来都采取了严格的防控举措。擅长集中力量办大事的中国建造了全球最强的防线，国内的各个省、市、县，甚至社区有非常强的防控能力，我们的海防线、边防线有非常好的防疫措施，但我们绝不能放松警惕、麻痹大意。目前最重要的仍然是：对内严防死守保成果，对外一丝不苟防输入。并且加快疫苗接种。</span></p>\n<p style=\"text-align: left;\"><span style=\"font-size: 18px;\">　　（何熠）</span></p>",
+    lookNum: NumberInt("0"),
+    likeNum: NumberInt("0"),
+    unlikeNum: NumberInt("0"),
+    collectNum: NumberInt("0"),
+    coomentNum: NumberInt("0"),
+    status: "1",
+    createdAt: ISODate("2021-05-09T10:38:08.746Z"),
+    updatedAt: ISODate("2021-05-09T16:01:01.7Z"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for categories
+// ----------------------------
+db.getCollection("categories").drop();
+db.createCollection("categories");
+
+// ----------------------------
+// Documents of categories
+// ----------------------------
+db.getCollection("categories").insert([ {
+    _id: ObjectId("5faf48f70897c0212826274f"),
+    name: "搞笑",
+    createdAt: ISODate("2020-11-14T03:03:19.79Z"),
+    updatedAt: ISODate("2020-11-14T03:03:19.79Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("categories").insert([ {
+    _id: ObjectId("5faf493b0897c02128262751"),
+    name: "生活",
+    createdAt: ISODate("2020-11-14T03:04:27.749Z"),
+    updatedAt: ISODate("2020-11-14T03:04:27.749Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("categories").insert([ {
+    _id: ObjectId("5faf49450897c02128262752"),
+    name: "农人",
+    createdAt: ISODate("2020-11-14T03:04:37.545Z"),
+    updatedAt: ISODate("2020-11-14T03:04:37.545Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("categories").insert([ {
+    _id: ObjectId("5faf49510897c02128262753"),
+    name: "Vlog",
+    createdAt: ISODate("2020-11-14T03:04:49.233Z"),
+    updatedAt: ISODate("2020-11-14T03:04:49.233Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("categories").insert([ {
+    _id: ObjectId("5faf495d0897c02128262754"),
+    name: "美食",
+    createdAt: ISODate("2020-11-14T03:05:01.929Z"),
+    updatedAt: ISODate("2020-11-14T03:05:01.929Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("categories").insert([ {
+    _id: ObjectId("5faf49640897c02128262755"),
+    name: "游戏",
+    createdAt: ISODate("2020-11-14T03:05:08.402Z"),
+    updatedAt: ISODate("2020-11-14T03:05:08.402Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("categories").insert([ {
+    _id: ObjectId("5faf49880897c02128262756"),
+    name: "体育",
+    createdAt: ISODate("2020-11-14T03:05:44.193Z"),
+    updatedAt: ISODate("2020-11-14T03:05:44.193Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("categories").insert([ {
+    _id: ObjectId("5faf498d0897c02128262757"),
+    name: "宠物",
+    createdAt: ISODate("2020-11-14T03:05:49.644Z"),
+    updatedAt: ISODate("2020-11-14T03:05:49.644Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("categories").insert([ {
+    _id: ObjectId("5faf49920897c02128262758"),
+    name: "科技",
+    createdAt: ISODate("2020-11-14T03:05:54.464Z"),
+    updatedAt: ISODate("2020-11-14T03:05:54.464Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("categories").insert([ {
+    _id: ObjectId("5faf49af0897c02128262759"),
+    name: "音乐",
+    createdAt: ISODate("2020-11-14T03:06:23.655Z"),
+    updatedAt: ISODate("2020-11-14T03:06:23.655Z"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for comments
+// ----------------------------
+db.getCollection("comments").drop();
+db.createCollection("comments");
+
+// ----------------------------
+// Documents of comments
+// ----------------------------
+db.getCollection("comments").insert([ {
+    _id: ObjectId("600eec113df10f18ec3362df"),
+    parentId: null,
+    object: ObjectId("600d6d273ed003281cedf650"),
+    content: "哈哈哈\n",
+    uid: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-25T16:04:33.551Z"),
+    updatedAt: ISODate("2021-01-25T16:04:33.551Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("600eec183df10f18ec3362e0"),
+    parentId: null,
+    object: ObjectId("600d6d273ed003281cedf650"),
+    content: "打算大声道撒大所多",
+    uid: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-25T16:04:40.175Z"),
+    updatedAt: ISODate("2021-01-25T16:04:40.175Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("600eec1f3df10f18ec3362e1"),
+    parentId: ObjectId("600eec183df10f18ec3362e0"),
+    object: ObjectId("600d6d273ed003281cedf650"),
+    content: "傻逼你\n",
+    uid: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-25T16:04:47.816Z"),
+    updatedAt: ISODate("2021-01-25T16:04:47.816Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("60164d30de2ee013884761f5"),
+    parentId: null,
+    object: ObjectId("600d6d273ed003281cedf650"),
+    content: "2333333333333333333333333",
+    uid: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-31T06:24:48.832Z"),
+    updatedAt: ISODate("2021-01-31T06:24:48.832Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609697c0a281c725844e0b82"),
+    parentId: null,
+    object: ObjectId("60955efda281c725844e0b81"),
+    content: "哈哈哈哈哈",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-08T13:53:04.51Z"),
+    updatedAt: ISODate("2021-05-08T13:53:04.51Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("6096abfba281c725844e0b8b"),
+    parentId: null,
+    object: ObjectId("60955efda281c725844e0b81"),
+    content: "id=\"bar\"\n",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-08T15:19:23.995Z"),
+    updatedAt: ISODate("2021-05-08T15:19:23.995Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609746f6b6bbeb14c89cc4dc"),
+    parentId: null,
+    object: ObjectId("60955df1a281c725844e0b80"),
+    content: "阿大声道",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T02:20:38.2Z"),
+    updatedAt: ISODate("2021-05-09T02:20:38.2Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("60974babb6bbeb14c89cc4dd"),
+    parentId: null,
+    object: ObjectId("60155078de2ee013884761f1"),
+    content: "大大",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T02:40:43.37Z"),
+    updatedAt: ISODate("2021-05-09T02:40:43.37Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("60974beeb6bbeb14c89cc4de"),
+    parentId: null,
+    object: ObjectId("60974286d8b77b2bd0e7721d"),
+    content: "所以所欲\n",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T02:41:50.505Z"),
+    updatedAt: ISODate("2021-05-09T02:41:50.505Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("60974bfab6bbeb14c89cc4df"),
+    parentId: null,
+    object: ObjectId("60974286d8b77b2bd0e7721d"),
+    content: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/749f2ad0c7f8eabced391cf529ef4f74.mp4",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T02:42:02.962Z"),
+    updatedAt: ISODate("2021-05-09T02:42:02.962Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("60975a1c1b7fab26e0d6d2a0"),
+    parentId: null,
+    object: ObjectId("60974286d8b77b2bd0e7721d"),
+    content: "阿斯顿撒",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T03:42:20.651Z"),
+    updatedAt: ISODate("2021-05-09T03:42:20.651Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("60975a241b7fab26e0d6d2a1"),
+    parentId: null,
+    object: ObjectId("6003bf6dda61552f8ca7edeb"),
+    content: "啊啊啊啊啊",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T03:42:28.684Z"),
+    updatedAt: ISODate("2021-05-09T03:42:28.684Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("60975fd61b7fab26e0d6d2a5"),
+    parentId: null,
+    object: ObjectId("60955df1a281c725844e0b80"),
+    content: "大声道",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T04:06:46.406Z"),
+    updatedAt: ISODate("2021-05-09T04:06:46.406Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("6097601f1b7fab26e0d6d2a6"),
+    parentId: ObjectId("60975fd61b7fab26e0d6d2a5"),
+    object: ObjectId("60975fd61b7fab26e0d6d2a5"),
+    content: "大大",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T04:07:59.598Z"),
+    updatedAt: ISODate("2021-05-09T04:07:59.598Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609769b41b7fab26e0d6d2a7"),
+    parentId: ObjectId("6096a113a281c725844e0b8a"),
+    object: ObjectId("6096a113a281c725844e0b8a"),
+    content: "阿达的",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T04:48:52.002Z"),
+    updatedAt: ISODate("2021-05-09T04:48:52.002Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609d58d62303052f88a71421"),
+    parentId: null,
+    object: ObjectId("60955df1a281c725844e0b80"),
+    content: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/3b0f3aceb63b611f8bf55db244024a6c.mp4",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T16:50:30.73Z"),
+    updatedAt: ISODate("2021-05-13T16:50:30.73Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609d58df2303052f88a71422"),
+    parentId: ObjectId("609d58d62303052f88a71421"),
+    object: ObjectId("609d58d62303052f88a71421"),
+    content: "您好",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T16:50:39.162Z"),
+    updatedAt: ISODate("2021-05-13T16:50:39.162Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609d58e92303052f88a71423"),
+    parentId: ObjectId("609d58d62303052f88a71421"),
+    object: ObjectId("609d58df2303052f88a71422"),
+    content: "哈哈哈",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T16:50:49.455Z"),
+    updatedAt: ISODate("2021-05-13T16:50:49.455Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609d59e02303052f88a71424"),
+    parentId: null,
+    object: ObjectId("60955430b2bbe41ca44c376c"),
+    content: "真不错\n",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T16:54:56.174Z"),
+    updatedAt: ISODate("2021-05-13T16:54:56.174Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609d59ea2303052f88a71428"),
+    parentId: null,
+    object: ObjectId("60955430b2bbe41ca44c376c"),
+    content: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/ff797a741201e27b23e81434f5713b44.MP4\n",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T16:55:06.628Z"),
+    updatedAt: ISODate("2021-05-13T16:55:06.628Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609d5d6ac2547c1164b90670"),
+    parentId: null,
+    object: ObjectId("60955430b2bbe41ca44c376c"),
+    content: "哈哈哈哈哈",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:10:02.228Z"),
+    updatedAt: ISODate("2021-05-13T17:10:02.228Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609d5d77c2547c1164b90674"),
+    parentId: null,
+    object: ObjectId("60955430b2bbe41ca44c376c"),
+    content: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/ff797a741201e27b23e81434f5713b44.MP4\n",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:10:15.016Z"),
+    updatedAt: ISODate("2021-05-13T17:10:15.016Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609d5de7c2547c1164b90676"),
+    parentId: null,
+    object: ObjectId("609d5ddcc2547c1164b90675"),
+    content: "真不错",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:12:07.249Z"),
+    updatedAt: ISODate("2021-05-13T17:12:07.249Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609d6039c2547c1164b9067d"),
+    parentId: null,
+    object: ObjectId("600d6cab3ed003281cedf64f"),
+    content: "adasd ",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:22:01.603Z"),
+    updatedAt: ISODate("2021-05-13T17:22:01.603Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609d603dc2547c1164b9067e"),
+    parentId: ObjectId("609d6039c2547c1164b9067d"),
+    object: ObjectId("609d6039c2547c1164b9067d"),
+    content: "asdasd ",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:22:05.87Z"),
+    updatedAt: ISODate("2021-05-13T17:22:05.87Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609e65936b65c520d0404df7"),
+    parentId: ObjectId("609d58d62303052f88a71421"),
+    object: ObjectId("609d58df2303052f88a71422"),
+    content: "哈哈哈\n",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T11:57:07.811Z"),
+    updatedAt: ISODate("2021-05-14T11:57:07.811Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609e67416b65c520d0404dfa"),
+    parentId: null,
+    object: ObjectId("6002cbed384bce2ac453290b"),
+    content: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/ec039ead3ff0c9f14bc0012188b544f3.mp4",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T12:04:17.757Z"),
+    updatedAt: ISODate("2021-05-14T12:04:17.757Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609e674c6b65c520d0404dfe"),
+    parentId: null,
+    object: ObjectId("6002cbed384bce2ac453290b"),
+    content: "aada ",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T12:04:28.536Z"),
+    updatedAt: ISODate("2021-05-14T12:04:28.536Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609e67506b65c520d0404dff"),
+    parentId: ObjectId("609e674c6b65c520d0404dfe"),
+    object: ObjectId("609e674c6b65c520d0404dfe"),
+    content: "asdsadd ",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T12:04:32.133Z"),
+    updatedAt: ISODate("2021-05-14T12:04:32.133Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609e67546b65c520d0404e00"),
+    parentId: ObjectId("609e674c6b65c520d0404dfe"),
+    object: ObjectId("609e67506b65c520d0404dff"),
+    content: "dasdsad ",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T12:04:36.923Z"),
+    updatedAt: ISODate("2021-05-14T12:04:36.923Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609e75b9ad41932814d84ddc"),
+    parentId: null,
+    object: ObjectId("6097fbb62332fb10248c26cd"),
+    content: "hhh\n",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T13:06:01.609Z"),
+    updatedAt: ISODate("2021-05-14T13:06:01.609Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609e75d7ad41932814d84ddd"),
+    parentId: null,
+    object: ObjectId("600d6d273ed003281cedf650"),
+    content: "666666666666666666666666666666",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T13:06:31.592Z"),
+    updatedAt: ISODate("2021-05-14T13:06:31.592Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609e75f0ad41932814d84dde"),
+    parentId: ObjectId("60164d30de2ee013884761f5"),
+    object: ObjectId("60164d30de2ee013884761f5"),
+    content: "三大阿斯顿",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T13:06:56.36Z"),
+    updatedAt: ISODate("2021-05-14T13:06:56.36Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609e75fcad41932814d84ddf"),
+    parentId: ObjectId("609e75d7ad41932814d84ddd"),
+    object: ObjectId("609e75d7ad41932814d84ddd"),
+    content: "啊啊啊啊",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T13:07:08.853Z"),
+    updatedAt: ISODate("2021-05-14T13:07:08.853Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("comments").insert([ {
+    _id: ObjectId("609e8b7bb92cc6275cb10553"),
+    parentId: ObjectId("600eec183df10f18ec3362e0"),
+    object: ObjectId("600eec1f3df10f18ec3362e1"),
+    content: "asda",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-14T14:38:51.145Z"),
+    updatedAt: ISODate("2021-05-14T14:38:51.145Z"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for courses
+// ----------------------------
+db.getCollection("courses").drop();
+db.createCollection("courses");
+
+// ----------------------------
+// Documents of courses
+// ----------------------------
+db.getCollection("courses").insert([ {
+    _id: ObjectId("5eba5908494c7e1190d44e34"),
+    name: "林观灏搞笑合",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/34f5e569c5aa6d16ca890c7e922818b9.jpg",
+    createdAt: ISODate("2020-05-12T08:06:32.659Z"),
+    updatedAt: ISODate("2020-10-26T11:47:16.813Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("courses").insert([ {
+    _id: ObjectId("5ebb6aaadad5bd2fb8ec603c"),
+    name: "阿mingaaa",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/0c70e3c5ee3932558280d557e22032b4.jpg",
+    createdAt: ISODate("2020-05-13T03:34:02.448Z"),
+    updatedAt: ISODate("2020-10-11T03:33:37.465Z"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for episodes
+// ----------------------------
+db.getCollection("episodes").drop();
+db.createCollection("episodes");
+
+// ----------------------------
+// Documents of episodes
+// ----------------------------
+db.getCollection("episodes").insert([ {
+    _id: ObjectId("5eba5934494c7e1190d44e35"),
+    name: "没头发了",
+    course: ObjectId("5eba5908494c7e1190d44e34"),
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/bae6e53835cad32c142e400e7455fbae.mp4",
+    createdAt: ISODate("2020-05-12T08:07:16.456Z"),
+    updatedAt: ISODate("2020-05-12T08:07:16.456Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("episodes").insert([ {
+    _id: ObjectId("5eba5a5a494c7e1190d44e36"),
+    name: "爱跳舞的观灏",
+    course: ObjectId("5eba5908494c7e1190d44e34"),
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/d276ca25dbc154d7ca95257352299504.mp4",
+    createdAt: ISODate("2020-05-12T08:12:10.631Z"),
+    updatedAt: ISODate("2020-05-12T08:12:10.631Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("episodes").insert([ {
+    _id: ObjectId("5ebb6a2bdad5bd2fb8ec6039"),
+    name: "刷牙",
+    course: ObjectId("5eba5908494c7e1190d44e34"),
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/e3f767c3a1809dafeba8160d30a37bb9.mp4",
+    createdAt: ISODate("2020-05-13T03:31:55.294Z"),
+    updatedAt: ISODate("2020-05-13T03:31:55.294Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("episodes").insert([ {
+    _id: ObjectId("5ebb6a43dad5bd2fb8ec603a"),
+    name: "上课课",
+    course: ObjectId("5eba5908494c7e1190d44e34"),
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/d8dea5b6bc84309dd2592f37efacae16.mp4",
+    createdAt: ISODate("2020-05-13T03:32:19.462Z"),
+    updatedAt: ISODate("2020-05-13T03:32:19.462Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("episodes").insert([ {
+    _id: ObjectId("5ebb6a59dad5bd2fb8ec603b"),
+    name: "吹蜡烛",
+    course: ObjectId("5eba5908494c7e1190d44e34"),
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/153df586ce5decb4f2882f95d7dfdc11.mp4",
+    createdAt: ISODate("2020-05-13T03:32:41.359Z"),
+    updatedAt: ISODate("2020-05-13T03:32:41.359Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("episodes").insert([ {
+    _id: ObjectId("5f96e9304ed8561cf0c8b22b"),
+    name: "玩耍",
+    course: ObjectId("5ebb6aaadad5bd2fb8ec603c"),
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/7d3e1e56ce05ebff3d9f18f7b12c2263.jpg",
+    createdAt: ISODate("2020-10-26T15:20:16.465Z"),
+    updatedAt: ISODate("2020-10-26T15:20:16.465Z"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for notifies
+// ----------------------------
+db.getCollection("notifies").drop();
+db.createCollection("notifies");
+
+// ----------------------------
+// Documents of notifies
+// ----------------------------
+db.getCollection("notifies").insert([ {
+    _id: ObjectId("606dcef6c29d540aa83f1264"),
+    title: "啊啊啊",
+    type: NumberInt("1"),
+    image: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+    content: "啊啊啊啊啊",
+    createdAt: ISODate("2021-04-07T15:25:42.016Z"),
+    updatedAt: ISODate("2021-04-07T15:25:42.016Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("notifies").insert([ {
+    _id: ObjectId("606dcf11c29d540aa83f1265"),
+    title: "啊啊啊",
+    type: NumberInt("1"),
+    image: null,
+    content: "啊啊啊啊啊",
+    createdAt: ISODate("2021-04-07T15:26:09.421Z"),
+    updatedAt: ISODate("2021-04-07T15:26:09.421Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("notifies").insert([ {
+    _id: ObjectId("606dcf16c29d540aa83f1266"),
+    title: "啊啊啊",
+    type: NumberInt("1"),
+    image: null,
+    content: "啊啊啊啊啊",
+    createdAt: ISODate("2021-04-07T15:26:14.642Z"),
+    updatedAt: ISODate("2021-04-07T15:26:14.642Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("notifies").insert([ {
+    _id: ObjectId("609794fc7e95ad178ca28011"),
+    title: "系统通知",
+    type: NumberInt("1"),
+    image: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/74346547a34e9914982846dc1323500c.jpg",
+    content: "即日起全场免费",
+    createdAt: ISODate("2021-05-09T07:53:32.799Z"),
+    updatedAt: ISODate("2021-05-09T07:53:32.799Z"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for reports
+// ----------------------------
+db.getCollection("reports").drop();
+db.createCollection("reports");
+
+// ----------------------------
+// Documents of reports
+// ----------------------------
+db.getCollection("reports").insert([ {
+    _id: ObjectId("600d2c90c2caba06a0690d06"),
+    faultType: "1",
+    object: ObjectId("6003bf6dda61552f8ca7edeb"),
+    content: null,
+    phone: null,
+    type: "Video",
+    uid: ObjectId("6002c101da79851694c385d4"),
+    status: NumberInt("1"),
+    createdAt: ISODate("2021-01-24T08:15:12.619Z"),
+    updatedAt: ISODate("2021-04-05T14:13:43.984Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("reports").insert([ {
+    _id: ObjectId("600d2ccac2caba06a0690d07"),
+    faultType: "1",
+    object: ObjectId("6003bf6dda61552f8ca7edeb"),
+    content: null,
+    phone: null,
+    type: "Comment",
+    status: NumberInt("1"),
+    uid: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-24T08:16:10.623Z"),
+    updatedAt: ISODate("2021-04-05T14:13:51.82Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("reports").insert([ {
+    _id: ObjectId("600d2cddc2caba06a0690d08"),
+    faultType: "5",
+    object: ObjectId("6003bf6dda61552f8ca7edeb"),
+    content: null,
+    phone: null,
+    type: "Video",
+    status: NumberInt("2"),
+    uid: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-24T08:16:29.294Z"),
+    updatedAt: ISODate("2021-05-13T23:45:50.661Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("reports").insert([ {
+    _id: ObjectId("600d2d70c2caba06a0690d0a"),
+    faultType: "5",
+    object: ObjectId("6003bf6dda61552f8ca7edeb"),
+    content: "哈哈哈",
+    phone: null,
+    type: "Video",
+    status: NumberInt("2"),
+    uid: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-24T08:18:56.23Z"),
+    updatedAt: ISODate("2021-05-09T08:03:07.736Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("reports").insert([ {
+    _id: ObjectId("600d2d87c2caba06a0690d0b"),
+    faultType: "5",
+    object: ObjectId("6003bf6dda61552f8ca7edeb"),
+    content: "阿达",
+    phone: null,
+    type: "Video",
+    status: NumberInt("2"),
+    uid: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-24T08:19:19.217Z"),
+    updatedAt: ISODate("2021-04-05T14:16:19.967Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("reports").insert([ {
+    _id: ObjectId("600d675e3ed003281cedf64e"),
+    faultType: "1",
+    object: null,
+    content: "没事没事",
+    phone: "13060858604",
+    type: "User",
+    uid: ObjectId("6002c101da79851694c385d4"),
+    status: 2,
+    createdAt: ISODate("2021-01-24T12:26:06.831Z"),
+    updatedAt: ISODate("2021-01-24T12:26:06.831Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("reports").insert([ {
+    _id: ObjectId("60974c03b6bbeb14c89cc4e0"),
+    faultType: "2",
+    object: ObjectId("60974286d8b77b2bd0e7721d"),
+    content: "啊啊啊啊",
+    phone: null,
+    status: NumberInt("2"),
+    type: "Video",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T02:42:11.682Z"),
+    updatedAt: ISODate("2021-05-09T02:42:11.682Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("reports").insert([ {
+    _id: ObjectId("6097970a7e95ad178ca28012"),
+    faultType: "1",
+    object: ObjectId("60955df1a281c725844e0b80"),
+    content: "资格证书",
+    phone: null,
+    status: NumberInt("2"),
+    type: "Video",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T08:02:18.356Z"),
+    updatedAt: ISODate("2021-05-09T08:02:18.356Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("reports").insert([ {
+    _id: ObjectId("609d5e29c2547c1164b90677"),
+    faultType: "1",
+    object: null,
+    content: "系统不稳定",
+    phone: "13060858604",
+    status: NumberInt("2"),
+    type: "User",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:13:13.24Z"),
+    updatedAt: ISODate("2021-05-13T17:16:38.045Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("reports").insert([ {
+    _id: ObjectId("609d5e3ec2547c1164b90678"),
+    faultType: "6",
+    object: null,
+    content: "侵权",
+    phone: null,
+    status: NumberInt("2"),
+    type: "Video",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:13:34.126Z"),
+    updatedAt: ISODate("2021-05-13T17:17:01.921Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("reports").insert([ {
+    _id: ObjectId("609d5e6cc2547c1164b90679"),
+    faultType: "1",
+    object: null,
+    content: "恶意评论",
+    phone: null,
+    status: NumberInt("1"),
+    type: "Comment",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:14:20.997Z"),
+    updatedAt: ISODate("2021-05-13T17:14:20.997Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("reports").insert([ {
+    _id: ObjectId("609db93cb6df0d1f64cff949"),
+    faultType: "5",
+    object: ObjectId("60955430b2bbe41ca44c376c"),
+    content: "啊啊",
+    phone: null,
+    status: NumberInt("1"),
+    type: "Video",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T23:41:48.866Z"),
+    updatedAt: ISODate("2021-05-13T23:41:48.866Z"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for system.indexes
+// ----------------------------
+db.getCollection("system.indexes").drop();
+db.createCollection("system.indexes");
+
+// ----------------------------
+// Documents of system.indexes
+// ----------------------------
+db.getCollection("system.indexes").insert([ {
+    v: NumberInt("1"),
+    key: {
+        _id: NumberInt("1")
+    },
+    name: "_id_",
+    ns: "topfullstack.courses"
+} ]);
+db.getCollection("system.indexes").insert([ {
+    v: NumberInt("1"),
+    key: {
+        _id: NumberInt("1")
+    },
+    name: "_id_",
+    ns: "topfullstack.episodes"
+} ]);
+db.getCollection("system.indexes").insert([ {
+    v: NumberInt("1"),
+    key: {
+        _id: NumberInt("1")
+    },
+    name: "_id_",
+    ns: "topfullstack.comments"
+} ]);
+db.getCollection("system.indexes").insert([ {
+    v: NumberInt("1"),
+    key: {
+        _id: NumberInt("1")
+    },
+    name: "_id_",
+    ns: "topfullstack.users"
+} ]);
+db.getCollection("system.indexes").insert([ {
+    v: NumberInt("1"),
+    key: {
+        _id: NumberInt("1")
+    },
+    name: "_id_",
+    ns: "topfullstack.categories"
+} ]);
+db.getCollection("system.indexes").insert([ {
+    v: NumberInt("1"),
+    key: {
+        _id: NumberInt("1")
+    },
+    name: "_id_",
+    ns: "topfullstack.videos"
+} ]);
+db.getCollection("system.indexes").insert([ {
+    v: NumberInt("1"),
+    key: {
+        _id: NumberInt("1")
+    },
+    name: "_id_",
+    ns: "topfullstack.actions"
+} ]);
+db.getCollection("system.indexes").insert([ {
+    v: NumberInt("1"),
+    key: {
+        _id: NumberInt("1")
+    },
+    name: "_id_",
+    ns: "topfullstack.reports"
+} ]);
+db.getCollection("system.indexes").insert([ {
+    v: NumberInt("1"),
+    key: {
+        _id: NumberInt("1")
+    },
+    name: "_id_",
+    ns: "topfullstack.admins"
+} ]);
+db.getCollection("system.indexes").insert([ {
+    v: NumberInt("1"),
+    key: {
+        _id: NumberInt("1")
+    },
+    name: "_id_",
+    ns: "topfullstack.notifies"
+} ]);
+db.getCollection("system.indexes").insert([ {
+    v: NumberInt("1"),
+    key: {
+        _id: NumberInt("1")
+    },
+    name: "_id_",
+    ns: "topfullstack.articles"
+} ]);
+
+// ----------------------------
+// Collection structure for users
+// ----------------------------
+db.getCollection("users").drop();
+db.createCollection("users");
+
+// ----------------------------
+// Documents of users
+// ----------------------------
+db.getCollection("users").insert([ {
+    _id: ObjectId("5fa4a5b182dc0a2ab8f3377e"),
+    avatar: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/bde7d76a411636ce66f4e62d77a02f94.jpg",
+    phone: "",
+    desc: "啊啊啊啊",
+    type: "github",
+    "user_id": "55567292",
+    username: "linguanfuyo",
+    createdAt: ISODate("2020-11-06T01:24:01.909Z"),
+    updatedAt: ISODate("2021-01-10T15:33:58.199Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("6002c101da79851694c385d4"),
+    avatar: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/c1ab724476b5f42e4fcdb67eff2e8578.jpg",
+    phone: "13060858604",
+    desc: "这个人很懒什么都没有留下",
+    type: "local",
+    "user_id": "",
+    username: "lgf",
+    password: "5fa4a5b182dc0a2ab8f3377e",
+    createdAt: ISODate("2021-01-16T10:33:38.272Z"),
+    updatedAt: ISODate("2021-05-07T14:28:14.834Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("5fa4a5b182dc0a2ab8f3377a"),
+    avatar: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/bde7d76a411636ce66f4e62d77a02f94.jpg",
+    phone: "13168334480",
+    desc: "哈哈哈哈哈或",
+    type: "weixin",
+    "user_id": "55567292",
+    username: "各回各家",
+    createdAt: ISODate("2020-11-06T01:24:01.909Z"),
+    updatedAt: ISODate("2021-01-10T15:33:58.199Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("5fa4a5b182dc0a2ab8f3377c"),
+    avatar: "",
+    phone: "15360730027",
+    desc: "来着何人",
+    type: "local",
+    "user_id": "55567292",
+    username: "来着何人啊啊",
+    createdAt: ISODate("2020-11-06T01:24:01.909Z"),
+    updatedAt: ISODate("2021-01-10T15:33:58.199Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("60955c8ccae2ca24fc65540f"),
+    avatar: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/a06c13dfd14f6342eb9ded709b68f684.jpg",
+    phone: "13612389459",
+    desc: "asdasdasd ",
+    type: "local",
+    "user_id": "",
+    username: "admin",
+    password: "$2a$10$JeUISE22y7zL23TmAH4EZeI/het2B6jltkXdmtzKw/uZXNe.bJ8jm",
+    createdAt: ISODate("2021-05-07T15:28:13.286Z"),
+    updatedAt: ISODate("2021-05-14T12:04:57.783Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("users").insert([ {
+    _id: ObjectId("609d58962303052f88a7141d"),
+    avatar: "",
+    phone: "13924221452",
+    desc: "这个人很懒什么都没有留下",
+    type: "local",
+    "user_id": "",
+    username: "admin123",
+    password: "$2a$10$oPIXKcvVjs/bgYZHnrdwQeVW4Z3Rk.qXFwrNDxhbZB53tBfozCfAC",
+    createdAt: ISODate("2021-05-13T16:49:27.301Z"),
+    updatedAt: ISODate("2021-05-13T16:49:27.301Z"),
+    __v: NumberInt("0")
+} ]);
+
+// ----------------------------
+// Collection structure for videos
+// ----------------------------
+db.getCollection("videos").drop();
+db.createCollection("videos");
+
+// ----------------------------
+// Documents of videos
+// ----------------------------
+db.getCollection("videos").insert([ {
+    _id: ObjectId("6002cbed384bce2ac453290b"),
+    category: [
+        ObjectId("5faf48f70897c0212826274f")
+    ],
+    lookNum: NumberInt("208"),
+    likeNum: NumberInt("2"),
+    unlikeNum: NumberInt("2"),
+    collectNum: NumberInt("2"),
+    commentNum: NumberInt("0"),
+    status: "2",
+    title: "【年度最性价比】为了它，卖了5台相机——佳能EOS R6体验报告",
+    desc: "年度最性价比相机-佳能EOS R6",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/8bd77dcb5eba7c6f053e2bde364db487.jpg",
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/ec039ead3ff0c9f14bc0012188b544f3.mp4",
+    uid: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-16T11:20:13.842Z"),
+    updatedAt: ISODate("2021-05-14T14:13:41.292Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("videos").insert([ {
+    _id: ObjectId("6003bf6dda61552f8ca7edeb"),
+    category: [
+        ObjectId("5faf48f70897c0212826274f")
+    ],
+    lookNum: NumberInt("452"),
+    likeNum: NumberInt("2"),
+    unlikeNum: NumberInt("2"),
+    collectNum: NumberInt("1"),
+    commentNum: NumberInt("0"),
+    duration: "00:15",
+    status: "1",
+    title: "看着你长大，看着你悲欢",
+    desc: "看看乐扣乐扣快乐快乐快乐",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/faa64b58c91c57868622abd26fad7c02.jpg",
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/8e29c4431704203ac1670b347edd65be.mp4",
+    uid: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-01-17T04:39:09.231Z"),
+    updatedAt: ISODate("2021-05-14T14:36:56.534Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("videos").insert([ {
+    _id: ObjectId("600d6cab3ed003281cedf64f"),
+    category: [
+        ObjectId("5faf48f70897c0212826274f"),
+        ObjectId("5faf493b0897c02128262751")
+    ],
+    lookNum: NumberInt("18"),
+    likeNum: NumberInt("1"),
+    unlikeNum: NumberInt("1"),
+    collectNum: NumberInt("1"),
+    commentNum: NumberInt("0"),
+    duration: "00:08",
+    status: "1",
+    title: "【灏灏】857857---苏伟苏威苏喂",
+    desc: "竖版视频（宽<高的视频，如9:16）不享受收益分成，不支持参与活动，无原创、赞赏、定时等功能",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/7e0a024d55b14acff1b7462ef57e25d0.jpg",
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/12abc23872f19df0d9f118b79d841e40.mp4",
+    uid: ObjectId("5fa4a5b182dc0a2ab8f3377e"),
+    createdAt: ISODate("2021-01-24T12:48:43.603Z"),
+    updatedAt: ISODate("2021-05-14T14:37:00.262Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("videos").insert([ {
+    _id: ObjectId("600d6d273ed003281cedf650"),
+    category: [
+        ObjectId("5faf48f70897c0212826274f")
+    ],
+    lookNum: NumberInt("69"),
+    likeNum: NumberInt("1"),
+    unlikeNum: NumberInt("1"),
+    collectNum: NumberInt("1"),
+    commentNum: NumberInt("0"),
+    duration: "00:15",
+    status: "1",
+    title: "【灏灏】长大了，越来越调皮了。打屁屁",
+    desc: "清晰美观的封面有利于推荐，建议分辨率不低于1000*654（大小不超过2M）",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/dce1657523a4827e292a521b777c17da.jpg",
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/fa3f4cfb6735692dc5787fcbdd8f53f8.mp4",
+    uid: ObjectId("5fa4a5b182dc0a2ab8f3377e"),
+    createdAt: ISODate("2021-01-24T12:50:47.605Z"),
+    updatedAt: ISODate("2021-05-14T14:37:04.505Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("videos").insert([ {
+    _id: ObjectId("60955430b2bbe41ca44c376c"),
+    category: [
+        ObjectId("5faf49880897c02128262756"),
+        ObjectId("5faf49640897c02128262755")
+    ],
+    lookNum: NumberInt("21"),
+    likeNum: NumberInt("2"),
+    unlikeNum: NumberInt("2"),
+    collectNum: NumberInt("2"),
+    commentNum: NumberInt("0"),
+    duration: "02:49",
+    status: "1",
+    title: "金蝉脱壳",
+    desc: "啊啊啊啊啊啊",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/d15f77d20d85c5313a449fea88d35a68.jpg",
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/ff797a741201e27b23e81434f5713b44.MP4",
+    uid: ObjectId("6002c101da79851694c385d4"),
+    createdAt: ISODate("2021-05-07T14:52:32.137Z"),
+    updatedAt: ISODate("2021-05-13T23:41:06.918Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("videos").insert([ {
+    _id: ObjectId("60955df1a281c725844e0b80"),
+    category: [
+        ObjectId("5faf48f70897c0212826274f")
+    ],
+    lookNum: NumberInt("54"),
+    likeNum: NumberInt("1"),
+    unlikeNum: NumberInt("1"),
+    collectNum: NumberInt("1"),
+    commentNum: NumberInt("0"),
+    duration: "01:35",
+    status: "1",
+    title: "越狱",
+    desc: "阿达大大大是",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/a12fd6a5ffec27253a646ac758cf03f7.jpg",
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/3b0f3aceb63b611f8bf55db244024a6c.mp4",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-07T15:34:09.666Z"),
+    updatedAt: ISODate("2021-05-14T04:37:25.81Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("videos").insert([ {
+    _id: ObjectId("60955efda281c725844e0b81"),
+    category: [
+        ObjectId("5faf48f70897c0212826274f")
+    ],
+    lookNum: NumberInt("38"),
+    likeNum: NumberInt("1"),
+    unlikeNum: NumberInt("1"),
+    collectNum: NumberInt("1"),
+    commentNum: NumberInt("0"),
+    duration: "01:32",
+    status: "2",
+    title: "灌灌灌灌",
+    desc: "阿达撒啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/23a07850255456f9f53820f13d3a5ed5.jpg",
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/66e7cd1f95df6d9ae6e1ee526a646536.mp4",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-07T15:38:37.907Z"),
+    updatedAt: ISODate("2021-05-14T04:25:53.528Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("videos").insert([ {
+    _id: ObjectId("60974286d8b77b2bd0e7721d"),
+    category: [
+        ObjectId("5faf48f70897c0212826274f")
+    ],
+    lookNum: NumberInt("23"),
+    likeNum: NumberInt("1"),
+    unlikeNum: NumberInt("0"),
+    collectNum: NumberInt("1"),
+    commentNum: NumberInt("0"),
+    duration: "01:48",
+    status: "1",
+    title: "啊啊啊",
+    desc: "顶顶顶顶",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/ad434f8ad4edea6312ce0a6eb0ee1c6b.jpg",
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/749f2ad0c7f8eabced391cf529ef4f74.mp4",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T02:01:42.05Z"),
+    updatedAt: ISODate("2021-05-14T13:06:07.842Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("videos").insert([ {
+    _id: ObjectId("6097fbb62332fb10248c26cd"),
+    category: [
+        ObjectId("5faf48f70897c0212826274f")
+    ],
+    lookNum: NumberInt("9"),
+    likeNum: NumberInt("1"),
+    unlikeNum: NumberInt("1"),
+    collectNum: NumberInt("1"),
+    commentNum: NumberInt("0"),
+    duration: "01:56",
+    status: "1",
+    title: "啦啦啦啦啦",
+    desc: "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/b434071dcd468e63b4a028bad1445f84.jpg",
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/ab2a294e324b65c2437a776274fd2de9.mp4",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-09T15:11:50.642Z"),
+    updatedAt: ISODate("2021-05-14T13:08:36.692Z"),
+    __v: NumberInt("0")
+} ]);
+db.getCollection("videos").insert([ {
+    _id: ObjectId("609d5ddcc2547c1164b90675"),
+    category: [
+        ObjectId("5faf48f70897c0212826274f"),
+        ObjectId("5faf49510897c02128262753"),
+        ObjectId("5faf49880897c02128262756"),
+        ObjectId("5faf498d0897c02128262757")
+    ],
+    lookNum: NumberInt("2"),
+    likeNum: NumberInt("1"),
+    unlikeNum: NumberInt("0"),
+    collectNum: NumberInt("1"),
+    commentNum: NumberInt("0"),
+    duration: "01:48",
+    status: "2",
+    title: "测试4836",
+    desc: "测试4836",
+    cover: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/3a78edd98b09353ad7285af8d28d6c0a.jpg",
+    file: "http://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/d967019dd2dd64f3661aa4148c51c62d.mp4",
+    uid: ObjectId("60955c8ccae2ca24fc65540f"),
+    createdAt: ISODate("2021-05-13T17:11:56.754Z"),
+    updatedAt: ISODate("2021-05-14T13:08:18.739Z"),
+    __v: NumberInt("0")
+} ]);

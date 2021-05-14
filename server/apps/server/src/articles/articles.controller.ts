@@ -31,7 +31,7 @@ export class ArticlesController {
                 code: 200,
                 data: {
                     list:result,
-                    count: result.length
+                    count: await this.model.countDocuments()
                 }
             })
         } catch (error) {

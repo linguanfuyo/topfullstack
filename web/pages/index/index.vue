@@ -233,7 +233,7 @@ export default {
     margin-top: 50px;
     flex-wrap: wrap;
     .video-item {
-      width: 16%;
+      width: 23%;
       height: 300px;
       position: relative;
       cursor: pointer;

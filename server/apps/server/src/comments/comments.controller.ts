@@ -86,7 +86,7 @@ export class CommentsController {
                 code: 200,
                 data: {
                     list:result,
-                    count: result.length
+                    count: await this.commentModel.countDocuments()
                 }
             })
         } catch (error) {
