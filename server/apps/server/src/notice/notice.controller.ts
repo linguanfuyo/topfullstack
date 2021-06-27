@@ -5,7 +5,7 @@ import { InjectModel } from 'nestjs-typegoose';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { Notify } from '@libs/db/models/notiFy.model';
 import { AuthGuard } from '@nestjs/passport';
-@Controller('notice')
+@Controller('/api/notice')
 @ApiTags('通知')
 export class NoticeController {
     constructor(@InjectModel(Notify) private readonly model: ReturnModelType<typeof Notify>) { }

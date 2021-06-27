@@ -5,7 +5,7 @@ import { ReturnModelType } from '@typegoose/typegoose'
 import { ApiTags, ApiOperation, ApiPropertyOptional } from '@nestjs/swagger';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { AuthGuard } from '@nestjs/passport';
-@Controller('comments')
+@Controller('/api/comments')
 @ApiTags('用户评论')
 export class CommentsController {
     //构造器函数 中用依赖注入的方法 注入schema模型

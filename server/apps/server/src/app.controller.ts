@@ -8,7 +8,7 @@ import { Category } from '@libs/db/models/category.model';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { CategoryDto } from './auth/dto/category.dto';
 
-@Controller()
+@Controller('/api')
 export class AppController {
   constructor(
     private readonly appService: AppService,
@@ -16,7 +16,7 @@ export class AppController {
   ) { }
 
   //图片上传
-  @Post('upload')
+  @Post('/upload')
   @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()  //需要token验证 才可以获取
   @UseInterceptors(FileInterceptor('file'))  //拦截器
@@ -32,7 +32,7 @@ export class AppController {
   }
 
   //添加分类
-  @Post('addCategory')
+  @Post('/addCategory')
   async addCategory(@Body() data: CategoryDto) {
 
     const res = await this.categoryModel.create(data)
@@ -55,7 +55,7 @@ export class AppController {
   }
   
   //获取分类
-  @Get('getCategory')
+  @Get('/getCategory')
   async getCategory() {
     const category = await this.categoryModel.find()
     return {

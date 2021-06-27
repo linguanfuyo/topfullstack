@@ -5,7 +5,7 @@ import { ReturnModelType } from '@typegoose/typegoose'
 import { ApiTags, ApiOperation, ApiPropertyOptional } from '@nestjs/swagger';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { AuthGuard } from '@nestjs/passport';
-@Controller('actions')
+@Controller('/api/actions')
 @ApiTags('用户操作')
 export class ActionsController {
     //构造器函数 中用依赖注入的方法 注入schema模型

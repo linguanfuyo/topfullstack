@@ -6,7 +6,7 @@ import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
 import { CurrentUser } from '../auth/current-user.decorator';
 
-@Controller('reports')
+@Controller('/api/reports')
 @ApiTags('问题上报')
 export class ReportsController {
     constructor(@InjectModel(Report) private readonly reportModel: ReturnModelType<typeof Report>) { }

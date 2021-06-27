@@ -15,7 +15,7 @@ import { JwtModule } from '@nestjs/jwt'
 	  JwtModule.registerAsync({
 		  useFactory(){
 			  return {
-				  secret: process.env.SECRET
+				  secret: '1456adafafsfdfyrye'
 			  }
 		  }
 	  })

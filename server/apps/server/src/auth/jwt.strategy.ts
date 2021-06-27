@@ -13,7 +13,7 @@ export class AdminJwtStrategy extends PassportStrategy(Strategy,'adminJWT') {
 			//取出token
 			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 			//取SECRET
-			secretOrKey: process.env.SECRET
+			secretOrKey: '1456adafafsfdfyrye'
 			//
 		} as StrategyOptions)
 	}
@@ -29,7 +29,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 			//取出token
 			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 			//取SECRET
-			secretOrKey: process.env.SECRET
+			secretOrKey: '1456adafafsfdfyrye'
 			//
 		} as StrategyOptions)
 	}

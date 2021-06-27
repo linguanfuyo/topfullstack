@@ -80,9 +80,9 @@ export default {
   },
   proxy: {
     '/api/': {
-      target: 'https://lgf-tofullstack.oss-cn-hangzhou.aliyuncs.com/', // 目标服务器ip
+      target: 'http://linfufuu.top', // 目标服务器ip
       pathRewrite: {
-        '^/api/': '/',
+        '^/api/': 'http://linfufuu.top',
         changeOrigin: true
       }
     }

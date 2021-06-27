@@ -21,10 +21,10 @@ const MAO = require('multer-aliyun-oss'); //引入oss 包
 				return {
 					storage: MAO({
 						config: {
-							region: process.env.OSS_REGION,
-							accessKeyId: process.env.OSS_ACCESS_KEY_ID,
-							accessKeySecret: process.env.OSS_ACCESS_KEY_SECRET,
-							bucket: process.env.OSS_BUCKET,
+							region: 'oss-cn-hangzhou',
+							accessKeyId: 'LTAI4G8FehQJ8vHDRCGq6WNG',
+							accessKeySecret: '9s0BwO5wgXp4QyhnFvoVd1d7UgcGRX',
+							bucket: 'lgf-tofullstack',
 						}
 					})
 					// dest: 'uploads' // 存储位置 目录名称

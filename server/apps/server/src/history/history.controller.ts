@@ -6,7 +6,7 @@ import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
 import { CurrentUser } from '../auth/current-user.decorator';
 
-@Controller('history')
+@Controller('/api/history')
 @ApiTags('历史记录')
 export class HistoryController {
     constructor(@InjectModel(History) private readonly historyModel: ReturnModelType<typeof History>) { }

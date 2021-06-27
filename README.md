@@ -1,288 +1,291 @@
 # topfullstack
 
-#### 介绍
+图片看不了，最下面原文档连接哦
 
-Nestjs+Nuxt 全栈开发 用户视频网站
+### 预览
 
-ui:Vuetify 和 ant-design-vue(Vuetify 组件太少了.....)
+[用户端预览地址](http://linfufuu.top)
 
-#### 软件架构
+[管理端预览地址](http://linfufuu.top/admin)
 
-开发流程服务端 > web 端 先后台 再前台
+#### 用户端账号密码
 
-手动开启数据库 `mongod --storageEngine mmapv1 -dbpath d:\E\mongoData`
+账号：admin
 
-启动后台 进入 server 文件夹 启动子项目 `nest start -w admin/web`
+密码：123456
 
-启动 redis(本项目 redis 部署在服务器上)
+#### 管理后台账号密码
 
-启动前端项目 Nuxt: `npm run dev`
+> 管理后台仓库地址 https://gitee.com/linguanfu/sky-admin-vue
 
-### 开发细节
+账号：admin
 
-##### 使用 nestjs 创建服务端项目
+密码：admin
 
-请确保您的操作系统上安装了 Node.js（>= 10.13.0）。
+### 一、介绍
 
-命令行输入 `npm -v` 查看本地的 node 版本
+全栈开发-视频分享网站
 
-本项目使用 npm 来进行包管理
+技术栈：`Nestjs`+`Nuxt`+`TS`
 
-1.安装 nestjs 脚手架，来创建和管理项目
+数据库：`Mongodb `+ `Redis`
 
-`npm i -g @nestjs/cli`
+项目 UI： `Vuetify` 和 `ant-design-vue`
 
-i 为 install 的简写 -g 表示安装到全局 -s 表示只安装到本项目 -d 表示只安装到项目的开发依赖中
+> `Vuetify`的 `UI` 实在太少了。又懒得改，所以就按需导入了`ant-design-vue`
 
-npm 常用命令
+### 二、项目架构
 
-npm install -s|d|g xxx（包名） 安装、更新依赖
+项目包括：
 
-npm uninstall xxx 删除对应的依赖包
+- 用户视频网站
+- 用户网站和管理后台的服务端 `API` 项目（[管理后台](https://gitee.com/linguanfu/sky-admin-vue) 源码在`sky-admin-vue`仓库）
 
-npm -v 查看 npm 版本
+### 三、启动项目
 
-npm list 查看当前项目的依赖列表
+- [x] 给 web 端和 serve 端分别安装项目依赖`npm i`
 
-npm -g|s|d outdated 查看可更新的包列表
+- [x] 先启动 `mongoDB` 数据库： `mongod --storageEngine mmapv1 -dbpath d:\E\mongoData`（手动启动，`mongoDB` 数据库是自动启动的跳过）
 
-2.使用脚手架创建 nest 项目
-`nest new project-name`
+- [x] 启动 `redis`(本项目 `redis` 部署在服务器上)，目前 redis 只用与短信登录功能
 
-nest 基本命令
+- [x] 启动 server 端项目： 进入 server 文件夹 启动子项目 `nest start -w web`
 
-命令 别名 描述
-nest new xxx nest n xxx 创建项目
-nest generate co xxx nest g co xxx 创建或修改对应的文件
-nest build 打包程序。
-nest start 启动默认程序 nest start -w xxx 启动子项目。
-nest add 导入已打包为 nest 的库，运行其安装示意图。
-nest update nest u 更新包中的 @nestjs package.json dependencies 列表的 @latest 版本。
-nest info nest i 现实已安装的 nest 包和其他有用的系统信息。
+- [x] 启动 web（Nuxt）项目: `npm run dev`
 
-项目结构
+### 四、项目构建与开发细节
 
+#### 4.1、前提
+
+请确保您的操作系统上安装了 `Node.js（>= 10.13.0）`。
+
+命令行输入 `npm -v` 查看本地的 `node`版本
+
+#### 4.2、创建 Nest 项目
+
+安装`nestjs`脚手架创建和管理项目
+
+```
+npm i -g @nestjs/cli
+```
+
+> i 为 install 的简写 -g 表示安装到全局 -s 表示只安装到本项目 -d 表示只安装到项目的开发依赖中
+
+使用脚手架创建 nest 项目
+
+```
+nest new project-name
+```
+
+##### 项目结构
+
+```
 src
 |_ app.controller.ts # 控制器
 |_ app.service.ts # 服务
 |_ app.module.ts # 根模块
-|_ main.ts # 项目入口，可以选择平台、配置中间件等
+|_ main.ts  # 项目入口，可以选择平台、配置中间件等
 node_modules # 依赖
 nest-cli.json
 package.json # 项目配置文件
-tsconfig.json # ts 配置
-tslint.json # tslint 配置
+tsconfig.json # ts配置
+tslint.json # tslint配置
+```
 
-main.ts
+#### 4.3、创建 Nuxt 项目
+
+创建项目
 
 ```
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { NestExpressApplication } from '@nestjs/platform-express'
-async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  //允许跨域
-  app.enableCors()
-  //配置Swagger 文档
-  const options = new DocumentBuilder()
-    .setTitle('星空之巅前端api')
-    .setDescription('供网站和app使用的api接口文档')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-  const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('api-docs', app, document);
+npx create-nuxt-app <项目名>
+```
 
-  const PORT = process.env.SERVER_PORT || 3002
-  await app.listen(PORT);
-  console.log(`http://localhost:${PORT}/api-docs`)
+启动项目
+
+```
+npm run dev
+```
+
+##### 项目结构
+
+```
+└─my-nuxt-demo          // 项目文件夹
+  ├─.nuxt               // Nuxt自动生成，临时的用于编辑的文件，build
+  ├─assets              //  用于存放静态资源文件对于不需要通过 Webpack 处理的静态资源文件，可以放置在 static 目录中
+  ├─components          // 用于存放组件
+  ├─layouts             // 布局目录，用于组织应用的布局组件，不可更改⭐
+  ├─middleware          // 用于存放中间件
+  ├─node_modules
+  ├─pages               // 用于存放页面,Nuxt.js根据该目录结构自动生成对应的路由配置，文件名不可更改⭐
+  ├─plugins             // 用于组织那些需要在 根vue.js应用 实例化之前需要运行的 Javascript 插件（axios）。
+  ├─static              // 用于存放应用的静态文件，此类文件不会被 Nuxt.js 调用 Webpack 进行构建编译处理。 服务器启动的时候，该目录下的文件会映射至应用的根路径 / 下。文件夹名不可更改。⭐
+  ├─store               // 用于组织应用的Vuex 状态管理。文件夹名不可更改。⭐
+  ├─.editorconfig       // 开发工具格式配置
+  ├─.eslintrc.js        // ESLint的配置文件，用于检查代码格式
+  ├─.gitignore          // 配置git忽略文件
+  ├─nuxt.config.js      // 用于组织Nuxt.js 应用的个性化配置，以便覆盖默认配置。文件名不可更改。⭐
+  ├─package-lock.json   // npm自动生成，用于帮助package的统一设置的，yarn也有相同的操作
+  ├─package.json        // npm 包管理配置文件
+  ├─README.md
+
+```
+
+#### 4.4、基本命令
+
+##### npm 常用命令
+
+- `npm install -s|d|g xxx（包名）` 安装、更新依赖
+
+- `npm uninstall xxx` 删除对应的依赖包
+
+- `npm -v` 查看 `npm` 版本
+
+- `npm list` 查看当前项目的依赖列表
+
+- `npm -g|s|d outdated` 查看可更新的包列表
+
+使用脚手架创建 nest 项目
+`nest new project-name`
+
+##### nest 基本命令
+
+| 命令                 | 缩写          | 描述                                                               |
+| -------------------- | ------------- | ------------------------------------------------------------------ |
+| nest new xxx         | nest n xxx    | 创建项目                                                           |
+| nest generate co xxx | nest g co xxx | 创建或修改对应的文件                                               |
+| nest build           | -             | 打包程序。                                                         |
+| nest start           | -             | 启动默认程序                                                       |
+| nest start -w xxx    | -             | 启动子项目。                                                       |
+| nest add             | -             | 导入已打包为 nest 的库，运行其安装示意图。                         |
+| nest update          | nest u        | 更新包中的 @nestjs package.json dependencies 列表的 @latest 版本。 |
+| nest info            | nest i        | 现实已安装的 nest 包和其他有用的系统信息。                         |
+
+### 五、打包部署
+
+#### 5.1、前提
+
+- [x] 购买服务器
+- [x] 购买域名
+- [x] 解析域名
+- [x] 开启所用到的端口 3000（`nest`）、6868（`redis`），注意端口冲突。
+- [x] 使用宝塔面板服务器安装运行环境（前提安装在服务器上宝塔面板）
+  - 全局安装`PM2`
+  - 安装`MongoDB`，并创建`topfullstack`数据库。
+  - 安装`Redis`
+  - 安装`Nginx`
+- [x] 使用域名创建网站
+
+**参考 1：**
+![image](84EEDF260D554013A2223DF6F80B74FA)
+**参考 2：**
+![image](E81F95CF5FF54F55AF152307C981BBA1)
+**参考 3：**
+![image](8CE44386F0F145F7AA9CBBC1DC559DFB)
+
+#### 5.2、打包 Nest 项目
+
+1. 配置项目启动端口
+
+```
+...
+
+const PORT = 3000
+await app.listen(PORT);
+
+...
+```
+
+2. 运行打包命令（生成 dist 文件夹）
+
+```
+npm run build
+```
+
+3. 将`Nest`项目拉取到服务器上（除开`node_modules`文件，打开项目所在目录的命令行，安装项目依赖。
+
+```
+npm i
+```
+
+4. 使用`PM2`启动`Nest`项目
+   ![image](91B08EBB05DC4694921A2A6722C7FE6E)
+
+至此，`Nest`项目已经正常启动了。
+
+#### 5.3、打包 Nuxt 项目
+
+1. 配置请求 URL
+
+```
+BASE_URL=http://linfufuu.top/api
+API_URL = http://linfufuu.top/api
+
+```
+
+2. 打包项目（打包静态应用）
+
+```
+npm run generate
+```
+
+3. 把生成的静态资源，放到上面网站的目录中。至此，输入网站域名，就可以访问到网站了。
+
+4. 配置`Nginx`代理
+
+```
+location /api/ {
+	      proxy_pass http://127.0.0.1:3000;
 }
-bootstrap();
 ```
 
-运行默认项目项目
+把带有`/api/`的请求代理到服务器本地。
+
+![image](7B54E6BB274945D4B7524A9090F2D51A)
+
+至此，已经可以发送请求了。
+
+#### 5.4、打包管理后台项目
+
+1. 修改环境配置
 
 ```
-npm run start
+VITE_GLOB_API_URL=http://linfufuu.top/api
 ```
 
-运行子项目项目
+2. 打包项目
 
 ```
-npm start -w xxx
+yarn build
 ```
 
-此命令在 src 目录中的 main.ts 文件中定义的端口上启动 HTTP 服务器。在应用程序运行时, 打开浏览器并访问 http://localhost:3000/。 你
-就哭看到 Hello world! 信息表示项目已经启动。
+3. 在网站根目录，新建 admin 文件夹，把生成的静态文件放到 admin 文件夹内（避免与用户端访问冲突），如果访问不到图片、css 等静态资源，则将除 index.html 文件外的其他资源，放到网站的根目录上。
 
-1.安装脚手架 `cnpm i --g @nestjs/cli `
+**参考 4：**
+![image](44AD79A001F94BA3A8C0DAB06F9E916E)
 
-2.使用 nest new xxx 创建服务端项目`nest new server cd server`
+#### 5.5、迁移本地数据库资源
 
-3.nest g app admin 创建子项目
-
-4.启动子项目 `nest start -w admin`
-
-5.创建公共包文件夹 `nest g lib db @libs`
-
-6.安装数据库连接数据库所需要的包 `npm i --s nestjs-typegoose @typegoose/typegoose`
-
-7.`cnpm i -S @types/mongoose mongoose`
+1. 进入本地 Nest 项目，在项目的根目录上生成打包数据 dump 文件夹
 
 ```
-<pre>
-    <code>
-	imports: [
-		  TypegooseModule.forRoot('mongodb://localhost/topfullstack',{
-     useNewUrlParser: true,
-			  useUnifiedTopology: true,
-			  useCreateIndex: true,
-			  useFindAndModify: false
-		  }),
-		  modles,
-  ],
-    </code>
-</pre>
+mongodump -d 数据库名称
 ```
 
-8.`nest g mo -p admin users/nest g co -p admin users` 在 admin 子项目里新建一个 user 模块 -p 指定目录
-
-9.安装 `cnpm i -S nestjs-mongoose-crud` 用户快速完成对数据库的增删改查
-
-10.安装 `cnpm i -S @nestjs/swagger swagger-ui-express` 用于写接口文档
-
-11.安装验证管道 `npm i -S class-validator class-transformer`
-
-12.配置 swagger 文档
-
-(```)
-
-<pre>
-    <code>
-        import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-		//配置Swagger 文档
-		const options = new DocumentBuilder()
-		    .setTitle('Cats example')
-		    .setDescription('The cats API description')
-		    .setVersion('1.0')
-		    .addTag('cats')
-		    .build();
-		  const document = SwaggerModule.createDocument(app, options);
-		  SwaggerModule.setup('api', app, document);
-    </code>
-</pre>
-
-(```)
-
-13.创建并定义 course 的模型
-
-14.创建 course 的子模块 `nest g mo -p admin users/nest g co -p admin users`
-
-15.服务端里设置跨域 app.enableCors()
-
-16.根据前端的需要 写一个 option 接口 把 avue 所需要的 option 在后台传过去
-
-17.`npm i --save @nestjs/config` 安装配置忘记包 使用环境变量的包
-
-`nest g lib common` 创建 common 公共文件夹 默认存放在 libs 下 用于写一些环境变量 导入并
-
-(`) import { ConfigModule } form '@nestjs/config' ConfigModule.forRoot({ isGlobal: true }) (`)
-
-18.`nest g mo courses/nest g co courses` 创建 server 子项目所需的文件夹
-
-19.启动 server 子项目 `nest start -w server`
-
-20.创建 auth 模块 用于写用户登录注册的接口
-
-21.`cnpm i -S bcryptjs` 使用 bcryptjs 对密码进行加密
-
-22.使用 passport 来实现登录验证 在 auth 文件夹下 先创建一个 local.strategy.ts 文件 用于存放登录策略
-
-23.`cnpm i -S passport @nestjs/passport passport-local passport-jwt `
-
-24.开始使用 引用
-
-25.cnpm i -S @nestjs/jwt 使用 生成 token 在 common.module 里面注册
-
-26.`nest g mo/co -p server actions` 生成 action 模块 用于存放用户的操作
-
-27.建立评论模型 创建评论模块 `nest g mo/co comments`
-
-28.模型类型的字段需要关联表名称
+2. 将生成的 dump 文件夹，放到服务器上，并执行以下命令。
 
 ```
-    @prop({ ref: 'Category', default: '5faf48f70897c0212826274f' })  //指明这是一个数据库里面的字段@prop()
-	@ApiPropertyOptional({ description: '标签', example: '生活' })
-	category: Ref<Category>[]
-
-	@prop({ ref: 'User' })  //指明这是一个数据库里面的字段@prop()  否则populate查不出来
-	@ApiPropertyOptional({ description: '作者id', example: '林阿富' })
-	uid: Ref<User>
+mongorestore
 ```
 
-29. 更新时让某字段自增
+**参考 5：**
+![image](B4B1CF414301426EB44E0309E83796D7)
 
-```
-Video.update({ _id: req.params.id },
-               { $set: req.body, $inc: { count: 1 } },
-               { multi: false },  callback);
-```
+至此，数据已经迁移过来了。
 
-30. 当查询的字段为数组时，用来$in
+### 最后
 
-```
-// 例子 category为数组字段  lean()把文档对象转换为js对象 建议使用-不然前端有可能拿不到值
-const res = await this.model.findOne({ _id: '' }).populate('uid').lean()
-const res2 = await this.model.find({category: { $in: res.category }})
-```
+> 自己捣鼓的项目，bug 挺多的，往见谅 ❥(^\_-)
 
-##### admin 端 vscode 编译器代码排斥
+文档：星空项目.md
 
-1. 用 vue create admin 创建项目与 server 同级
-
-2. vue add typescript 添加 typescript
-
-3. 添加 element-ui 创建相应的页面 和路由规则
-
-4. 安装 npm i -S axios @types/axios 在全局导入并配置
-
-5. 要到 serve 服务端里设置跨域 app.enableCors()
-
-6. 使用 npm i -S vue-ele-form
-
-7. 使用 npm i @smallwei/avue -S 快速开发前端增删改查页面 注意: 编辑需要修改一下 row 数据
-
-8. 把 option 做成可扩展的的数据
-
-9. 把前端的请求地址也做成可扩展的变量 变量的值来值路由地址
-
-10. 在对象里 {[name]: this.query} [xx]表示键也是个变量
-
-11. 文件上传 需要导入文件处理模块 import { MulterModule } from '@nestjs/platform-express'
-
-12. MulterModule.register({
-    dest: 'uploads' //目录名称
-    }),//本地上传模块 会在项目的跟地址自动的创建 uploads
-
-13. 使用阿里云 oss 存储 `cnpm i -S multer-aliyun-oss` 下载 oss 包 server 文件夹
-
-14. 引入 并配置
-
-###web 端
-
-1. 使用 nuxtjs 来搭建项目
-
-2. `npx create-nuxt-app <项目名>`
-
-3. 使用 vuetify ui 来美化页面
-
-4. 启动项目 npm run dev
-
-5. 在 nuxt 里 没有路由文件夹 项目的 pages 文件夹结构就是路由
-
-6. 没有 main.js nuxt.config.js 是主要文件 里面有外部文件的依赖等等 .env 为配置环境变量文件
-
-7. 在 web 安装 `cnpm i -S @nuxtjs/auth`
-
-``
+链接：http://note.youdao.com/noteshare?id=7766b7b92a04f145601a809369263f3e

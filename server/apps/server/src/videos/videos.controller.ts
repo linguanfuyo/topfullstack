@@ -11,7 +11,7 @@ import { Action } from '@libs/db/models/action.model';
 @Crud({
     model: Video
 })
-@Controller('videos')
+@Controller('/api/videos')
 @ApiTags('视频管理')
 export class VideosController {
     //构造器函数 中用依赖注入的方法 注入schema模型

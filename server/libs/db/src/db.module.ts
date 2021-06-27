@@ -38,7 +38,7 @@ const modles = TypegooseModule.forFeature([
 		TypegooseModule.forRootAsync({
 			useFactory() {
 				return {
-					uri: process.env.DB,
+					uri: 'mongodb://localhost/topfullstack',
 					useNewUrlParser: true,
 					useUnifiedTopology: true,
 					useCreateIndex: true,

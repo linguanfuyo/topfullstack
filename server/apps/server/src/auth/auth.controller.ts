@@ -44,7 +44,7 @@ redisClient.on('error', (error) => {
 });
 
 
-@Controller('auth')
+@Controller('/api/auth')
 @ApiTags('用户')
 export class AuthController {
 

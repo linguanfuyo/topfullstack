@@ -13,7 +13,7 @@ import { AuthGuard } from '@nestjs/passport';
 		delete: false
 	}
 })
-@Controller('courses')
+@Controller('/api/courses')
 @ApiTags('课程展示')
 export class CoursesController {
 	//构造器函数 中用依赖注入的方法 注入schema模型

@@ -3,7 +3,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
 import { Article } from '@libs/db/models/article.model';
-@Controller('articles')
+@Controller('/api/articles')
 @ApiTags('文章')
 export class ArticlesController {
     constructor(@InjectModel(Article) private readonly model: ReturnModelType<typeof Article>) { }
